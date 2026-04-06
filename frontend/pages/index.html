@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Talentra — Intelligent Hiring, Without Bias</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#101419",
+                        "surface-container-lowest": "#0a0e13",
+                        "on-secondary-fixed-variant": "#6900b3",
+                        "on-secondary-container": "#d6a9ff",
+                        "inverse-on-surface": "#2d3136",
+                        "error": "#ffb4ab",
+                        "primary-container": "#8083ff",
+                        "on-surface": "#e0e2ea",
+                        "on-secondary-fixed": "#2c0051",
+                        "inverse-surface": "#e0e2ea",
+                        "on-secondary": "#490080",
+                        "on-error": "#690005",
+                        "on-primary-fixed": "#07006c",
+                        "primary": "#c0c1ff",
+                        "surface-variant": "#31353b",
+                        "secondary": "#ddb7ff",
+                        "on-tertiary-container": "#002d40",
+                        "surface-bright": "#36393f",
+                        "on-tertiary": "#00354a",
+                        "surface-tint": "#c0c1ff",
+                        "on-primary-container": "#0d0096",
+                        "secondary-fixed-dim": "#ddb7ff",
+                        "secondary-fixed": "#f0dbff",
+                        "surface-container-highest": "#31353b",
+                        "on-surface-variant": "#c2c6d6",
+                        "inverse-primary": "#494bd6",
+                        "surface-container-high": "#262a30",
+                        "tertiary": "#7bd0ff",
+                        "on-tertiary-fixed": "#001e2c",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#2f2ebe",
+                        "outline-variant": "#424754",
+                        "secondary-container": "#6f00be",
+                        "surface-container-low": "#181c21",
+                        "surface-dim": "#101419",
+                        "background": "#101419",
+                        "tertiary-container": "#009bd1",
+                        "tertiary-fixed-dim": "#7bd0ff",
+                        "on-primary": "#1000a9",
+                        "surface-container": "#1c2025",
+                        "error-container": "#93000a",
+                        "tertiary-fixed": "#c4e7ff",
+                        "on-tertiary-fixed-variant": "#004c69",
+                        "on-background": "#e0e2ea",
+                        "outline": "#8c909f",
+                        "primary-fixed-dim": "#c0c1ff",
+                        "primary-fixed": "#e1e0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 59, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 20px 0 rgba(192, 193, 255, 0.2);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(45deg, #c0c1ff, #ddb7ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Carousel */
+        #steps-track {
+            display: flex;
+            transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .step-slide {
+            min-width: calc(100% / 3);
+            padding: 0 1.5rem;
+            box-sizing: border-box;
+        }
+        @media (max-width: 768px) {
+            .step-slide { min-width: 100%; }
+        }
+        /* Dot indicators */
+        .dot {
+            width: 6px; height: 6px;
+            border-radius: 9999px;
+            background: #424754;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            width: 20px;
+            background: #c0c1ff;
+        }
+        /* Disable arrow when at limit */
+        .arrow-btn:disabled {
+            opacity: 0.25;
+            cursor: not-allowed;
+        }
+        .arrow-btn:not(:disabled):hover {
+            border-color: #c0c1ff;
+            color: #c0c1ff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full max-w-full font-['Manrope'] font-medium text-sm">
+<div class="text-2xl font-black text-[#e0e2ea]">Talentra</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#c0c1ff] font-bold border-b-2 border-[#c0c1ff] text-sm cursor-pointer py-1" href="./index.html">Home</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] cursor-pointer active:scale-95 transition-all" href="./about.html">About</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] cursor-pointer active:scale-95 transition-all" href="./contact.html">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<a href="./login.html">
+  <span class="material-symbols-outlined text-[#c2c6d6] hover:bg-[#262a30]/50 p-2 rounded-full cursor-pointer transition-all">account_circle</span>
+</a>
+<a class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all" href="./upload.html">
+                Get Started
+            </a>
+</div>
+</nav>
+
+<main class="pt-24">
+  <!-- Hero -->
+  <section class="relative min-h-[921px] flex items-center px-8 md:px-20 overflow-hidden">
+    <div class="absolute inset-0 z-0 opacity-30">
+      <div class="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-secondary-container blur-[120px] rounded-full"></div>
+      <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-primary-container blur-[100px] rounded-full"></div>
+    </div>
+    <div class="grid md:grid-cols-2 gap-12 items-center relative z-10 w-full max-w-7xl mx-auto">
+      <div class="space-y-8">
+        <h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface leading-[1.1]">
+          Intelligent Hiring, <br/>
+          <span class="text-gradient-primary">Without Bias.</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg md:text-xl max-w-lg leading-relaxed">
+          Talentra leverages advanced neural analysis to identify top talent based on merit, not demographics. Transform your HR into a precision engine of equity.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <button class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-8 py-4 rounded-xl font-bold text-lg primary-glow transition-all active:scale-98">
+            Start Analysis
+          </button>
+          <button class="bg-surface-container-high border border-outline-variant/15 text-primary px-8 py-4 rounded-xl font-bold text-lg hover:bg-surface-container-highest transition-all active:scale-98">
+            View Demo
+          </button>
+        </div>
+      </div>
+      <div class="hidden md:block relative">
+        <div class="glass-panel border border-outline-variant/10 rounded-[2rem] p-4 shadow-2xl">
+          <img alt="Dashboard Preview" class="rounded-[1.5rem] w-full object-cover" src="/assets/icons/first.jpg"/>
+        </div>
+        <div class="absolute -bottom-6 -left-12 glass-panel p-6 rounded-2xl border border-outline-variant/20 shadow-xl max-w-xs">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+            <span class="font-headline font-bold text-sm tracking-wide uppercase">AI Insight</span>
+          </div>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Candidate alignment score optimized for technical leadership potential. 98% bias reduction achieved.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-32 px-8 md:px-20 max-w-7xl mx-auto">
+    <div class="mb-20 text-center space-y-4">
+      <h2 class="font-headline text-3xl md:text-4xl font-bold">Uncompromising Objectivity</h2>
+      <p class="text-on-surface-variant max-w-2xl mx-auto">We use multi-modal AI to strip away noise and focus on the signals that matter for performance.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="glass-panel p-8 rounded-[1.5rem] border border-outline-variant/10 hover:bg-surface-container-high transition-all group cursor-default">
+        <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-6 text-primary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">psychology</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold mb-3">AI Interview Analysis</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Advanced sentiment and semantic tracking to evaluate competence without unconscious influence.</p>
+        <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity h-1 w-12 bg-primary rounded-full"></div>
+      </div>
+      <div class="glass-panel p-8 rounded-[1.5rem] border border-outline-variant/10 hover:bg-surface-container-high transition-all group relative overflow-hidden cursor-default">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary/50 to-transparent"></div>
+        <div class="w-14 h-14 bg-secondary/10 rounded-xl flex items-center justify-center mb-6 text-secondary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">bolt</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold mb-3">Gemini-Powered Insights</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Harnessing state-of-the-art LLMs to generate contextual summaries of candidate experience and potential.</p>
+        <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity h-1 w-12 bg-secondary rounded-full"></div>
+      </div>
+      <div class="glass-panel p-8 rounded-[1.5rem] border border-outline-variant/10 hover:bg-surface-container-high transition-all group cursor-default">
+        <div class="w-14 h-14 bg-tertiary/10 rounded-xl flex items-center justify-center mb-6 text-tertiary group-hover:scale-110 transition-transform">
+          <span class="material-symbols-outlined text-3xl">balance</span>
+        </div>
+        <h3 class="font-headline text-xl font-bold mb-3">Fair Decision Engine</h3>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Algorithmic weighting that prioritizes skill sets and ensures diverse pipeline representation.</p>
+        <div class="mt-6 opacity-0 group-hover:opacity-100 transition-opacity h-1 w-12 bg-tertiary rounded-full"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Path to Parity — Carousel -->
+  <section class="py-32 px-8 bg-surface-container-low overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header row -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <div class="space-y-4">
+          <h2 class="font-headline text-4xl font-bold">The Path to Parity</h2>
+          <p class="text-on-surface-variant">Simple integration. Revolutionary results.</p>
+        </div>
+        <div class="flex items-center gap-4">
+          <!-- Dot indicators -->
+          <div class="flex items-center gap-2 mr-4" id="carousel-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+          <!-- Arrow buttons -->
+          <button id="btn-prev" class="arrow-btn h-12 w-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant transition-all" disabled>
+            <span class="material-symbols-outlined">arrow_back</span>
+          </button>
+          <button id="btn-next" class="arrow-btn h-12 w-12 rounded-full border border-outline-variant/30 flex items-center justify-center text-on-surface-variant transition-all">
+            <span class="material-symbols-outlined">arrow_forward</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Carousel viewport -->
+      <div class="relative">
+        <!-- connector line -->
+        <div class="absolute top-8 left-0 w-full h-[1px] bg-outline-variant/20 hidden md:block"></div>
+
+        <div class="overflow-hidden">
+          <div id="steps-track">
+
+            <!-- Slide 1: Upload -->
+            <div class="step-slide">
+              <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 border-4 border-surface-container-low shadow-lg">
+                  <span class="material-symbols-outlined text-primary">cloud_upload</span>
+                </div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary uppercase tracking-widest">Step 1</span>
+                </div>
+                <h4 class="font-headline font-bold text-lg mb-2">Upload Data</h4>
+                <p class="text-on-surface-variant text-sm max-w-[240px]">Securely ingest resumes, portfolios, and assessments through our encrypted portal.</p>
+              </div>
+            </div>
+
+            <!-- Slide 2: AI Interview -->
+            <div class="step-slide">
+              <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 border-4 border-surface-container-low shadow-lg">
+                  <span class="material-symbols-outlined text-primary">video_chat</span>
+                </div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary uppercase tracking-widest">Step 2</span>
+                </div>
+                <h4 class="font-headline font-bold text-lg mb-2">Conduct AI Interview</h4>
+                <p class="text-on-surface-variant text-sm max-w-[240px]">Run structured virtual interviews guided by real-time bias-detection algorithms.</p>
+              </div>
+            </div>
+
+            <!-- Slide 3: Get Evaluation -->
+            <div class="step-slide">
+              <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 border-4 border-surface-container-low shadow-lg">
+                  <span class="material-symbols-outlined text-primary">analytics</span>
+                </div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-xs font-bold text-primary uppercase tracking-widest">Step 3</span>
+                </div>
+                <h4 class="font-headline font-bold text-lg mb-2">Get Evaluation</h4>
+                <p class="text-on-surface-variant text-sm max-w-[240px]">Receive an objective report with skill-based rankings and growth potential metrics.</p>
+              </div>
+            </div>
+
+            <!-- Slide 4: AI Recommendation -->
+            <div class="step-slide">
+              <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 border-4 border-surface-container-low shadow-lg">
+                  <span class="material-symbols-outlined text-secondary">recommend</span>
+                </div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-xs font-bold text-secondary uppercase tracking-widest">Step 4</span>
+                </div>
+                <h4 class="font-headline font-bold text-lg mb-2">Get AI Recommendation</h4>
+                <p class="text-on-surface-variant text-sm max-w-[240px]">Receive tailored AI-generated hiring recommendations highlighting the strongest candidates for each role.</p>
+              </div>
+            </div>
+
+            <!-- Slide 5: Job Match % -->
+            <div class="step-slide">
+              <div class="relative z-10 flex flex-col items-center md:items-start text-center md:text-left">
+                <div class="w-16 h-16 bg-surface-container-highest rounded-full flex items-center justify-center mb-8 border-4 border-surface-container-low shadow-lg">
+                  <span class="material-symbols-outlined text-tertiary">percent</span>
+                </div>
+                <div class="mb-2 flex items-center gap-2">
+                  <span class="text-xs font-bold text-tertiary uppercase tracking-widest">Step 5</span>
+                </div>
+                <h4 class="font-headline font-bold text-lg mb-2">Job Match Percentage</h4>
+                <p class="text-on-surface-variant text-sm max-w-[240px]">See a precise compatibility score between each candidate and the job profile, powered by semantic skill mapping.</p>
+              </div>
+            </div>
+
+          </div><!-- /track -->
+        </div><!-- /viewport -->
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-32 px-8">
+    <div class="max-w-5xl mx-auto glass-panel p-12 md:p-24 rounded-[3rem] text-center space-y-10 border border-outline-variant/10 relative overflow-hidden">
+      <div class="absolute top-0 right-0 p-8 opacity-10">
+        <span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">security</span>
+      </div>
+      <h2 class="font-headline text-4xl md:text-6xl font-black text-on-surface">Ready to Hire <br/><span class="text-gradient-primary">Authentically?</span></h2>
+      <p class="text-on-surface-variant text-lg max-w-xl mx-auto">Join the 500+ enterprises using Talentra to build high-performance, inclusive teams.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-primary text-on-primary-container px-10 py-5 rounded-2xl font-bold text-lg primary-glow transition-all active:scale-95">
+          Start Building Fair Hiring
+        </button>
+      </div>
+      <div class="pt-12 flex justify-center items-center gap-8 opacity-40 grayscale contrast-125">
+        <span class="font-headline font-bold tracking-widest text-xl">TRUSTED BY</span>
+        <div class="h-6 w-24 bg-on-surface-variant rounded-sm opacity-50"></div>
+        <div class="h-6 w-32 bg-on-surface-variant rounded-sm opacity-50"></div>
+        <div class="h-6 w-28 bg-on-surface-variant rounded-sm opacity-50"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+    <div class="space-y-4 text-center md:text-left">
+      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+    </div>
+    <div class="text-center md:text-right">
+      <p>© 2026 Talentra. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const VISIBLE = 3;   // slides visible at once on desktop
+  const TOTAL   = 5;   // total steps
+  const MAX_POS = TOTAL - VISIBLE; // 2 — furthest we can scroll
+
+  const track   = document.getElementById('steps-track');
+  const btnPrev = document.getElementById('btn-prev');
+  const btnNext = document.getElementById('btn-next');
+  const dots    = document.querySelectorAll('#carousel-dots .dot');
+
+  let pos = 0; // current offset (0 = start)
+
+  function getSlideWidth() {
+    // On mobile show 1 at a time, desktop 3
+    return window.innerWidth < 768 ? 100 : 100 / VISIBLE;
+  }
+
+  function render() {
+    const sw = getSlideWidth();
+    track.style.transform = `translateX(-${pos * sw}%)`;
+
+    // Update dots — 3 dots represent positions 0, 1, 2
+    dots.forEach((d, i) => d.classList.toggle('active', i === pos));
+
+    // Arrow state
+    btnPrev.disabled = pos === 0;
+    btnNext.disabled = pos >= MAX_POS;
+  }
+
+  btnPrev.addEventListener('click', () => { if (pos > 0)       { pos--; render(); } });
+  btnNext.addEventListener('click', () => { if (pos < MAX_POS) { pos++; render(); } });
+
+  // Re-render on resize so widths stay correct
+  window.addEventListener('resize', render);
+
+  render(); // initialise
+</script>
+</body></html>

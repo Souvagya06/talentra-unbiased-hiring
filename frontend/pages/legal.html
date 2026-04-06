@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Talentra | Legal &amp; Support Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#101419",
+                    "on-primary": "#1000a9",
+                    "on-surface": "#e0e2ea",
+                    "error": "#ffb4ab",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e0e2ea",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "surface-tint": "#c0c1ff",
+                    "surface-container-lowest": "#0a0e13",
+                    "primary-container": "#8083ff",
+                    "primary": "#c0c1ff",
+                    "error-container": "#93000a",
+                    "tertiary": "#7bd0ff",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "surface-container": "#1c2025",
+                    "on-tertiary-container": "#002d40",
+                    "on-secondary-fixed": "#2c0051",
+                    "on-primary-container": "#0d0096",
+                    "outline-variant": "#424754",
+                    "tertiary-fixed": "#c4e7ff",
+                    "on-background": "#e0e2ea",
+                    "on-tertiary": "#00354a",
+                    "on-secondary": "#490080",
+                    "inverse-primary": "#494bd6",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "on-tertiary-fixed": "#001e2c",
+                    "outline": "#8c909f",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "surface-container-highest": "#31353b",
+                    "surface-bright": "#36393f",
+                    "surface": "#101419",
+                    "secondary-container": "#6f00be",
+                    "tertiary-container": "#009bd1",
+                    "inverse-on-surface": "#2d3136",
+                    "on-primary-fixed": "#07006c",
+                    "secondary-fixed": "#f0dbff",
+                    "primary-fixed": "#e1e0ff",
+                    "on-error-container": "#ffdad6",
+                    "on-surface-variant": "#c2c6d6",
+                    "surface-variant": "#31353b",
+                    "secondary": "#ddb7ff",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "background": "#101419",
+                    "surface-container-low": "#181c21",
+                    "on-secondary-container": "#d6a9ff",
+                    "surface-container-high": "#262a30"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        html { scroll-behavior: smooth; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 59, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-gradient-primary {
+            background: linear-gradient(45deg, #c0c1ff, #ddb7ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-button:hover {
+            box-shadow: 0 0 15px 2px rgba(192, 193, 255, 0.2);
+        }
+        /* Sidebar nav link base state */
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            color: #c2c6d6;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            background: #262a30;
+            color: #e0e2ea;
+        }
+        /* Active state injected by JS */
+        .nav-link.active {
+            background: #262a30;
+            color: #c0c1ff;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#e0e2ea] tracking-tight font-headline">Talentra</span>
+<div class="hidden md:flex gap-6 font-headline font-medium text-sm">
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all cursor-pointer active:scale-95" href="#privacy">Privacy</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all cursor-pointer active:scale-95" href="#terms">Terms</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all cursor-pointer active:scale-95" href="#faq">FAQ</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all cursor-pointer active:scale-95" href="#support">Support</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<a class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-5 py-2 rounded-xl font-bold text-sm glow-button transition-all active:scale-95" href="./index.html">
+                    Back to Home
+                </a>
+</div>
+</div>
+</nav>
+
+<main class="pt-24 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<header class="relative py-20 text-center mb-12 overflow-hidden rounded-[2rem] bg-surface-container-low">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(192,193,255,0.08),transparent_70%)]"></div>
+<div class="relative z-10">
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl tracking-tight mb-6">Legal &amp; Support</h1>
+<p class="font-body text-on-surface-variant text-lg md:text-xl max-w-2xl mx-auto">Transparency, trust, and support for our users. Everything you need to manage your partnership with Talentra.</p>
+</div>
+</header>
+
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:block lg:col-span-3 sticky top-32 space-y-4">
+<div class="p-6 bg-surface-container rounded-2xl space-y-1">
+<p class="text-xs font-bold uppercase tracking-widest text-outline mb-4 px-3">Sections</p>
+<a class="nav-link active" href="#privacy" data-section="privacy">
+  <span class="material-symbols-outlined text-xl">gavel</span> Privacy Policy
+</a>
+<a class="nav-link" href="#terms" data-section="terms">
+  <span class="material-symbols-outlined text-xl">description</span> Terms &amp; Conditions
+</a>
+<a class="nav-link" href="#faq" data-section="faq">
+  <span class="material-symbols-outlined text-xl">quiz</span> FAQ
+</a>
+<a class="nav-link" href="#support" data-section="support">
+  <span class="material-symbols-outlined text-xl">headset_mic</span> Support
+</a>
+</div>
+</aside>
+
+<!-- Main Content Area -->
+<div class="lg:col-span-9 space-y-16">
+<!-- Privacy Policy -->
+<section class="scroll-mt-32" id="privacy">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">security</span>
+</div>
+<h2 class="text-3xl font-headline font-bold text-on-surface">Privacy Policy</h2>
+</div>
+<div class="space-y-6">
+<div class="glass-panel rounded-3xl p-8 border border-outline-variant/10">
+<details class="group" open="">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="text-xl font-headline font-bold text-primary">Data Collection</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 text-on-surface-variant leading-relaxed space-y-4">
+<p>Talentra collects minimal personal identifiable information (PII) required for enterprise authentication and platform functionality. This includes professional email addresses, job titles, and system logs.</p>
+<ul class="list-disc pl-6 space-y-2">
+<li>Candidate resume metadata for bias analysis.</li>
+<li>Anonymized interview transcripts.</li>
+<li>User engagement metrics to improve UI/UX.</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="glass-panel rounded-3xl p-8 border border-outline-variant/10">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="text-xl font-headline font-bold text-on-surface">Data Usage</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 text-on-surface-variant leading-relaxed">
+<p>Information is strictly used to generate Talentra Insights. We never sell data to third parties. Data is used to train our proprietary debiasing models in a strictly anonymized and aggregated manner.</p>
+</div>
+</details>
+</div>
+<div class="glass-panel rounded-3xl p-8 border border-outline-variant/10">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="text-xl font-headline font-bold text-on-surface">Security</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 text-on-surface-variant leading-relaxed">
+<p>We employ AES-256 encryption at rest and TLS 1.3 in transit. Our infrastructure is hosted on SOC2 Type II compliant data centers with 24/7 monitoring and automated threat detection.</p>
+</div>
+</details>
+</div>
+<div class="glass-panel rounded-3xl p-8 border border-outline-variant/10">
+<details class="group">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<h3 class="text-xl font-headline font-bold text-on-surface">User Rights</h3>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-6 text-on-surface-variant leading-relaxed">
+<p>In accordance with GDPR and CCPA, you have the right to access, rectify, or delete your data at any time. To exercise these rights, please contact our Data Protection Officer via the support form below.</p>
+</div>
+</details>
+</div>
+</div>
+</section>
+
+<!-- Terms & Conditions -->
+<section class="scroll-mt-32" id="terms">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-2xl bg-secondary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">contract</span>
+</div>
+<h2 class="text-3xl font-headline font-bold text-on-surface">Terms &amp; Conditions</h2>
+</div>
+<div class="bg-surface-container-low rounded-[2rem] p-8 md:p-12 space-y-10 border border-outline-variant/5">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface flex items-center gap-2">
+<span class="w-1.5 h-6 bg-secondary rounded-full"></span> Usage Rules
+</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Talentra is for professional hiring assistance only. Automated scraping, reverse engineering of AI models, or use for non-HR purposes is strictly prohibited.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface flex items-center gap-2">
+<span class="w-1.5 h-6 bg-tertiary rounded-full"></span> Responsibilities
+</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Users are responsible for the final hiring decisions. AI insights are provided as a support tool and should not be the sole basis for recruitment outcomes.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface flex items-center gap-2">
+<span class="w-1.5 h-6 bg-primary rounded-full"></span> Liability
+</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Talentra is not liable for any indirect or consequential damages arising from recruitment decisions or platform downtime.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface flex items-center gap-2">
+<span class="w-1.5 h-6 bg-error rounded-full"></span> Acceptance
+</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">By creating an account, you agree to these terms in their entirety. We reserve the right to update these terms with 30-day prior notice.</p>
+</div>
+</div>
+<div class="pt-8 border-t border-outline-variant/10 text-center">
+<p class="text-xs text-outline italic">Last updated: October 24, 2024</p>
+</div>
+</div>
+</section>
+
+<!-- FAQ Section -->
+<section class="scroll-mt-32" id="faq">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-2xl bg-tertiary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">live_help</span>
+</div>
+<h2 class="text-3xl font-headline font-bold text-on-surface">Frequently Asked Questions</h2>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high">
+<details class="group p-6">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline font-semibold text-on-surface">How does Talentra ensure unbiased hiring?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+Our AI uses natural language processing to identify and strip out demographic indicators from evaluations, focusing purely on skill-based performance indicators and sentiment analysis of structured responses.
+</div>
+</details>
+</div>
+<div class="bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high">
+<details class="group p-6">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline font-semibold text-on-surface">Is my data secure?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+Yes, we use bank-grade encryption and follow strict compliance standards including SOC2 and GDPR. Your data is your own, and we provide tools to export or purge it at any time.
+</div>
+</details>
+</div>
+<div class="bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high">
+<details class="group p-6">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline font-semibold text-on-surface">Can I download reports?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+Absolutely. All analysis, including candidate comparison sheets and diversity impact reports, can be exported as high-resolution PDF or CSV files.
+</div>
+</details>
+</div>
+<div class="bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high">
+<details class="group p-6">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline font-semibold text-on-surface">How does AI analyze interviews?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+The AI transcribes audio/video input and scores candidate answers based on pre-defined competency frameworks, while checking for consistency and highlighting key professional insights.
+</div>
+</details>
+</div>
+<div class="bg-surface-container rounded-2xl transition-all hover:bg-surface-container-high">
+<details class="group p-6">
+<summary class="flex justify-between items-center cursor-pointer list-none">
+<span class="font-headline font-semibold text-on-surface">Is communication score used in hiring decisions?</span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="mt-4 text-on-surface-variant text-sm leading-relaxed border-t border-outline-variant/10 pt-4">
+Communication score is provided as an auxiliary metric for roles that require high interpersonal skills. It is not weighted heavily by default to prevent cultural bias, but can be customized per role.
+</div>
+</details>
+</div>
+</div>
+</section>
+
+<!-- Support Section -->
+<section class="scroll-mt-32" id="support">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<h2 class="text-3xl font-headline font-bold text-on-surface">Direct Support</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-5 gap-8">
+<div class="md:col-span-2 space-y-6">
+<div class="bg-surface-container-low p-6 rounded-3xl border border-outline-variant/10">
+<h4 class="font-headline font-bold mb-2">Need help fast?</h4>
+<p class="text-on-surface-variant text-sm">Our dedicated success team is available to assist with onboarding, technical issues, or legal inquiries.</p>
+<div class="mt-6 flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-sm font-bold">Responds within 24 hours</span>
+</div>
+</div>
+</div>
+<div class="md:col-span-3 glass-panel rounded-[2rem] p-8 border border-outline-variant/10">
+<form class="space-y-6" onsubmit="return false">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-outline px-1">Name</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="Souvagya Karmakar" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-outline px-1">Contact No.</label>
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="+91 83350 7942" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="Sushmita Roy" type="text"/>
+</div>
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="+91 79089 29394" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="Anirban Pal" type="text"/>
+</div>
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="+91 70444 05606" type="number"/>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="Sugata Nayak" type="text"/>
+</div>
+<div class="space-y-2">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl p-4 focus:ring-2 focus:ring-primary/30 transition-all text-on-surface" placeholder="+91 98831 31330" type="number"/>
+</div>
+</div>
+</form>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+<!-- Footer -->
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+<p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+</div>
+<div class="text-center md:text-right">
+<p>© 2026 Talentra. All rights reserved.</p>
+</div>
+</div>
+</footer>
+
+<script>
+  // Scroll-spy: highlight the sidebar link whose section is currently in view
+  const sections = ['privacy', 'terms', 'faq', 'support'];
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  function setActive(id) {
+    navLinks.forEach(link => {
+      if (link.dataset.section === id) {
+        link.classList.add('active');
+      } else {
+        link.classList.remove('active');
+      }
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    // Find all sections currently intersecting, pick the topmost one
+    const visible = entries
+      .filter(e => e.isIntersecting)
+      .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+    if (visible.length > 0) {
+      setActive(visible[0].target.id);
+    }
+  }, {
+    rootMargin: '-20% 0px -60% 0px', // triggers when section is in the upper 40% of viewport
+    threshold: 0
+  });
+
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) observer.observe(el);
+  });
+
+  // Also handle direct clicks on sidebar links (for instant feedback)
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      setActive(link.dataset.section);
+    });
+  });
+</script>
+</body></html>

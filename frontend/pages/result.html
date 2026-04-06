@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Candidate Evaluation Report - FairLens AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#101419",
+                    "surface-container-lowest": "#0a0e13",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "on-secondary-container": "#d6a9ff",
+                    "inverse-on-surface": "#2d3136",
+                    "error": "#ffb4ab",
+                    "primary-container": "#8083ff",
+                    "on-surface": "#e0e2ea",
+                    "on-secondary-fixed": "#2c0051",
+                    "inverse-surface": "#e0e2ea",
+                    "on-secondary": "#490080",
+                    "on-error": "#690005",
+                    "on-primary-fixed": "#07006c",
+                    "primary": "#c0c1ff",
+                    "surface-variant": "#31353b",
+                    "secondary": "#ddb7ff",
+                    "on-tertiary-container": "#002d40",
+                    "surface-bright": "#36393f",
+                    "on-tertiary": "#00354a",
+                    "surface-tint": "#c0c1ff",
+                    "on-primary-container": "#0d0096",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "secondary-fixed": "#f0dbff",
+                    "surface-container-highest": "#31353b",
+                    "on-surface-variant": "#c2c6d6",
+                    "inverse-primary": "#494bd6",
+                    "surface-container-high": "#262a30",
+                    "tertiary": "#7bd0ff",
+                    "on-tertiary-fixed": "#001e2c",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "outline-variant": "#424754",
+                    "secondary-container": "#6f00be",
+                    "surface-container-low": "#181c21",
+                    "surface-dim": "#101419",
+                    "background": "#101419",
+                    "tertiary-container": "#009bd1",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "on-primary": "#1000a9",
+                    "surface-container": "#1c2025",
+                    "error-container": "#93000a",
+                    "tertiary-fixed": "#c4e7ff",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "on-background": "#e0e2ea",
+                    "outline": "#8c909f",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "primary-fixed": "#e1e0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(49, 53, 59, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .text-glow-primary {
+            text-shadow: 0 0 15px rgba(192, 193, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/30">
+<!-- SideNavBar (Left Anchor) -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-[#101419] flex flex-col p-4 space-y-2 z-40 hidden md:flex">
+<div class="px-4 py-6">
+<h1 class="text-xl font-bold text-[#e0e2ea] tracking-widest font-headline">FairLens AI</h1>
+<p class="font-headline text-xs text-on-surface-variant tracking-wider mt-1">Enterprise HR</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-headline text-sm tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c0c1ff] bg-[#262a30] rounded-lg font-bold group" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-headline text-sm tracking-wide">Candidates</span>
+</a>
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="event_note">event_note</span>
+<span class="font-headline text-sm tracking-wide">Interviews</span>
+</a>
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200 rounded-lg group" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-headline text-sm tracking-wide">Reports</span>
+</a>
+</nav>
+<div class="pt-4 mt-4 space-y-1">
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-headline text-sm tracking-wide">Settings</span>
+</a>
+<a class="flex items-center px-4 py-3 space-x-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200 rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-headline text-sm tracking-wide">Support</span>
+</a>
+<div class="flex items-center px-4 py-4 space-x-3 mt-4">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional male headshot in dark neutral lighting, focused expression, high-end photography style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Rcepb5GFX-Lz52hH3Cp9xMq0bPH2c9VTXE4Y2uDidQhvJMKrewbYPOmOwfFnnI8Pp_JncqcnRSmhumFzEzsblIKvDAqU6CRGb9JvMz1uSimyBxnHVCYOHdh6mzhvd57YvA7YZU6B6TDHUFo0VflJJemoppkqHM5uXvtPnvbhFJoKNs4hAjIDD1B5n0Y_0Mokz5t3btUiITEB-VRQxROqkdCQOxlfDBMJzPMTJ4f-63n-BYd_sPYis2SJnVRYYNB1A4X2iJmswg"/>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">Admin User</span>
+<span class="text-[10px] text-on-surface-variant">Standard Access</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 min-h-screen flex flex-col">
+<!-- TopNavBar (Fixed Utility) -->
+<header class="fixed top-0 right-0 left-0 md:left-64 z-30 bg-[#101419]/80 backdrop-blur-xl px-8 py-4 flex justify-between items-center">
+<div class="flex items-center space-x-8">
+<h2 class="text-xl font-black text-[#e0e2ea] font-headline">Candidate Evaluation Report</h2>
+<div class="hidden lg:flex space-x-6">
+<span class="text-[#c0c1ff] font-bold border-b-2 border-[#c0c1ff] text-sm cursor-pointer py-1">Report</span>
+<span class="text-[#c2c6d6] hover:text-[#e0e2ea] text-sm cursor-pointer py-1 transition-all">Profile</span>
+<span class="text-[#c2c6d6] hover:text-[#e0e2ea] text-sm cursor-pointer py-1 transition-all">Timeline</span>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<div class="flex items-center bg-surface-container-lowest rounded-full px-4 py-2 space-x-2">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-xs w-32 md:w-48 placeholder-on-surface-variant" placeholder="Search data..." type="text"/>
+</div>
+<button class="p-2 hover:bg-[#262a30]/50 rounded-full transition-all relative">
+<span class="material-symbols-outlined text-[#c0c1ff]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<button class="p-2 hover:bg-[#262a30]/50 rounded-full transition-all">
+<span class="material-symbols-outlined text-[#c0c1ff]" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<div class="mt-20 p-8 pb-24 space-y-8">
+<!-- Hero Stats Bento Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Match Score Card (L) -->
+<div class="lg:col-span-4 bg-surface-container-low rounded-[1.5rem] p-8 flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 blur-[60px] rounded-full"></div>
+<h3 class="font-headline text-on-surface-variant text-sm tracking-widest uppercase mb-8">Match Score</h3>
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90">
+<circle class="text-surface-container-high" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
+<circle class="text-primary drop-shadow-[0_0_8px_rgba(192,193,255,0.6)]" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="553" stroke-dashoffset="66" stroke-linecap="round" stroke-width="12"></circle>
+</svg>
+<div class="absolute flex flex-col items-center">
+<span class="text-5xl font-black text-[#e0e2ea] font-headline tracking-tighter">88%</span>
+<span class="text-xs text-primary font-bold tracking-widest uppercase">Excellent</span>
+</div>
+</div>
+</div>
+<!-- Interview Summary Card (R) -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-[1.5rem] p-8 space-y-6">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-lg font-bold text-[#e0e2ea]">Interview Executive Summary</h3>
+<p class="text-sm text-on-surface-variant mt-1">Conducted by AI Evaluator v4.2 on Oct 24, 2024</p>
+</div>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">High Signal</span>
+</div>
+<div class="space-y-4 text-on-surface/90 leading-relaxed body-md">
+<p>The candidate demonstrated <span class="text-primary font-semibold">exceptional system architecture knowledge</span> during the technical deep-dive. They were able to articulate complex trade-offs between monolithic and microservice patterns without prompting.</p>
+<p>Key observations included <span class="text-secondary font-semibold">strong emotional intelligence</span> when discussing past team conflicts. The candidate's ability to maintain composure while addressing edge-case scenarios suggests a high level of <span class="text-tertiary font-semibold">seniority and leadership potential</span>.</p>
+<p>The overall delivery was concise, though a minor tendency to over-explain technical debt was noted in the second quadrant of the evaluation.</p>
+</div>
+</div>
+</div>
+<!-- Scores Section (3 Cards) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Technical -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-primary/40">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Technical Proficiency</span>
+<span class="material-symbols-outlined text-primary" data-icon="code">code</span>
+</div>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-black font-headline">9.4</span>
+<span class="text-on-surface-variant text-sm">/ 10</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[94%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-tight">Superior grasp of distributed systems and concurrent programming.</p>
+</div>
+<!-- Communication -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-secondary/40 relative group">
+<div class="absolute inset-0 bg-secondary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl pointer-events-none"></div>
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Communication</span>
+<span class="material-symbols-outlined text-secondary" data-icon="chat_bubble">chat_bubble</span>
+</div>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-black font-headline">8.2</span>
+<span class="text-on-surface-variant text-sm">/ 10</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[82%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-tight italic">Note: High impact score due to cross-functional clarity during complex scenarios.</p>
+</div>
+<!-- Confidence -->
+<div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-tertiary/40">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Confidence Index</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="psychology">psychology</span>
+</div>
+<div class="flex items-baseline space-x-2">
+<span class="text-3xl font-black font-headline">8.8</span>
+<span class="text-on-surface-variant text-sm">/ 10</span>
+</div>
+<div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-tertiary w-[88%]"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant leading-tight">Maintains steady tone and eye contact during critical questioning sessions.</p>
+</div>
+</div>
+<!-- Fairness Insight & Final Recommendation Section -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
+<!-- Fairness Insight Panel (Insight Lens) -->
+<div class="glass-panel rounded-[1.5rem] p-8 border border-outline-variant/10 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary/30"></div>
+<div class="flex items-center space-x-3 mb-6">
+<div class="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h3 class="font-headline text-lg font-bold text-[#e0e2ea]">AI Fairness Insight</h3>
+</div>
+<div class="space-y-4">
+<p class="text-sm text-on-surface/80 leading-relaxed">
+                            Our neural bias detection suggests a <span class="px-1 bg-secondary/20 text-secondary rounded">99.2% Fairness Rating</span>. 
+                            The evaluation process correctly neutralized <span class="text-on-surface font-medium underline decoration-secondary/40 decoration-2">educational pedigree variables</span> in favor of raw technical skill assessment.
+                        </p>
+<p class="text-sm text-on-surface/80 leading-relaxed">
+                            Sentiment analysis confirmed that the interviewers remained <span class="text-on-surface font-medium underline decoration-secondary/40 decoration-2">consistently objective</span> across all demographic parameters, with the candidate's <span class="italic">cultural add</span> score significantly outweighing standard culture-fit metrics.
+                        </p>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Audit Status: Passed</span>
+<span class="text-secondary text-[10px] font-bold">VIEW AUDIT LOGS →</span>
+</div>
+</div>
+<!-- Final Recommendation Hero Card -->
+<div class="bg-gradient-to-br from-[#262a30] to-[#181c21] rounded-[1.5rem] p-8 flex flex-col items-center justify-center text-center space-y-6 relative overflow-hidden border border-primary/10 group">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(192,193,255,0.05)_0%,_transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-2 shadow-[0_0_30px_rgba(192,193,255,0.2)]">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<h4 class="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-2">Final Verdict</h4>
+<h2 class="text-4xl font-black font-headline text-[#e0e2ea]">Recommended</h2>
+</div>
+<p class="text-on-surface-variant text-sm max-w-xs">
+                        This candidate represents a top 2% tier match for the Principal Engineer role. Proceed with immediate offer.
+                    </p>
+<div class="flex space-x-4 w-full pt-4">
+<button class="flex-1 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold py-3 rounded-xl transition-all active:scale-95 hover:shadow-[0_0_20px_rgba(192,193,255,0.3)] text-sm">
+                            Download Report
+                        </button>
+<button class="flex-1 bg-surface-container-high text-primary border border-outline-variant/20 font-bold py-3 rounded-xl transition-all active:scale-95 hover:bg-surface-container-highest text-sm">
+                            Re-analyze
+                        </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Shell -->
+<footer class="mt-auto border-t border-[#262a30]/30 bg-[#0a0e13] px-12 py-8 flex flex-col md:flex-row justify-between items-center w-full">
+<div class="flex items-center space-x-2 mb-4 md:mb-0">
+<span class="text-lg font-bold text-[#e0e2ea] font-headline">FairLens AI</span>
+<span class="text-[10px] text-[#c2c6d6] font-['Inter']">© 2024 FairLens AI. All rights reserved.</span>
+</div>
+<div class="flex space-x-8">
+<a class="text-xs text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity font-['Inter']" href="#">Privacy Policy</a>
+<a class="text-xs text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity font-['Inter']" href="#">Terms of Service</a>
+<a class="text-xs text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity font-['Inter']" href="#">Security</a>
+<a class="text-xs text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity font-['Inter']" href="#">Cookie Settings</a>
+</div>
+</footer>
+</main>
+<!-- Mobile Navigation Shell (Bottom) -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-t border-outline-variant/10 px-6 py-3 flex justify-around items-center">
+<div class="flex flex-col items-center space-y-1 text-[#c2c6d6]">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+<span class="text-[10px] font-medium">Dash</span>
+</div>
+<div class="flex flex-col items-center space-y-1 text-[#c0c1ff]">
+<span class="material-symbols-outlined text-lg" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="text-[10px] font-bold">Candidates</span>
+</div>
+<div class="flex flex-col items-center space-y-1 text-[#c2c6d6]">
+<span class="material-symbols-outlined text-lg" data-icon="event_note">event_note</span>
+<span class="text-[10px] font-medium">Interviews</span>
+</div>
+<div class="flex flex-col items-center space-y-1 text-[#c2c6d6]">
+<span class="material-symbols-outlined text-lg" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-medium">Reports</span>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#009bd1",
+                    "surface-dim": "#101419",
+                    "surface-container-low": "#181c21",
+                    "background": "#101419",
+                    "tertiary-fixed-dim": "#7bd0ff",
+                    "outline": "#8c909f",
+                    "on-background": "#e0e2ea",
+                    "on-tertiary-fixed-variant": "#004c69",
+                    "tertiary-fixed": "#c4e7ff",
+                    "surface-container": "#1c2025",
+                    "on-primary": "#1000a9",
+                    "error-container": "#93000a",
+                    "primary-fixed": "#e1e0ff",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface-container-highest": "#31353b",
+                    "on-surface-variant": "#c2c6d6",
+                    "on-tertiary-fixed": "#001e2c",
+                    "tertiary": "#7bd0ff",
+                    "surface-container-high": "#262a30",
+                    "inverse-primary": "#494bd6",
+                    "secondary-container": "#6f00be",
+                    "outline-variant": "#424754",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary": "#490080",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e0e2ea",
+                    "surface-variant": "#31353b",
+                    "primary": "#c0c1ff",
+                    "on-primary-fixed": "#07006c",
+                    "surface-bright": "#36393f",
+                    "on-tertiary-container": "#002d40",
+                    "secondary": "#ddb7ff",
+                    "secondary-fixed-dim": "#ddb7ff",
+                    "secondary-fixed": "#f0dbff",
+                    "on-primary-container": "#0d0096",
+                    "surface-tint": "#c0c1ff",
+                    "on-tertiary": "#00354a",
+                    "on-secondary-container": "#d6a9ff",
+                    "on-secondary-fixed-variant": "#6900b3",
+                    "surface-container-lowest": "#0a0e13",
+                    "surface": "#101419",
+                    "primary-container": "#8083ff",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#2d3136",
+                    "on-secondary-fixed": "#2c0051",
+                    "on-surface": "#e0e2ea"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(49, 53, 59, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .light-leak {
+            background: radial-gradient(circle at top left, rgba(221, 183, 255, 0.05) 0%, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full max-w-full font-['Manrope'] font-medium text-sm">
+<div class="text-2xl font-black text-[#e0e2ea]">Talentra</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] cursor-pointer active:scale-95 transition-all" href="./index.html">Home</a>
+<a class="text-[#c0c1ff] font-bold border-b-2 border-[#c0c1ff] text-sm cursor-pointer py-1" href="./about.html">About</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] cursor-pointer active:scale-95 transition-all" href="./contact.html">Contact</a>
+</div>
+<div class="flex items-center space-x-6">
+<span class="material-symbols-outlined text-[#c2c6d6] hover:bg-[#262a30]/50 p-2 rounded-full cursor-pointer transition-all">account_circle</span>
+<a class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all" href="./upload.html">
+                Get Started
+            </a>
+</div>
+</nav>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[614px] flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+<div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,_rgba(192,193,255,0.08)_0%,_transparent_60%)]"></div>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-6 max-w-4xl">
+                About Talentra
+            </h1>
+<p class="font-headline text-xl md:text-2xl text-on-surface-variant max-w-2xl tracking-wide font-light">
+                Building the future of unbiased hiring with intelligent AI
+            </p>
+<div class="mt-12 w-full max-w-5xl aspect-[21/9] rounded-2xl overflow-hidden shadow-2xl relative">
+<img class="w-full h-full object-cover" data-alt="abstract digital visualization of neural networks and data flow in deep indigo and violet tones with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPuCaVaOv48x8gicWJgH5B8Sdk7nV6wUcrJtLBHK6GJl57aI15WlTjyiz2Hqci9ReqHmhAiz47sB1rEnnTZLvN0WrB5qtjSrnSGf9qkCFZtstyg1r5EldnWKYy-gpppWfsdYL4Q5JqFyG_NGKpxzob3cf1KK_C_PP9v5Irf342BpwNDEKrt-sFKVYXcNzM-YPUUT1hYvQB_7UFspAn4exXcjOrjO0xsWrgpL6bewyEEB04FuFA3GSKSNqz32_URhgsS2hF50qPHg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+</div>
+</section>
+<!-- About Project Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="glass-panel light-leak rounded-[2rem] p-8 md:p-16 relative overflow-hidden border border-outline-variant/10">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div>
+<span class="text-secondary font-headline tracking-[0.2em] text-xs font-bold uppercase mb-4 block">Our Mission</span>
+<h2 class="font-headline text-3xl md:text-4xl font-bold text-on-surface mb-8 leading-tight">
+                            To eliminate bias in hiring through AI-driven decision intelligence
+                        </h2>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                            Talentra is designed to augment human intuition with data-driven objectivity. We believe every candidate deserves a fair shot based on their merit, unclouded by unconscious bias.
+                        </p>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- AI Insight Cards -->
+<div class="bg-surface-container-low p-6 rounded-xl flex items-start gap-4 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="psychology">psychology</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">AI Interview Analysis</h4>
+<p class="text-sm text-on-surface-variant">Real-time sentiment and competency mapping during candidate sessions.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex items-start gap-4 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-secondary transition-colors">Gemini-powered insights</h4>
+<p class="text-sm text-on-surface-variant">Advanced LLM synthesis of multi-modal interview data for deeper understanding.</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl flex items-start gap-4 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="balance">balance</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-tertiary transition-colors">Fairness-first evaluation</h4>
+<p class="text-sm text-on-surface-variant">Proprietary algorithms that flag and neutralize gender, age, and ethnic biases.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Vision Section -->
+<section class="py-24 px-6 bg-surface-container-lowest">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-24 items-center">
+<div class="order-2 md:order-1">
+<div class="relative rounded-2xl overflow-hidden aspect-square shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="abstract close-up of a digital glass surface with reflected light patterns and glowing blue circuits" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBapeu09gblNlDGe6udac39-4oL85m9bINsBb7ykEerlOEElgRCyv_xzf7BwSRJ1-9SW5-i0hartEw8tRlLw64O-Wu3MNZUymXOPNuoiJmzYbbkBA40pljAoCjIVKnxnwZgFlrR9ki2mVh7BRu6qCKqJr6_djCheYLjcCcZ_-gGUx0yDcscDV_5HEHvZOsLKKMAhAb7qsy1fLeu3uzxneZPmD1EhiBnWgLO3T3z0iLMSJhTUFTtNRgugTnq9bMmy-YVktfMqcYTnQ"/>
+<div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="font-headline text-4xl md:text-5xl font-extrabold text-on-surface mb-8">Ethical AI, Defined.</h2>
+<div class="space-y-6">
+<div class="bg-surface-container-low/50 p-1 rounded-xl">
+<p class="text-on-surface-variant text-lg leading-relaxed border-l-2 border-primary pl-6">
+                                We believe technology should serve as a mirror, reflecting only the skills and potential of an individual. Our vision for fair hiring is rooted in radical transparency and algorithmic accountability.
+                            </p>
+</div>
+<p class="text-on-surface-variant text-md">
+                            By centering our development on ethical frameworks, we ensure that the "Fair" in FairLens isn't just a name—it's a technical requirement. We are building systems that don't just find the best candidate, but the right candidate, through a lens of equity.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="font-headline text-4xl font-bold text-on-surface mb-4">Meet the Team</h2>
+<div class="h-1 w-24 bg-primary mx-auto rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Team Member 1 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 p-1 border-2 border-transparent group-hover:border-primary transition-all duration-500">
+<img class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a male professional with a confident smile, warm studio lighting, professional background" src="/assets/images/souvagya.jpeg"/>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Souvagya Karmakar</h3>
+<p class="text-primary font-medium text-sm mb-4 uppercase tracking-widest">Full Stack Developer (Backend Lead)</p>
+<p class="text-on-surface-variant text-sm px-4">Built backend systems and AI integration pipelines</p>
+</div>
+<!-- Team Member 2 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 p-1 border-2 border-transparent group-hover:border-secondary transition-all duration-500">
+<img class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a female tech professional with glasses, bright creative office background, soft daylight" src="/assets/images/sushmita.jpeg"/>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Sushmita Roy</h3>
+<p class="text-secondary font-medium text-sm mb-4 uppercase tracking-widest">AI/Ml Engineer</p>
+<p class="text-on-surface-variant text-sm px-4">Developed AI logic and prompt engineering workflows</p>
+</div>
+<!-- Team Member 3 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 p-1 border-2 border-transparent group-hover:border-tertiary transition-all duration-500">
+<img class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of a young male developer in a casual dark shirt, modern architectural background" src="/assets/images/anirban.png"/>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Anirban Pal</h3>
+<p class="text-tertiary font-medium text-sm mb-4 uppercase tracking-widest">Data & Evaluation Engineer</p>
+<p class="text-on-surface-variant text-sm px-4">Designed scoring system and candidate evaluation logic</p>
+</div>
+<!-- Team Member 4 -->
+<div class="flex flex-col items-center text-center group">
+<div class="w-48 h-48 rounded-full overflow-hidden mb-6 p-1 border-2 border-transparent group-hover:border-primary-container transition-all duration-500">
+<img class="w-full h-full object-cover rounded-full grayscale group-hover:grayscale-0 transition-all" data-alt="portrait of an expert female professional looking focused, minimalist high-key lighting background" src="/assets/images/sugata.png"/>
+</div>
+<h3 class="font-headline text-xl font-bold text-on-surface">Sugata Nayak</h3>
+<p class="text-primary-container font-medium text-sm mb-4 uppercase tracking-widest">Frontend Developer (Frontend Lead)</p>
+<p class="text-on-surface-variant text-sm px-4">Designed responsive UI and frontend user experience</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-6">
+<div class="max-w-5xl mx-auto bg-gradient-to-br from-surface-container-high to-surface-container-low rounded-[2.5rem] p-12 md:p-20 text-center relative overflow-hidden">
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary/10 blur-[100px] rounded-full"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-secondary/10 blur-[100px] rounded-full"></div>
+<h2 class="font-headline text-3xl md:text-5xl font-bold text-on-surface mb-8 max-w-2xl mx-auto">
+                    Join us in building fair and intelligent hiring systems
+                </h2>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-10 py-4 rounded-xl text-lg font-bold hover:shadow-[0_0_20px_rgba(192,193,255,0.3)] active:scale-95 transition-all">
+                    Get Started
+                </button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+<div class="space-y-4 text-center md:text-left">
+<div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+<p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+</div>
+<div class="text-center md:text-right">
+<p>© 2026 Talentra. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>
