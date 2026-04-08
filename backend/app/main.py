@@ -2,9 +2,26 @@ from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi import Request
 import os
+from dotenv import load_dotenv
+from supabase import create_client, Client
+
+load_dotenv(dotenv_path="../.env")
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 app = FastAPI()
+
+@app.get("/users")
+def get_users():
+    try:
+        response = supabase.table("users").select("*").execute()
+        return {"data": response.data}
+    except Exception as e:
+        return {"error": str(e)}
 
 # ✅ Allow frontend requests (important later for API calls)
 app.add_middleware(
@@ -78,3 +95,40 @@ def serve_legal():
 @app.get("/login.html")
 def serve_login():
     return FileResponse(os.path.join(FRONTEND_PATH, "login.html"))
+
+
+@app.post("/signup")
+async def signup(request: Request):
+    data = await request.json()
+
+    email = data.get("email")
+
+    # check if user already exists
+    existing = supabase.table("users").select("*").eq("email", email).execute()
+
+    if existing.data:
+        return {"message": "User already exists"}
+
+    # insert new user
+    supabase.table("users").insert({
+        "name": data.get("name"),
+        "email": email,
+        "phone": data.get("phone"),
+        "role": "user"
+    }).execute()
+
+    return {"message": "New User Created"}
+
+
+@app.post("/login")
+async def login(request: Request):
+    data = await request.json()
+
+    email = data.get("email")
+
+    user = supabase.table("users").select("*").eq("email", email).execute()
+
+    if not user.data:
+        return {"message": "User doesn't exist"}
+
+    return {"message": "Login successful"}
