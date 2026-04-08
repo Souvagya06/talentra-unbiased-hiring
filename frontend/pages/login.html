@@ -310,38 +310,38 @@ tailwind.config = {
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
                 <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Name</label>
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban" type="text"/>
+                <input id="signup-firstname"class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban" type="text"/>
               </div>
               <div class="space-y-2">
                 <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Last Name</label>
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Mondal" type="text"/>
+                <input id="signup-lastname" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Mondal" type="text"/>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Work Email</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
+                <input id="signup-email" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
+                <input id="signup-phone" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">phone</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Password</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
+                <input id="signup-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Confirm Password</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
+                <input id="signup-confirm-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock_open</span>
               </div>
             </div>
@@ -505,14 +505,33 @@ tailwind.config = {
 
 // SIGNUP
 async function signupUser() {
-  const name = document.querySelector('input[placeholder="Anirban"]').value;
-  const email = document.querySelector('input[type="email"]').value;
-  const phone = document.querySelector('input[type="tel"]').value;
+  const firstName = document.getElementById("signup-firstname").value;
+  const lastName = document.getElementById("signup-lastname").value;
+  const email = document.getElementById("signup-email").value;
+  const phone = document.getElementById("signup-phone").value;
+  const password = document.getElementById("signup-password").value;
+  const confirmPassword = document.getElementById("signup-confirm-password").value;
+
+  if (!firstName || !lastName || !email || !password) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
 
   const res = await fetch("http://127.0.0.1:8000/signup", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, phone })
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      password: password
+    })
   });
 
   const data = await res.json();

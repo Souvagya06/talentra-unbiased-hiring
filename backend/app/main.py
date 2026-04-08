@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi import Request
 import os
+import bcrypt
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
@@ -110,10 +111,17 @@ async def signup(request: Request):
         return {"message": "User already exists"}
 
     # insert new user
+    hashed_password = bcrypt.hashpw(
+        data.get("password").encode('utf-8'),
+        bcrypt.gensalt()
+    ).decode('utf-8')
+    
     supabase.table("users").insert({
-        "name": data.get("name"),
-        "email": email,
+        "first_name": data.get("first_name"),
+        "last_name": data.get("last_name"),
+        "email": data.get("email"),
         "phone": data.get("phone"),
+        "password": hashed_password,
         "role": "user"
     }).execute()
 
