@@ -142,7 +142,7 @@ tailwind.config = {
 </header>
 
 <main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
-
+ 
   <!-- Left Section: Branding & Identity -->
   <section class="hidden md:flex flex-col justify-center w-1/2 px-16 relative bg-surface overflow-hidden">
     <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
@@ -159,21 +159,18 @@ tailwind.config = {
         Eliminate bias and accelerate your recruitment pipeline with the world's most advanced AI-driven talent intelligence platform.
       </p>
       <div class="pt-8 grid grid-cols-2 gap-8">
-        <div>
-        </div>
-        <div>
-        </div>
+        <div></div>
+        <div></div>
       </div>
     </div>
-    <!-- Abstract Background Visual -->
     <div class="absolute inset-0 opacity-20 pointer-events-none">
       <div class="absolute inset-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAunH8Q0mVodJKFk0YuYaAgIMjWGV_5PKCPhFROowBxCVPJwg35nF6J_jGFvDiVQCEDGDmxBAd-lM-EBCTnrx9cA7sQxe-o1qHMQ7xT7W2KY2h9EnTIFtmvF9DreKtfQp-NVEJJeoeT6AgfTOhDbRc92S9pETWoKgvvLwWi2ELdaeIxq09crOKkogoWA8Hoku--6_I9B7KQKIfZV-y56_plMGoaBPqW3laKIzSAAq10zISRlDTeFEb5nyvV5nBGBPa1OrtCtKBFoQ'); background-size: cover; background-position: center; mix-blend-mode: soft-light;"></div>
     </div>
   </section>
-
+ 
   <!-- Right Section: Auth Card -->
   <section class="flex flex-col items-center justify-center flex-1 p-6 md:p-12 bg-surface-container-lowest relative">
-
+ 
     <!-- Mobile Brand Visibility -->
     <div class="md:hidden mb-12 flex flex-col items-center gap-4">
       <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
@@ -182,63 +179,110 @@ tailwind.config = {
         <p class="text-sm text-on-surface-variant">Smarter Hiring. Fairer Decisions.</p>
       </div>
     </div>
-
+ 
     <!-- Flip Card Container -->
     <div class="card-scene">
       <div class="card-flipper" id="flipper">
-
-        <!-- FRONT FACE: Login -->
+ 
+        <!-- ===================== FRONT FACE: Login ===================== -->
         <div class="card-face front glass-panel rounded-xl p-8 shadow-2xl">
           <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
             <button onclick="flip(false)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all bg-surface-container-high text-primary shadow-sm">Login</button>
             <button onclick="flip(true)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Sign Up</button>
           </div>
-          <form class="space-y-5" onsubmit="return false">
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Email Address</label>
+ 
+          <!-- STATE 1: Default — username + 2 method buttons -->
+          <div id="login-default" class="login-state">
+            <div class="space-y-2 mb-5">
+              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Username / Full Name</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban Mondal" type="text"/>
+                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">person</span>
               </div>
-            </div>
-            <div class="space-y-2">
-              <div class="flex justify-between items-center ml-1">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Password</label>
-                <a class="text-[11px] text-primary hover:underline font-medium" href="#">Forgot password?</a>
-              </div>
-              <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
-              </div>
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
-              <div class="relative">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
-                <svg 
-                  class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40"
-                  style="pointer-events:none; width:18px; height:18px; opacity:0.4;"
-                  xmlns="http://www.w3.org/2000/svg" 
-                  viewBox="0 0 24 24" 
-                  fill="currentColor">
-                  <path d="M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-                </svg>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 py-1">
             </div>
             <div class="flex flex-col gap-3">
-
-              <button class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+              <button onclick="showEmailLogin()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
                 Login with Email ID
               </button>
-
-              <button class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+              <button onclick="showMobileLogin()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
                 Login with Mobile No.
               </button>
-
+            </div>
+          </div>
+ 
+          <!-- STATE 2: Email + Password -->
+          <div id="login-email" class="login-state hidden">
+            <span class="back-link" onclick="resetLogin()">
+              <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+              Back
+            </span>
+            <div class="space-y-5 anim-in">
+              <div class="space-y-2">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Email Address</label>
+                <div class="relative group">
+                  <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
+                  <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+                </div>
               </div>
-          </form>
+              <div class="space-y-2">
+                <div class="flex justify-between items-center ml-1">
+                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Password</label>
+                  <a class="text-[11px] text-primary hover:underline font-medium" href="#">Forgot password?</a>
+                </div>
+                <div class="relative group">
+                  <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
+                  <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
+                </div>
+              </div>
+              <button class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+                Sign In
+              </button>
+            </div>
+          </div>
+ 
+          <!-- STATE 3: Mobile OTP -->
+          <div id="login-mobile" class="login-state hidden">
+            <span class="back-link" onclick="resetLogin()">
+              <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+              Back
+            </span>
+            <div class="space-y-5 anim-in">
+ 
+              <!-- Mobile number field -->
+              <div class="space-y-1">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
+                <div class="relative group">
+                  <input id="mobile-input" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
+                  <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors" style="width:18px;height:18px;opacity:0.4;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
+                  </svg>
+                </div>
+                <div style="display:flex;align-items:center;">
+                  <span id="otp-send-btn" class="hint-action" onclick="sendOTP()">Send OTP</span>
+                  <span id="otp-timer" class="timer-badge" style="display:none;"></span>
+                </div>
+              </div>
+ 
+              <!-- OTP input (hidden until Send OTP clicked) -->
+              <div id="otp-field" class="space-y-1 hidden">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Enter OTP</label>
+                <div class="relative group">
+                  <input id="otp-input" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all text-center tracking-[0.3em]" placeholder="• • • • • •" type="text" maxlength="6"/>
+                </div>
+                <span class="hint-action" onclick="verifyOTP()">Verify</span>
+              </div>
+ 
+              <!-- Sign In button (hidden until Verify clicked) -->
+              <div id="signin-btn-wrap" class="hidden">
+                <button class="w-full py-3 rounded-xl border transition-all font-semibold" style="background:rgba(192,193,255,0.08);border-color:rgba(192,193,255,0.35);color:#c0c1ff;">
+                  Sign In
+                </button>
+              </div>
+ 
+            </div>
+          </div>
+ 
+          <!-- Divider & Google (always visible) -->
           <div class="relative my-8">
             <div class="absolute inset-0 flex items-center">
               <span class="w-full border-t border-outline-variant/15"></span>
@@ -249,14 +293,14 @@ tailwind.config = {
           </div>
           <div class="flex justify-center">
             <button class="flex items-center justify-center gap-3 py-3 px-6 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all group">
-              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaiGb24-K1manI8T-Jkk_4u5iIIm_OIQQckmTEg0Cdft79qGey6gwu1Zp7ZD5W1C8hAG0rSYc6TbIl02oc2DzdECQv3lo0rue4mOLPAdBwJAspNaByVcb1T06b61221Ql-bH7QcBLKzelBcZ4jNdmBfDqXW1J8poXFtRLzLCfY6R2Hs9oCmSe9B6sPCivvUVmKiva4duIu4Wcp-W8sKbnjW8wG4onWR7234hZqqPMn3C5uy4y5H9sXFwjHuW6v75uppT8jpYZvRw"/>
-              <span class="text-sm font-medium text-on-surface">google</span>
+              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100"/>
+              <span class="text-sm font-medium text-on-surface">Google</span>
             </button>
-            
           </div>
         </div>
-
-        <!-- BACK FACE: Sign Up -->
+        <!-- ===================== END FRONT FACE ===================== -->
+ 
+        <!-- ===================== BACK FACE: Sign Up ===================== -->
         <div class="card-face back glass-panel rounded-xl p-8 shadow-2xl">
           <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
             <button onclick="flip(false)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Login</button>
@@ -266,38 +310,38 @@ tailwind.config = {
             <div class="grid grid-cols-2 gap-4">
               <div class="space-y-2">
                 <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Name</label>
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban" type="text"/>
+                <input id="signup-firstname"class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban" type="text"/>
               </div>
               <div class="space-y-2">
                 <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Last Name</label>
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Mondal" type="text"/>
+                <input id="signup-lastname" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Mondal" type="text"/>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Work Email</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
+                <input id="signup-email" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
+                <input id="signup-phone" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">phone</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Password</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
+                <input id="signup-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
               </div>
             </div>
             <div class="space-y-2">
               <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Confirm Password</label>
               <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
+                <input id="signup-confirm-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock_open</span>
               </div>
             </div>
@@ -307,7 +351,7 @@ tailwind.config = {
                 I agree to the <a class="text-primary hover:underline" href="./legal.html">Terms of Service</a> and <a class="text-primary hover:underline" href="./legal.html">Privacy Policy</a>
               </label>
             </div>
-            <button class="w-full py-4 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium" type="submit">
+            <button class="w-full py-4 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium" type="submit" onclick="signupUser()">
               Create Account
             </button>
           </form>
@@ -321,20 +365,22 @@ tailwind.config = {
           </div>
           <div class="flex justify-center">
             <button class="flex items-center justify-center gap-3 py-3 px-6 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all group">
-              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaiGb24-K1manI8T-Jkk_4u5iIIm_OIQQckmTEg0Cdft79qGey6gwu1Zp7ZD5W1C8hAG0rSYc6TbIl02oc2DzdECQv3lo0rue4mOLPAdBwJAspNaByVcb1T06b61221Ql-bH7QcBLKzelBcZ4jNdmBfDqXW1J8poXFtRLzLCfY6R2Hs9oCmSe9B6sPCivvUVmKiva4duIu4Wcp-W8sKbnjW8wG4onWR7234hZqqPMn3C5uy4y5H9sXFwjHuW6v75uppT8jpYZvRw"/>
+              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100"/>
               <span class="text-sm font-medium text-on-surface">Google</span>
             </button>
           </div>
         </div>
-
+        <!-- ===================== END BACK FACE ===================== -->
+ 
       </div>
     </div>
-
+ 
     <p class="mt-8 text-[11px] font-label uppercase tracking-widest text-on-surface-variant/60">
       © 2026 Talentra. All rights reserved.
     </p>
   </section>
 </main>
+
 
 <footer class="md:fixed bottom-0 left-0 w-1/2 p-8 hidden md:flex items-center gap-8 text-[11px] font-label uppercase tracking-[0.2em] text-on-surface-variant/40">
   <a class="hover:text-primary transition-colors" href="./legal.html">Privacy Policy</a>
@@ -343,22 +389,170 @@ tailwind.config = {
 </footer>
 
 <script>
+  /* ── Flip card ── */
   function flip(toSignUp) {
     const flipper = document.getElementById('flipper');
     if (toSignUp) {
       flipper.classList.add('flipped');
     } else {
       flipper.classList.remove('flipped');
+      resetLogin();
     }
     setTimeout(() => {
       flipper.style.minHeight = flipper.scrollHeight + 'px';
     }, 50);
   }
-
+ 
   window.addEventListener('load', () => {
     const flipper = document.getElementById('flipper');
     flipper.style.minHeight = flipper.scrollHeight + 'px';
   });
+ 
+  /* ── Login state machine ── */
+  let otpTimerInterval = null;
+  let otpSent = false;
+ 
+  function showState(id) {
+    ['login-default', 'login-email', 'login-mobile'].forEach(s => {
+      const el = document.getElementById(s);
+      if (el) el.classList.add('hidden');
+    });
+    const target = document.getElementById(id);
+    if (target) {
+      target.classList.remove('hidden');
+      // re-trigger animation
+      const anim = target.querySelector('.anim-in');
+      if (anim) { anim.classList.remove('anim-in'); void anim.offsetWidth; anim.classList.add('anim-in'); }
+    }
+    setTimeout(() => {
+      const flipper = document.getElementById('flipper');
+      flipper.style.minHeight = flipper.scrollHeight + 'px';
+    }, 50);
+  }
+ 
+  function showEmailLogin() { showState('login-email'); }
+  function showMobileLogin() { resetOTP(); showState('login-mobile'); }
+ 
+  function resetLogin() {
+    clearInterval(otpTimerInterval);
+    otpSent = false;
+    resetOTP();
+    showState('login-default');
+  }
+ 
+  function resetOTP() {
+    clearInterval(otpTimerInterval);
+    otpSent = false;
+    const sendBtn = document.getElementById('otp-send-btn');
+    if (sendBtn) { sendBtn.textContent = 'Send OTP'; sendBtn.className = 'hint-action'; }
+    const timer = document.getElementById('otp-timer');
+    if (timer) timer.style.display = 'none';
+    const otpField = document.getElementById('otp-field');
+    if (otpField) otpField.classList.add('hidden');
+    const otpInput = document.getElementById('otp-input');
+    if (otpInput) otpInput.value = '';
+    const signinWrap = document.getElementById('signin-btn-wrap');
+    if (signinWrap) signinWrap.classList.add('hidden');
+  }
+ 
+  function sendOTP() {
+    if (otpSent) return;
+    otpSent = true;
+ 
+    const sendBtn = document.getElementById('otp-send-btn');
+    sendBtn.textContent = 'OTP Sent';
+    sendBtn.className = 'hint-action sent';
+ 
+    const timerEl = document.getElementById('otp-timer');
+    timerEl.style.display = 'inline';
+ 
+    let secs = 30;
+    timerEl.textContent = '(' + secs + 's)';
+ 
+    otpTimerInterval = setInterval(() => {
+      secs--;
+      if (secs > 0) {
+        timerEl.textContent = '(' + secs + 's)';
+      } else {
+        clearInterval(otpTimerInterval);
+        timerEl.style.display = 'none';
+        sendBtn.textContent = 'Resend OTP';
+        sendBtn.className = 'hint-action';
+        otpSent = false;
+      }
+    }, 1000);
+ 
+    // Reveal OTP field
+    const otpField = document.getElementById('otp-field');
+    otpField.classList.remove('hidden');
+    otpField.classList.add('anim-in');
+ 
+    setTimeout(() => {
+      const flipper = document.getElementById('flipper');
+      flipper.style.minHeight = flipper.scrollHeight + 'px';
+    }, 50);
+  }
+ 
+  function verifyOTP() {
+    const wrap = document.getElementById('signin-btn-wrap');
+    wrap.classList.remove('hidden');
+    wrap.classList.add('anim-in');
+    setTimeout(() => {
+      const flipper = document.getElementById('flipper');
+      flipper.style.minHeight = flipper.scrollHeight + 'px';
+    }, 50);
+  }
+
+// SIGNUP
+async function signupUser() {
+  const firstName = document.getElementById("signup-firstname").value;
+  const lastName = document.getElementById("signup-lastname").value;
+  const email = document.getElementById("signup-email").value;
+  const phone = document.getElementById("signup-phone").value;
+  const password = document.getElementById("signup-password").value;
+  const confirmPassword = document.getElementById("signup-confirm-password").value;
+
+  if (!firstName || !lastName || !email || !password) {
+    alert("Please fill all required fields");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    alert("Passwords do not match");
+    return;
+  }
+
+  const res = await fetch("http://127.0.0.1:8000/signup", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      phone: phone,
+      password: password
+    })
+  });
+
+  const data = await res.json();
+  alert(data.message);
+}
+
+
+// LOGIN
+async function loginUser() {
+  const email = document.querySelector('#login-email input[type="email"]').value;
+
+  const res = await fetch("http://127.0.0.1:8000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  });
+
+  const data = await res.json();
+  alert(data.message);
+}
 </script>
 </body>
 </html>
+ 
