@@ -1,0 +1,108 @@
+🚀 PART 1: PHONE OTP LOGIN (Firebase)
+🟢 STEP 1: Setup Firebase
+Go to Firebase Console
+Create project
+Go to Authentication → Sign-in Method
+Enable:
+Phone ✅
+Email/Password ✅
+🟢 STEP 2: Get Config
+
+Add Firebase Web App → Copy config
+
+🟢 STEP 3: Add Firebase SDK to HTML
+
+👉 In your HTML (important)
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js"></script>
+🟢 STEP 4: Initialize Firebase
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_KEY",
+  authDomain: "YOUR_DOMAIN",
+  projectId: "YOUR_PROJECT_ID",
+};
+
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+</script>
+🟢 STEP 5: Create UI (Simple)
+<div class="p-4">
+  <input id="phone" placeholder="+91XXXXXXXXXX" class="border p-2"/>
+  <div id="recaptcha-container"></div>
+
+  <button onclick="sendOTP()" class="bg-blue-500 text-white p-2 mt-2">
+    Send OTP
+  </button>
+
+  <input id="otp" placeholder="Enter OTP" class="border p-2 mt-2"/>
+  <button onclick="verifyOTP()" class="bg-green-500 text-white p-2 mt-2">
+    Verify OTP
+  </button>
+</div>
+🟢 STEP 6: Send OTP
+<script>
+window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier(
+  'recaptcha-container'
+);
+
+function sendOTP() {
+  const phone = document.getElementById("phone").value;
+
+  firebase.auth().signInWithPhoneNumber(phone, window.recaptchaVerifier)
+    .then(function (confirmationResult) {
+      window.confirmationResult = confirmationResult;
+      alert("OTP Sent!");
+    })
+    .catch(function (error) {
+      alert(error.message);
+    });
+}
+</script>
+🟢 STEP 7: Verify OTP
+<script>
+function verifyOTP() {
+  const code = document.getElementById("otp").value;
+
+  confirmationResult.confirm(code)
+    .then(function (result) {
+      const user = result.user;
+      alert("Login Successful!");
+
+      // Send UID to backend
+      sendUserToBackend(user.uid);
+    })
+    .catch(function (error) {
+      alert("Invalid OTP");
+    });
+}
+</script>
+🟢 STEP 8: Send User to Flask Backend
+<script>
+function sendUserToBackend(uid) {
+  fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ uid: uid })
+  });
+}
+</script>
+🟢 STEP 9: Flask Backend
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route("/login", methods=["POST"])
+def login():
+    data = request.json
+    uid = data["uid"]
+
+    # Here you can check/store user
+    return jsonify({"message": "User logged in", "uid": uid})
+
+if __name__ == "__main__":
+    app.run(debug=True)
+✅ OTP LOGIN DONE 🎉
