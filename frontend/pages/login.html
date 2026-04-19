@@ -537,12 +537,13 @@ async function signupUser() {
   const data = await res.json();
 
   if (data.message !== "New User Created") {
-    alert(data.message);
+    alert("User already exists. Redirect to login....");
+    flip(false); // switch to login tab
     return;
   }
 
   alert("Signup successful ✅");
-  window.location.href = "/upload.html";
+  window.location.href = "./result.html";
 }
 
 
@@ -570,7 +571,7 @@ async function loginUser() {
   }
 
   alert("Login successful ✅");
-  window.location.href = "/upload.html";  // redirect after login
+  window.location.href = "./result.html";  // redirect after login
 }
 </script>
 </body>

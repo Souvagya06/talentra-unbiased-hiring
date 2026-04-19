@@ -3,7 +3,7 @@
 <html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Candidate Analysis | FairLens AI</title>
+<title>Candidate Analysis | Talentra</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -117,9 +117,26 @@
     </style>
 </head>
 <body class="bg-surface font-body text-on-surface">
+<!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
+      </div>
+
+      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+        <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
+        <a href="./upload.html" class="text-primary border-b-2 border-primary pb-1">Upload</a>
+        <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
+        <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
+        
+      </nav>
+    </div>
+  </header>
 
 <!-- Main Content Canvas -->
-<main class="p-8 min-h-screen">
+<main class="min-h-screen">
+  <div class="max-w-7xl mx-auto px-6 md:px-10 py-10">
 <!-- Header Section -->
 <header class="mb-12">
 <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">Candidate Analysis</h2>
@@ -241,28 +258,38 @@
 <p class="text-sm text-on-surface-variant leading-relaxed">Aligned with mid-range for Senior Engineering Manager roles.</p>
 </div>
 </div>
+</div>
 </main>
 <!-- Footer Shell -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13]">
-<div class="flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full font-['Inter'] text-xs text-[#c2c6d6]">
-<div class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-8">
-<span class="text-lg font-bold text-[#e0e2ea] font-headline">FairLens AI</span>
-<p>© 2024 FairLens AI. All rights reserved.</p>
-</div>
-<div class="flex space-x-6 mt-6 md:mt-0">
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="#">Privacy Policy</a>
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="#">Terms of Service</a>
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="#">Security</a>
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="#">Cookie Settings</a>
-</div>
-</div>
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+    <div class="space-y-4 text-center md:text-left">
+      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+    </div>
+    <div class="text-center md:text-right">
+      <p>
+        © 2026 Talentra. All rights reserved.
+        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+          V1.0.0
+        </span>
+      </p>
+    </div>
+  </div>
 </footer>
+
 
 <!-- Interview Page (hidden overlay) -->
 <div id="interviewPage" class="hidden fixed inset-0 z-50 bg-surface overflow-auto">
     <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-8 py-4">
         <div class="flex items-center gap-6">
-            <span class="text-2xl font-black text-on-surface tracking-tighter font-headline">FairLens AI</span>
+            <span class="text-2xl font-black text-on-surface tracking-tighter font-headline">Talentra</span>
             <div class="h-6 w-[1px] bg-outline-variant/30"></div>
             <div class="flex flex-col">
                 <span class="text-on-surface font-headline font-bold text-sm tracking-tight" id="interviewCandidateName">Candidate</span>
@@ -405,14 +432,7 @@
         </div>
     </main>
 
-    <footer class="mt-auto border-t border-outline-variant/10 bg-surface-container-lowest py-6 px-12 flex flex-col md:flex-row justify-between items-center w-full">
-        <span class="text-xs text-on-surface-variant font-label">© 2024 FairLens AI. Secure Session ID: FL-7742-X</span>
-        <div class="flex gap-8 mt-4 md:mt-0">
-            <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-            <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance Settings</a>
-            <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Help &amp; Support</a>
-        </div>
-    </footer>
+
 </div>
 
 <script>

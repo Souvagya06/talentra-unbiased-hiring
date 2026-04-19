@@ -201,40 +201,36 @@
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen" data-state="idle">
 
-<!-- Toast Notification -->
-<div id="toast">
-  <div class="flex items-center gap-3 bg-surface-container-high border border-outline-variant/40 text-on-surface px-5 py-3 rounded-xl shadow-2xl">
-    <span class="material-symbols-outlined text-error text-lg" id="toast-icon">warning</span>
-    <span class="text-sm font-medium" id="toast-msg">Please fill in all required fields.</span>
-  </div>
-</div>
-
 <!-- Nav -->
-<nav class="fixed top-0 w-full z-40 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-8 py-4">
-  <div class="flex items-center gap-6">
-    <span class="text-2xl font-black text-on-surface tracking-tighter">FairLens AI</span>
-    <div class="h-6 w-[1px] bg-outline-variant/30"></div>
-    <div class="flex flex-col">
-      <span id="nav-name" class="text-on-surface font-headline font-bold text-sm tracking-tight">—</span>
-      <span id="nav-role" class="text-on-surface-variant font-label text-xs">—</span>
-    </div>
-  </div>
-  <div class="flex items-center gap-4">
-    <div id="live-badge" class="hidden items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-full">
-      <span class="flex h-2 w-2 rounded-full bg-error animate-pulse"></span>
-      <span class="text-xs font-bold font-label tracking-widest text-on-surface">LIVE RECORDING</span>
-    </div>
-    <div class="flex items-center gap-3">
-      <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-all">notifications</span>
-      <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30 bg-surface-container-high flex items-center justify-center">
-        <span class="material-symbols-outlined text-on-surface-variant text-sm">person</span>
+<!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
       </div>
+
+      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+        <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
+        <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
+        <a href="./interview.html" class="text-primary border-b-2 border-primary pb-1">Interview</a>
+        <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
+        
+      </nav>
     </div>
-  </div>
-</nav>
+  </header>
 
 <!-- Main -->
-<main class="pt-24 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
+<main class="pt-10 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
+  <!-- ✅ HEADER FIRST -->
+  <!-- HEADER -->
+  <header class="mb-12">
+    <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
+      Interview Session
+    </h2>
+    <p class="text-on-surface-variant font-medium">
+      Conduct and evaluate candidate performance through AI-assisted live interview analysis.
+    </p>
+  </header>
   <div class="asymmetric-grid flex-grow">
 
     <!-- LEFT COLUMN -->
@@ -414,14 +410,29 @@
 </main>
 
 <!-- Footer -->
-<footer class="mt-auto border-t border-outline-variant/10 bg-surface-container-lowest py-6 px-12 flex flex-col md:flex-row justify-between items-center w-full">
-  <span class="text-xs text-on-surface-variant font-label">© 2024 FairLens AI. Secure Session ID: <span id="session-id">—</span></span>
-  <div class="flex gap-8 mt-4 md:mt-0">
-    <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy Policy</a>
-    <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Compliance Settings</a>
-    <a class="text-xs text-on-surface-variant hover:text-primary transition-colors" href="#">Help &amp; Support</a>
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+    <div class="space-y-4 text-center md:text-left">
+      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+    </div>
+    <div class="text-center md:text-right">
+      <p>
+        © 2026 Talentra. All rights reserved.
+        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+          V1.0.0
+        </span>
+      </p>
+    </div>
   </div>
 </footer>
+
 
 <script>
   // ─── State ───────────────────────────────────────────────────────────────────

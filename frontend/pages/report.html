@@ -97,76 +97,39 @@
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
 
-<!-- TopNavBar -->
-<header class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 no-print border-b border-outline-variant/10">
-  <div class="flex items-center gap-4">
-    <span class="text-2xl font-black text-[#e0e2ea] tracking-tight font-headline">Talentra</span>
-    <nav class="hidden md:flex gap-2 ml-6">
-      <!-- Upload -->
-      <button onclick="document.getElementById('upload-modal').classList.remove('hidden')"
-        class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#c2c6d6] hover:bg-[#262a30] hover:text-[#e0e2ea] transition-all">
-        <span class="material-symbols-outlined text-base">upload_file</span> Upload
-      </button>
-      <!-- Interview -->
-      <button onclick="document.getElementById('interview-modal').classList.remove('hidden')"
-        class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#c2c6d6] hover:bg-[#262a30] hover:text-[#e0e2ea] transition-all">
-        <span class="material-symbols-outlined text-base">videocam</span> Interview
-      </button>
-      <!-- Report & Result (active) -->
-      <button class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-primary bg-[#262a30]">
-        <span class="material-symbols-outlined text-base">analytics</span> Report &amp; Result
-      </button>
-    </nav>
-  </div>
-  <button onclick="window.print()"
-    class="bg-primary-container text-on-primary-container px-5 py-2 rounded-xl font-bold hover:opacity-90 transition-all flex items-center gap-2 text-sm">
-    <span class="material-symbols-outlined text-sm">print</span> Export PDF
-  </button>
-</header>
+<!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
+      </div>
 
-<!-- Upload Modal -->
-<div id="upload-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm no-print">
-  <div class="bg-surface-container-low border border-outline-variant/20 rounded-3xl p-10 w-full max-w-md shadow-2xl relative">
-    <button onclick="document.getElementById('upload-modal').classList.add('hidden')" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-    <h3 class="text-2xl font-black font-headline mb-2">Upload Resume</h3>
-    <p class="text-on-surface-variant text-sm mb-6">Upload a candidate's PDF or DOCX file for AI analysis.</p>
-    <div class="border-2 border-dashed border-outline-variant/40 rounded-2xl p-8 text-center cursor-pointer hover:border-primary/50 transition-all"
-      ondragover="event.preventDefault()" ondrop="handleFileDrop(event)">
-      <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2 block">cloud_upload</span>
-      <p class="text-sm text-on-surface-variant">Drag &amp; drop or <span class="text-primary font-semibold cursor-pointer" onclick="document.getElementById('file-input').click()">browse files</span></p>
-      <input id="file-input" type="file" accept=".pdf,.docx" class="hidden" onchange="handleFileSelect(event)"/>
+      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+        <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
+        <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
+        <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
+        <a href="./report.html" class="text-primary border-b-2 border-primary pb-1">Report</a>
+        
+      </nav>
     </div>
-    <p id="upload-filename" class="mt-3 text-xs text-primary text-center"></p>
-    <button onclick="simulateUpload()" class="mt-6 w-full bg-primary-container text-on-primary-container rounded-xl py-3 font-bold hover:opacity-90 transition-all">
-      Analyze with AI
-    </button>
-  </div>
-</div>
-
-<!-- Interview Modal -->
-<div id="interview-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm no-print">
-  <div class="bg-surface-container-low border border-outline-variant/20 rounded-3xl p-10 w-full max-w-md shadow-2xl relative">
-    <button onclick="document.getElementById('interview-modal').classList.add('hidden')" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
-      <span class="material-symbols-outlined">close</span>
-    </button>
-    <h3 class="text-2xl font-black font-headline mb-2">Start Interview</h3>
-    <p class="text-on-surface-variant text-sm mb-6">Schedule or start an AI-assisted video interview session.</p>
-    <div class="space-y-4">
-      <input type="text" placeholder="Candidate Name" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
-      <input type="email" placeholder="Candidate Email" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
-      <input type="datetime-local" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
-    </div>
-    <button onclick="document.getElementById('interview-modal').classList.add('hidden');alert('Interview scheduled!')" class="mt-6 w-full bg-primary-container text-on-primary-container rounded-xl py-3 font-bold hover:opacity-90 transition-all">
-      Schedule Interview
-    </button>
-  </div>
-</div>
+  </header>
 
 <!-- Main Content -->
-<main class="pt-24 pb-12 px-4 md:px-12 flex justify-center">
-  <div class="print-container w-full max-w-4xl bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
+<main class="pt-10 pb-12 max-w-7xl mx-auto px-6 md:px-10">
+
+  <!-- PAGE HEADER (OUTSIDE CARD) -->
+  <div class="mb-10">
+    <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
+      Candidate Report
+    </h2>
+    <p class="text-on-surface-variant font-medium">
+      Comprehensive AI-generated evaluation and hiring recommendation.
+    </p>
+  </div>
+
+  <!-- CARD -->
+  <div class="print-container w-full bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
+    
     <!-- Background Decorative Elements -->
     <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
     <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
@@ -344,26 +307,33 @@
         <span class="font-bold text-on-surface">Talentra</span>
         <span class="opacity-40">Security Verified</span>
       </div>
+      <button onclick="window.print()"
+        class="flex items-center gap-2 px-5 py-2 rounded-xl font-bold bg-primary-container text-on-primary-container hover:opacity-90 transition-all normal-case text-xs tracking-normal">
+        <span class="material-symbols-outlined text-sm">print</span> Export PDF
+      </button>
     </footer>
   </div>
 </main>
 
 <!-- Global Footer -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] no-print">
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
   <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
     <div class="space-y-4 text-center md:text-left">
-      <div class="text-lg font-bold text-[#e0e2ea] font-headline">Talentra</div>
-      <p class="max-w-xs text-on-surface-variant text-xs font-body">The future of enterprise talent acquisition, powered by ethical AI.</p>
+      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
     </div>
-    <div class="flex flex-wrap justify-center gap-8 font-body text-xs text-[#c2c6d6]">
-      <a href="legal.html#privacy" class="hover:text-[#e0e2ea] transition-opacity">Privacy Policy</a>
-      <a href="legal.html#terms" class="hover:text-[#e0e2ea] transition-opacity">Terms of Service</a>
-      <a href="legal.html#faq" class="hover:text-[#e0e2ea] transition-opacity">FAQ</a>
-      <a href="legal.html#support" class="hover:text-[#e0e2ea] transition-opacity">Support</a>
+    <div class="flex flex-wrap justify-center gap-8">
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
     </div>
-    <div class="text-center md:text-right font-body text-xs text-[#c2c6d6]">
-      <p>© 2026 Talentra. All rights reserved.
-        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">V1.0.0</span>
+    <div class="text-center md:text-right">
+      <p>
+        © 2026 Talentra. All rights reserved.
+        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+          V1.0.0
+        </span>
       </p>
     </div>
   </div>
