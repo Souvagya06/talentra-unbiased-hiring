@@ -1,320 +1,510 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
+<html class="dark" lang="en">
+<head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Candidate Report - FairLens AI</title>
+<title>Talentra | Candidate Report</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "surface": "#101419",
-                        "surface-container-lowest": "#0a0e13",
-                        "on-secondary-fixed-variant": "#6900b3",
-                        "on-secondary-container": "#d6a9ff",
-                        "inverse-on-surface": "#2d3136",
-                        "error": "#ffb4ab",
-                        "primary-container": "#8083ff",
-                        "on-surface": "#e0e2ea",
-                        "on-secondary-fixed": "#2c0051",
-                        "inverse-surface": "#e0e2ea",
-                        "on-secondary": "#490080",
-                        "on-error": "#690005",
-                        "on-primary-fixed": "#07006c",
-                        "primary": "#c0c1ff",
-                        "surface-variant": "#31353b",
-                        "secondary": "#ddb7ff",
-                        "on-tertiary-container": "#002d40",
-                        "surface-bright": "#36393f",
-                        "on-tertiary": "#00354a",
-                        "surface-tint": "#c0c1ff",
-                        "on-primary-container": "#0d0096",
-                        "secondary-fixed-dim": "#ddb7ff",
-                        "secondary-fixed": "#f0dbff",
-                        "surface-container-highest": "#31353b",
-                        "on-surface-variant": "#c2c6d6",
-                        "inverse-primary": "#494bd6",
-                        "surface-container-high": "#262a30",
-                        "tertiary": "#7bd0ff",
-                        "on-tertiary-fixed": "#001e2c",
-                        "on-error-container": "#ffdad6",
-                        "on-primary-fixed-variant": "#2f2ebe",
-                        "outline-variant": "#424754",
-                        "secondary-container": "#6f00be",
-                        "surface-container-low": "#181c21",
-                        "surface-dim": "#101419",
-                        "background": "#101419",
-                        "tertiary-container": "#009bd1",
-                        "tertiary-fixed-dim": "#7bd0ff",
-                        "on-primary": "#1000a9",
-                        "surface-container": "#1c2025",
-                        "error-container": "#93000a",
-                        "tertiary-fixed": "#c4e7ff",
-                        "on-tertiary-fixed-variant": "#004c69",
-                        "on-background": "#e0e2ea",
-                        "outline": "#8c909f",
-                        "primary-fixed-dim": "#c0c1ff",
-                        "primary-fixed": "#e1e0ff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "fontFamily": {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
-                        "label": ["Inter"]
-                    }
-                },
-            }
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface": "#101419",
+          "surface-container-lowest": "#0a0e13",
+          "on-secondary-fixed-variant": "#6900b3",
+          "on-secondary-container": "#d6a9ff",
+          "inverse-on-surface": "#2d3136",
+          "error": "#ffb4ab",
+          "primary-container": "#8083ff",
+          "on-surface": "#e0e2ea",
+          "on-secondary-fixed": "#2c0051",
+          "inverse-surface": "#e0e2ea",
+          "on-secondary": "#490080",
+          "on-error": "#690005",
+          "on-primary-fixed": "#07006c",
+          "primary": "#c0c1ff",
+          "surface-variant": "#31353b",
+          "secondary": "#ddb7ff",
+          "on-tertiary-container": "#002d40",
+          "surface-bright": "#36393f",
+          "on-tertiary": "#00354a",
+          "surface-tint": "#c0c1ff",
+          "on-primary-container": "#0d0096",
+          "secondary-fixed-dim": "#ddb7ff",
+          "secondary-fixed": "#f0dbff",
+          "surface-container-highest": "#31353b",
+          "on-surface-variant": "#c2c6d6",
+          "inverse-primary": "#494bd6",
+          "surface-container-high": "#262a30",
+          "tertiary": "#7bd0ff",
+          "on-tertiary-fixed": "#001e2c",
+          "on-error-container": "#ffdad6",
+          "on-primary-fixed-variant": "#2f2ebe",
+          "outline-variant": "#424754",
+          "secondary-container": "#6f00be",
+          "surface-container-low": "#181c21",
+          "surface-dim": "#101419",
+          "background": "#101419",
+          "tertiary-container": "#009bd1",
+          "tertiary-fixed-dim": "#7bd0ff",
+          "on-primary": "#1000a9",
+          "surface-container": "#1c2025",
+          "error-container": "#93000a",
+          "tertiary-fixed": "#c4e7ff",
+          "on-tertiary-fixed-variant": "#004c69",
+          "on-background": "#e0e2ea",
+          "outline": "#8c909f",
+          "primary-fixed-dim": "#c0c1ff",
+          "primary-fixed": "#e1e0ff"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "0.75rem",
+          "full": "9999px"
+        },
+        "fontFamily": {
+          "headline": ["Manrope"],
+          "body": ["Inter"],
+          "label": ["Inter"]
         }
-    </script>
+      },
+    }
+  }
+</script>
 <style>
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        @media print {
-            .no-print { display: none !important; }
-            body { background: white !important; color: #101419 !important; }
-            .print-container { box-shadow: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
-            .surface-container-low { background-color: #f8f9fa !important; border: 1px solid #e0e2ea !important; }
-            .on-surface { color: #101419 !important; }
-            .on-surface-variant { color: #424754 !important; }
-            .text-primary { color: #2f2ebe !important; }
-        }
-        .glass-panel {
-            background: rgba(49, 53, 59, 0.15);
-            backdrop-filter: blur(20px);
-        }
-    </style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  @media print {
+    .no-print { display: none !important; }
+    body { background: white !important; color: #101419 !important; }
+    .print-container { box-shadow: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
+  }
+  .glass-panel {
+    background: rgba(49, 53, 59, 0.15);
+    backdrop-filter: blur(20px);
+  }
+  /* Animated score ring */
+  #score-ring {
+    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+</style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
-<!-- TopNavBar (Shell) -->
-<header class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 w-full max-w-full no-print">
-<div class="flex items-center gap-4">
-<span class="text-2xl font-black text-[#e0e2ea] tracking-tight">FairLens AI</span>
-<div class="hidden md:flex gap-6 ml-8 font-['Manrope'] font-medium text-sm">
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all" href="#">Product</a>
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all" href="#">Solutions</a>
-<a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-all" href="#">Pricing</a>
-<a class="text-[#c0c1ff] font-bold border-b-2 border-[#c0c1ff]" href="#">Reports</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined p-2 text-[#c2c6d6] hover:bg-[#262a30]/50 rounded-full transition-all cursor-pointer active:scale-95">notifications</button>
-<button class="material-symbols-outlined p-2 text-[#c2c6d6] hover:bg-[#262a30]/50 rounded-full transition-all cursor-pointer active:scale-95">account_circle</button>
-<button class="bg-primary-container text-on-primary-container px-5 py-2 rounded-xl font-bold hover:opacity-90 transition-all flex items-center gap-2" onclick="window.print()">
-<span class="material-symbols-outlined text-sm">print</span>
-                Export PDF
-            </button>
-</div>
+
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-[#101419]/80 backdrop-blur-xl flex justify-between items-center px-8 py-4 no-print border-b border-outline-variant/10">
+  <div class="flex items-center gap-4">
+    <span class="text-2xl font-black text-[#e0e2ea] tracking-tight font-headline">Talentra</span>
+    <nav class="hidden md:flex gap-2 ml-6">
+      <!-- Upload -->
+      <button onclick="document.getElementById('upload-modal').classList.remove('hidden')"
+        class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#c2c6d6] hover:bg-[#262a30] hover:text-[#e0e2ea] transition-all">
+        <span class="material-symbols-outlined text-base">upload_file</span> Upload
+      </button>
+      <!-- Interview -->
+      <button onclick="document.getElementById('interview-modal').classList.remove('hidden')"
+        class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-[#c2c6d6] hover:bg-[#262a30] hover:text-[#e0e2ea] transition-all">
+        <span class="material-symbols-outlined text-base">videocam</span> Interview
+      </button>
+      <!-- Report & Result (active) -->
+      <button class="flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-bold text-primary bg-[#262a30]">
+        <span class="material-symbols-outlined text-base">analytics</span> Report &amp; Result
+      </button>
+    </nav>
+  </div>
+  <button onclick="window.print()"
+    class="bg-primary-container text-on-primary-container px-5 py-2 rounded-xl font-bold hover:opacity-90 transition-all flex items-center gap-2 text-sm">
+    <span class="material-symbols-outlined text-sm">print</span> Export PDF
+  </button>
 </header>
-<!-- SideNavBar (Shell) -->
-<aside class="h-screen w-64 fixed left-0 top-0 bg-[#101419] dark:bg-[#101419] flex flex-col h-full p-4 space-y-2 no-print border-r border-outline-variant/10">
-<div class="py-8 mb-4">
-<h1 class="text-xl font-bold text-[#e0e2ea] tracking-widest px-4">FairLens AI</h1>
-<p class="text-xs text-on-surface-variant px-4 opacity-60">Enterprise HR</p>
+
+<!-- Upload Modal -->
+<div id="upload-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm no-print">
+  <div class="bg-surface-container-low border border-outline-variant/20 rounded-3xl p-10 w-full max-w-md shadow-2xl relative">
+    <button onclick="document.getElementById('upload-modal').classList.add('hidden')" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <h3 class="text-2xl font-black font-headline mb-2">Upload Resume</h3>
+    <p class="text-on-surface-variant text-sm mb-6">Upload a candidate's PDF or DOCX file for AI analysis.</p>
+    <div class="border-2 border-dashed border-outline-variant/40 rounded-2xl p-8 text-center cursor-pointer hover:border-primary/50 transition-all"
+      ondragover="event.preventDefault()" ondrop="handleFileDrop(event)">
+      <span class="material-symbols-outlined text-4xl text-on-surface-variant mb-2 block">cloud_upload</span>
+      <p class="text-sm text-on-surface-variant">Drag &amp; drop or <span class="text-primary font-semibold cursor-pointer" onclick="document.getElementById('file-input').click()">browse files</span></p>
+      <input id="file-input" type="file" accept=".pdf,.docx" class="hidden" onchange="handleFileSelect(event)"/>
+    </div>
+    <p id="upload-filename" class="mt-3 text-xs text-primary text-center"></p>
+    <button onclick="simulateUpload()" class="mt-6 w-full bg-primary-container text-on-primary-container rounded-xl py-3 font-bold hover:opacity-90 transition-all">
+      Analyze with AI
+    </button>
+  </div>
 </div>
-<nav class="flex-1 space-y-1 font-['Manrope'] text-sm tracking-wide">
-<a class="flex items-center gap-3 px-4 py-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200" href="#">
-<span class="material-symbols-outlined">dashboard</span> Dashboard
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200" href="#">
-<span class="material-symbols-outlined">group</span> Candidates
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200" href="#">
-<span class="material-symbols-outlined">event_note</span> Interviews
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#c0c1ff] bg-[#262a30] rounded-lg font-bold" href="#">
-<span class="material-symbols-outlined">analytics</span> Reports
-            </a>
-</nav>
-<div class="pt-4 border-t border-outline-variant/10">
-<a class="flex items-center gap-3 px-4 py-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200" href="#">
-<span class="material-symbols-outlined">settings</span> Settings
-            </a>
-<a class="flex items-center gap-3 px-4 py-3 text-[#c2c6d6] hover:bg-[#181c21] transition-colors duration-200" href="#">
-<span class="material-symbols-outlined">help_outline</span> Support
-            </a>
+
+<!-- Interview Modal -->
+<div id="interview-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm no-print">
+  <div class="bg-surface-container-low border border-outline-variant/20 rounded-3xl p-10 w-full max-w-md shadow-2xl relative">
+    <button onclick="document.getElementById('interview-modal').classList.add('hidden')" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <h3 class="text-2xl font-black font-headline mb-2">Start Interview</h3>
+    <p class="text-on-surface-variant text-sm mb-6">Schedule or start an AI-assisted video interview session.</p>
+    <div class="space-y-4">
+      <input type="text" placeholder="Candidate Name" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
+      <input type="email" placeholder="Candidate Email" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
+      <input type="datetime-local" class="w-full bg-surface-container-highest border-none rounded-xl p-4 text-on-surface focus:ring-2 focus:ring-primary/30 text-sm"/>
+    </div>
+    <button onclick="document.getElementById('interview-modal').classList.add('hidden');alert('Interview scheduled!')" class="mt-6 w-full bg-primary-container text-on-primary-container rounded-xl py-3 font-bold hover:opacity-90 transition-all">
+      Schedule Interview
+    </button>
+  </div>
 </div>
-</aside>
-<!-- Main Content Area -->
-<main class="md:ml-64 pt-24 pb-12 px-4 md:px-12 flex justify-center">
-<!-- Report Canvas -->
-<div class="print-container w-full max-w-4xl bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
-<!-- Background Decorative Elements -->
-<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-<div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
-<!-- Report Header -->
-<div class="relative flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
-<div>
-<div class="flex items-center gap-2 mb-4">
-<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">Candidate Assessment</span>
-<span class="text-on-surface-variant text-xs">• ID: FL-9842</span>
-</div>
-<h2 class="text-5xl font-black font-headline text-on-surface tracking-tight mb-2">Elena Rodriguez</h2>
-<p class="text-xl text-on-surface-variant font-medium">Senior Product Designer • New York, NY</p>
-</div>
-<!-- Match Score Dial -->
-<div class="flex flex-col items-center">
-<div class="relative w-32 h-32 flex items-center justify-center">
-<svg class="w-full h-full -rotate-90">
-<circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-primary" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364.4" stroke-dashoffset="25.5" stroke-width="8"></circle>
-</svg>
-<div class="absolute flex flex-col items-center">
-<span class="text-3xl font-black font-headline text-on-surface">93%</span>
-<span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Match</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Document Grid -->
-<div class="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
-<!-- Sidebar Info -->
-<div class="md:col-span-4 space-y-10">
-<section>
-<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Core Vitals</h4>
-<div class="space-y-4">
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-on-surface-variant text-lg">work</span>
-<span class="text-sm text-on-surface">8+ Years Experience</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-on-surface-variant text-lg">school</span>
-<span class="text-sm text-on-surface">MA, Visual Systems</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-on-surface-variant text-lg">payments</span>
-<span class="text-sm text-on-surface">$165k - $180k Range</span>
-</div>
-<div class="flex items-center gap-3">
-<span class="material-symbols-outlined text-on-surface-variant text-lg">schedule</span>
-<span class="text-sm text-on-surface">Immediate Availability</span>
-</div>
-</div>
-</section>
-<section class="p-6 bg-surface-container-high rounded-3xl border border-outline-variant/5">
-<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-secondary mb-6">FairLens Insight</h4>
-<p class="text-sm leading-relaxed text-on-surface-variant">
-                            AI analysis detects strong <span class="text-secondary font-semibold">analytical empathy</span>. Elena consistently prioritizes accessibility without compromising visual fidelity.
-                        </p>
-</section>
-<section>
-<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Social Context</h4>
-<div class="flex gap-4">
-<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
-<span class="material-symbols-outlined text-on-surface">link</span>
-</div>
-<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
-<span class="material-symbols-outlined text-on-surface">language</span>
-</div>
-</div>
-</section>
-</div>
-<!-- Main Assessment -->
-<div class="md:col-span-8 space-y-12">
-<!-- Interview Summary -->
-<section>
-<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Executive Summary</h4>
-<p class="text-lg leading-relaxed font-light text-on-surface">
-                            Elena demonstrated exceptional systems thinking during the case study. Her ability to articulate the trade-offs between component flexibility and developer experience is top-tier. She showed a proactive approach to inclusive design, particularly in high-contrast navigation patterns.
-                        </p>
-</section>
-<!-- Scores Grid -->
-<section>
-<h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Competency Scorecard</h4>
-<div class="grid grid-cols-2 gap-4">
-<div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-<span class="text-xs text-on-surface-variant">Technical Skill</span>
-<div class="flex items-center gap-3">
-<span class="text-2xl font-bold font-headline">4.9</span>
-<div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-<div class="h-full w-[98%] bg-tertiary"></div>
-</div>
-</div>
-</div>
-<div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-<span class="text-xs text-on-surface-variant">Communication</span>
-<div class="flex items-center gap-3">
-<span class="text-2xl font-bold font-headline">4.5</span>
-<div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-<div class="h-full w-[90%] bg-secondary"></div>
-</div>
-</div>
-</div>
-<div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-<span class="text-xs text-on-surface-variant">Problem Solving</span>
-<div class="flex items-center gap-3">
-<span class="text-2xl font-bold font-headline">4.8</span>
-<div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-<div class="h-full w-[96%] bg-primary"></div>
-</div>
-</div>
-</div>
-<div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-<span class="text-xs text-on-surface-variant">Leadership Potential</span>
-<div class="flex items-center gap-3">
-<span class="text-2xl font-bold font-headline">4.2</span>
-<div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-<div class="h-full w-[84%] bg-tertiary"></div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Recommendation Badge -->
-<section class="relative p-1 rounded-3xl bg-gradient-to-br from-primary to-secondary">
-<div class="bg-surface-container-low rounded-[1.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-<div class="flex items-center gap-6">
-<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
-<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill">verified</span>
-</div>
-<div>
-<h3 class="text-2xl font-black font-headline">Strong Hire</h3>
-<p class="text-sm text-on-surface-variant">Top 2% of candidates assessed this quarter.</p>
-</div>
-</div>
-<div class="text-right">
-<span class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant block mb-1">Status</span>
-<span class="text-on-surface font-semibold bg-surface-container-highest px-4 py-1.5 rounded-full text-xs">Ready for Offer</span>
-</div>
-</div>
-</section>
-</div>
-</div>
-<!-- Footer Details -->
-<footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-[10px] tracking-widest uppercase">
-<div class="flex gap-8">
-<span>Generated: Nov 14, 2024</span>
-<span>Reviewed by: AI Agent Vera</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="font-bold text-on-surface">FairLens AI</span>
-<span class="opacity-40">Security Verified</span>
-</div>
-</footer>
-</div>
+
+<!-- Main Content -->
+<main class="pt-24 pb-12 px-4 md:px-12 flex justify-center">
+  <div class="print-container w-full max-w-4xl bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
+    <!-- Background Decorative Elements -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
+
+    <!-- Report Header -->
+    <div class="relative flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
+      <div>
+        <div class="flex items-center gap-2 mb-4" id="header-badge-row">
+          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase hidden" id="assessment-badge">Candidate Assessment</span>
+          <span class="text-on-surface-variant text-xs hidden" id="candidate-id-tag"></span>
+        </div>
+        <!-- Skeleton placeholder shown before evaluation -->
+        <div id="name-skeleton" class="mb-2">
+          <div class="h-12 w-72 bg-surface-container-high rounded-2xl animate-pulse"></div>
+        </div>
+        <h2 class="text-5xl font-black font-headline text-on-surface tracking-tight mb-2 hidden" id="candidate-name"></h2>
+        <!-- Title skeleton -->
+        <div id="title-skeleton">
+          <div class="h-6 w-48 bg-surface-container-high rounded-xl animate-pulse mt-2"></div>
+        </div>
+        <p class="text-xl text-on-surface-variant font-medium hidden" id="candidate-title"></p>
+      </div>
+
+      <!-- Dynamic Match Score Dial -->
+      <div class="flex flex-col items-center">
+        <div class="relative w-32 h-32 flex items-center justify-center">
+          <svg class="w-full h-full -rotate-90" viewBox="0 0 128 128">
+            <!-- Track -->
+            <circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="58"
+              stroke="currentColor" stroke-width="8"/>
+            <!-- Animated Score Ring (0% by default = full dashoffset = 364.4) -->
+            <circle id="score-ring" cx="64" cy="64" fill="transparent" r="58"
+              stroke="url(#scoreGrad)" stroke-width="8"
+              stroke-dasharray="364.4" stroke-dashoffset="364.4"
+              stroke-linecap="round"/>
+            <defs>
+              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#c0c1ff"/>
+                <stop offset="100%" stop-color="#ddb7ff"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="absolute flex flex-col items-center">
+            <span class="text-3xl font-black font-headline text-on-surface" id="score-label">0%</span>
+            <span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Match</span>
+          </div>
+        </div>
+        <p class="text-xs text-on-surface-variant mt-2 text-center">Awaiting AI<br/>Evaluation</p>
+      </div>
+    </div>
+
+    <!-- Document Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
+      <!-- Sidebar Info -->
+      <div class="md:col-span-4 space-y-10">
+        <section>
+          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Core Vitals</h4>
+          <div class="space-y-4">
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-on-surface-variant text-lg">work</span>
+              <span class="text-sm text-on-surface" id="info-exp">8+ Years Experience</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-on-surface-variant text-lg">school</span>
+              <span class="text-sm text-on-surface" id="info-edu">MA, Visual Systems</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-on-surface-variant text-lg">payments</span>
+              <span class="text-sm text-on-surface" id="info-salary">$165k - $180k Range</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="material-symbols-outlined text-on-surface-variant text-lg">schedule</span>
+              <span class="text-sm text-on-surface" id="info-avail">Immediate Availability</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="p-6 bg-surface-container-high rounded-3xl border border-outline-variant/5">
+          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-secondary mb-6">FairLens Insight</h4>
+          <p class="text-sm leading-relaxed text-on-surface-variant" id="ai-insight">
+            AI analysis pending. Upload a resume or complete an interview to generate insights.
+          </p>
+        </section>
+
+        <section>
+          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Social Context</h4>
+          <div class="flex gap-4">
+            <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-on-surface">link</span>
+            </div>
+            <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
+              <span class="material-symbols-outlined text-on-surface">language</span>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Main Assessment -->
+      <div class="md:col-span-8 space-y-12">
+        <!-- Interview Summary -->
+        <section>
+          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Executive Summary</h4>
+          <p class="text-lg leading-relaxed font-light text-on-surface" id="exec-summary">
+            No evaluation data yet. Please upload a candidate resume or conduct an AI interview to generate the executive summary and competency scores.
+          </p>
+        </section>
+
+        <!-- Scores Grid -->
+        <section>
+          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Competency Scorecard</h4>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+              <span class="text-xs text-on-surface-variant">Technical Skill</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl font-bold font-headline" id="score-tech">—</span>
+                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                  <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-tech" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+              <span class="text-xs text-on-surface-variant">Communication</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl font-bold font-headline" id="score-comm">—</span>
+                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                  <div class="h-full bg-secondary rounded-full transition-all duration-700" id="bar-comm" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+              <span class="text-xs text-on-surface-variant">Problem Solving</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl font-bold font-headline" id="score-prob">—</span>
+                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                  <div class="h-full bg-primary rounded-full transition-all duration-700" id="bar-prob" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+              <span class="text-xs text-on-surface-variant">Leadership Potential</span>
+              <div class="flex items-center gap-3">
+                <span class="text-2xl font-bold font-headline" id="score-lead">—</span>
+                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                  <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-lead" style="width:0%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Recommendation Badge -->
+        <section class="relative p-1 rounded-3xl bg-gradient-to-br from-outline-variant/30 to-outline-variant/10" id="rec-badge">
+          <div class="bg-surface-container-low rounded-[1.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-6">
+              <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center">
+                <span class="material-symbols-outlined text-on-surface-variant text-4xl">pending</span>
+              </div>
+              <div>
+                <h3 class="text-2xl font-black font-headline" id="rec-title">Awaiting Evaluation</h3>
+                <p class="text-sm text-on-surface-variant" id="rec-sub">Complete AI analysis to get a recommendation.</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant block mb-1">Status</span>
+              <span class="text-on-surface font-semibold bg-surface-container-highest px-4 py-1.5 rounded-full text-xs" id="rec-status">Pending</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Footer Details -->
+    <footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-[10px] tracking-widest uppercase">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-on-surface">Talentra</span>
+        <span class="opacity-40">Security Verified</span>
+      </div>
+    </footer>
+  </div>
 </main>
-<!-- Global Footer (Shell) -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] flex flex-col md:flex-row justify-between items-center px-12 py-8 w-full no-print">
-<div class="mb-4 md:mb-0">
-<span class="text-lg font-bold text-[#e0e2ea]">FairLens AI</span>
-<p class="font-['Inter'] text-xs text-[#c2c6d6] mt-1">© 2024 FairLens AI. All rights reserved.</p>
-</div>
-<div class="flex gap-6 font-['Inter'] text-xs text-[#c2c6d6]">
-<a class="hover:text-[#e0e2ea] transition-opacity" href="#">Privacy Policy</a>
-<a class="hover:text-[#e0e2ea] transition-opacity" href="#">Terms of Service</a>
-<a class="hover:text-[#e0e2ea] transition-opacity" href="#">Security</a>
-<a class="hover:text-[#e0e2ea] transition-opacity" href="#">Cookie Settings</a>
-</div>
+
+<!-- Global Footer -->
+<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] no-print">
+  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+    <div class="space-y-4 text-center md:text-left">
+      <div class="text-lg font-bold text-[#e0e2ea] font-headline">Talentra</div>
+      <p class="max-w-xs text-on-surface-variant text-xs font-body">The future of enterprise talent acquisition, powered by ethical AI.</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-8 font-body text-xs text-[#c2c6d6]">
+      <a href="legal.html#privacy" class="hover:text-[#e0e2ea] transition-opacity">Privacy Policy</a>
+      <a href="legal.html#terms" class="hover:text-[#e0e2ea] transition-opacity">Terms of Service</a>
+      <a href="legal.html#faq" class="hover:text-[#e0e2ea] transition-opacity">FAQ</a>
+      <a href="legal.html#support" class="hover:text-[#e0e2ea] transition-opacity">Support</a>
+    </div>
+    <div class="text-center md:text-right font-body text-xs text-[#c2c6d6]">
+      <p>© 2026 Talentra. All rights reserved.
+        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">V1.0.0</span>
+      </p>
+    </div>
+  </div>
 </footer>
-</body></html>
+
+<script>
+  // ── Dynamic Score Update ──────────────────────────────────────────────────
+  const CIRCUMFERENCE = 364.4; // 2 * π * 58
+
+  function setScore(percent) {
+    const ring = document.getElementById('score-ring');
+    const label = document.getElementById('score-label');
+    const offset = CIRCUMFERENCE - (percent / 100) * CIRCUMFERENCE;
+    ring.style.strokeDashoffset = offset;
+    // Animate number
+    let current = 0;
+    const step = percent / 60;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, percent);
+      label.textContent = Math.round(current) + '%';
+      if (current >= percent) clearInterval(timer);
+    }, 16);
+  }
+
+  function updateCompetency(id, barId, value) {
+    document.getElementById(id).textContent = value.toFixed(1);
+    document.getElementById(barId).style.width = (value / 5 * 100) + '%';
+  }
+
+  function applyEvaluation(data) {
+    // ── Candidate Identity ────────────────────────────────────────────────
+    // Hide skeletons, show real content
+    document.getElementById('name-skeleton').classList.add('hidden');
+    document.getElementById('title-skeleton').classList.add('hidden');
+    document.getElementById('assessment-badge').classList.remove('hidden');
+    document.getElementById('candidate-id-tag').classList.remove('hidden');
+    document.getElementById('candidate-name').classList.remove('hidden');
+    document.getElementById('candidate-title').classList.remove('hidden');
+
+    document.getElementById('candidate-name').textContent = data.candidateName || 'Candidate';
+    document.getElementById('candidate-title').textContent = data.candidateTitle || '';
+    document.getElementById('candidate-id-tag').textContent = '• ID: ' + (data.candidateId || 'TL-0000');
+
+    // ── Scores ────────────────────────────────────────────────────────────
+    setScore(data.score);
+    updateCompetency('score-tech', 'bar-tech', data.tech);
+    updateCompetency('score-comm', 'bar-comm', data.comm);
+    updateCompetency('score-prob', 'bar-prob', data.prob);
+    updateCompetency('score-lead', 'bar-lead', data.lead);
+
+    // ── Text Fields ───────────────────────────────────────────────────────
+    document.getElementById('exec-summary').textContent = data.summary;
+    document.getElementById('ai-insight').textContent = data.insight;
+
+    // Core Vitals
+    if (data.experience) document.getElementById('info-exp').textContent = data.experience;
+    if (data.education)  document.getElementById('info-edu').textContent = data.education;
+    if (data.salary)     document.getElementById('info-salary').textContent = data.salary;
+    if (data.availability) document.getElementById('info-avail').textContent = data.availability;
+
+    // ── Recommendation Badge ──────────────────────────────────────────────
+    document.getElementById('rec-title').textContent = data.recommendation;
+    document.getElementById('rec-sub').textContent = data.recSub;
+    document.getElementById('rec-status').textContent = data.status;
+
+    const badge = document.getElementById('rec-badge');
+    const iconEl = badge.querySelector('.material-symbols-outlined');
+    const iconWrap = iconEl.parentElement;
+
+    if (data.score >= 80) {
+      // Strong hire — gradient border, verified icon in primary color
+      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-primary to-secondary';
+      iconWrap.className = 'w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center';
+      iconEl.textContent = 'verified';
+      iconEl.className = 'material-symbols-outlined text-primary text-4xl';
+    } else if (data.score >= 60) {
+      // Consider — amber-ish neutral
+      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-tertiary/60 to-outline-variant/30';
+      iconWrap.className = 'w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center';
+      iconEl.textContent = 'thumb_up';
+      iconEl.className = 'material-symbols-outlined text-tertiary text-4xl';
+    } else {
+      // Not recommended
+      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-error/40 to-outline-variant/10';
+      iconWrap.className = 'w-16 h-16 rounded-full bg-error/10 flex items-center justify-center';
+      iconEl.textContent = 'cancel';
+      iconEl.className = 'material-symbols-outlined text-error text-4xl';
+    }
+
+    // ── Date stamp ────────────────────────────────────────────────────────
+    document.getElementById('gen-date').textContent = 'Generated: ' + new Date().toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
+  }
+
+  // ── File Upload Handlers ──────────────────────────────────────────────────
+  function handleFileDrop(event) {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    if (file) showFilename(file.name);
+  }
+
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
+    if (file) showFilename(file.name);
+  }
+
+  function showFilename(name) {
+    document.getElementById('upload-filename').textContent = '📎 ' + name + ' ready for analysis';
+  }
+
+  function simulateUpload() {
+    document.getElementById('upload-modal').classList.add('hidden');
+    // Show a brief loading state on the score label
+    document.getElementById('score-label').textContent = '…';
+
+    // Simulate AI backend response after ~1s
+    setTimeout(() => {
+      applyEvaluation({
+        // ── Identity (from backend/resume parse) ──
+        candidateName:  'Elena Rodriguez',
+        candidateTitle: 'Senior Product Designer • New York, NY',
+        candidateId:    'TL-9842',
+        experience:     '8+ Years Experience',
+        education:      'MA, Visual Systems',
+        salary:         '$165k – $180k Range',
+        availability:   'Immediate Availability',
+        // ── AI Scores ──
+        score: 93,
+        tech:  4.9,
+        comm:  4.5,
+        prob:  4.8,
+        lead:  4.2,
+        // ── AI Text ──
+        summary:    'Elena demonstrated exceptional systems thinking during the case study. Her ability to articulate the trade-offs between component flexibility and developer experience is top-tier. She showed a proactive approach to inclusive design, particularly in high-contrast navigation patterns.',
+        insight:    'AI analysis detects strong analytical empathy. Elena consistently prioritizes accessibility without compromising visual fidelity.',
+        // ── Recommendation ──
+        recommendation: 'Strong Hire',
+        recSub:         'Top 2% of candidates assessed this quarter.',
+        status:         'Ready for Offer'
+      });
+    }, 900);
+  }
+</script>
+</body>
+</html>

@@ -133,10 +133,17 @@ async def login(request: Request):
     data = await request.json()
 
     email = data.get("email")
+    password = data.get("password")
 
     user = supabase.table("users").select("*").eq("email", email).execute()
 
     if not user.data:
         return {"message": "User doesn't exist"}
+
+    stored_password = user.data[0]["password"]
+
+    # compare hashed password
+    if not bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
+        return {"message": "Invalid credentials"}
 
     return {"message": "Login successful"}

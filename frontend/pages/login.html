@@ -234,7 +234,7 @@ tailwind.config = {
                   <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
                 </div>
               </div>
-              <button class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+              <button onclick="loginUser()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
                 Sign In
               </button>
             </div>
@@ -274,7 +274,7 @@ tailwind.config = {
  
               <!-- Sign In button (hidden until Verify clicked) -->
               <div id="signin-btn-wrap" class="hidden">
-                <button class="w-full py-3 rounded-xl border transition-all font-semibold" style="background:rgba(192,193,255,0.08);border-color:rgba(192,193,255,0.35);color:#c0c1ff;">
+                <button onclick="loginUser()" class="w-full py-3 rounded-xl border transition-all font-semibold" style="background:rgba(192,193,255,0.08);border-color:rgba(192,193,255,0.35);color:#c0c1ff;">
                   Sign In
                 </button>
               </div>
@@ -535,22 +535,42 @@ async function signupUser() {
   });
 
   const data = await res.json();
-  alert(data.message);
+
+  if (data.message !== "New User Created") {
+    alert(data.message);
+    return;
+  }
+
+  alert("Signup successful ✅");
+  window.location.href = "/upload.html";
 }
 
 
 // LOGIN
 async function loginUser() {
   const email = document.querySelector('#login-email input[type="email"]').value;
+  const password = document.querySelector('#login-email input[type="password"]').value;
+
+  if (!email || !password) {
+    alert("Enter email and password");
+    return;
+  }
 
   const res = await fetch("http://127.0.0.1:8000/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email })
+    body: JSON.stringify({ email, password })
   });
 
   const data = await res.json();
-  alert(data.message);
+
+  if (res.status !== 200 || data.message !== "Login successful") {
+    alert(data.message || "Login failed");
+    return;
+  }
+
+  alert("Login successful ✅");
+  window.location.href = "/upload.html";  // redirect after login
 }
 </script>
 </body>
