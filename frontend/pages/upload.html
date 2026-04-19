@@ -542,20 +542,19 @@ JOB DESCRIPTION:
 ${jd.slice(0, 2000)}`;
 
         try {
-            const response = await fetch("https://api.anthropic.com/v1/messages", {
+            const formData = new FormData();
+            formData.append("file", uploadedFile);
+            formData.append("job_description", jd);
+
+            const response = await fetch("http://127.0.0.1:8000/analyze", {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    model: "claude-sonnet-4-20250514",
-                    max_tokens: 1000,
-                    messages: [{ role: "user", content: prompt }]
-                })
+                body: formData
             });
 
             const data = await response.json();
-            const rawText = data.content.map(i => i.text || '').join('').trim();
-            const clean = rawText.replace(/```json|```/g, '').trim();
-            const parsed = JSON.parse(clean);
+
+            // Gemini returns text → convert to JSON
+            const parsed = data;
 
             animateScore(parsed.score || 0);
 
@@ -628,9 +627,7 @@ ${jd.slice(0, 2000)}`;
     }
 
     function proceedToInterview() {
-        document.getElementById('interviewPage').classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        window.scrollTo(0, 0);
+        window.location.href = "./interview.html";
     }
 
     function closeInterview() {

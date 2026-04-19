@@ -1,20 +1,88 @@
+import json
 from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi import Request
-import os
 import bcrypt
-from dotenv import load_dotenv
 from supabase import create_client, Client
+import os
+import google.generativeai as genai
+from fastapi import FastAPI, UploadFile, Form
+from dotenv import load_dotenv
+from PyPDF2 import PdfReader
+import io
+from google import genai
+
+# load env
+load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
+
+# create app FIRST
+app = FastAPI()
+
+# THEN configure Gemini
+
+
+# THEN define routes
+# Replace the /analyze route with this:
+@app.post("/analyze")
+async def analyze_resume(
+    file: UploadFile,
+    job_description: str = Form(...)
+):
+
+    content = await file.read()
+
+    pdf = PdfReader(io.BytesIO(content))
+    resume_text = ""
+
+    for page in pdf.pages:
+        resume_text += page.extract_text() or ""
+    if not resume_text.strip():
+        return {
+            "score": 0,
+            "strengths": [],
+            "gaps": ["Could not extract text from PDF"]
+        }
+
+    prompt = f"""You are an expert ATS system.
+Analyze the resume against the job description.
+Return ONLY JSON with no markdown, no preamble:
+{{
+  "score": <number 0-100>,
+  "strengths": ["strength1", "strength2", "strength3"],
+  "gaps": ["gap1", "gap2"]
+}}
+
+RESUME:
+{resume_text[:3000]}
+
+JOB DESCRIPTION:
+{job_description[:2000]}"""
+
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash",
+        contents=prompt
+    )
+
+    text = response.text    
+
+    try:
+        cleaned = text.replace("```json", "").replace("```", "").strip()
+        parsed = json.loads(cleaned)
+        return parsed
+    except Exception as e:
+        print("Gemini raw response:", text)
+        return {"score": 0, "strengths": [], "gaps": []}
+
 
 load_dotenv(dotenv_path="../.env")
 SUPABASE_URL = os.getenv("SUPABASE_URL")
 SUPABASE_KEY = os.getenv("SUPABASE_KEY")
 
 supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
-
-app = FastAPI()
 
 @app.get("/users")
 def get_users():
