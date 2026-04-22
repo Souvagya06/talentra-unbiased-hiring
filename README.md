@@ -348,12 +348,10 @@ Frontend UI (Report/Dashboard)
 
 ## 🔮 Future Improvements
 
-* 🔐 JWT-based authentication
-* 📁 Google Cloud for video storage
-* 📊 Advanced analytics dashboard
-* 🎯 Bias detection module
-* 🧑‍💼 Multi-role (HR/Admin)
-* 📈 Historical performance tracking
+*  Multi-role (HR/Candidate)
+*  Google Cloud for video/doc./audio storage
+*  Advanced analytics dashboard
+*  Integrated Virtual Interview platform
 
 ---
 
