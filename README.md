@@ -371,7 +371,7 @@ Frontend UI (Report/Dashboard)
 
 - Souvagya Karmakar  
 - Sushmita Roy  
-- Anriban Pal  
+- Anirban Pal  
 - Sugata Nayak  
 
 ---
