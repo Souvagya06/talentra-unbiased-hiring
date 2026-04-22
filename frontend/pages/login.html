@@ -1,579 +1,676 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Talentra AI | Sign In</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-tailwind.config = {
-  darkMode: "class",
-  theme: {
-    extend: {
-      colors: {
-        "on-tertiary-container": "#002d40",
-        "tertiary-fixed-dim": "#7bd0ff",
-        "tertiary-fixed": "#c4e7ff",
-        "surface-container-lowest": "#0a0e13",
-        "on-primary-container": "#0d0096",
-        "inverse-surface": "#e0e2ea",
-        "on-tertiary-fixed-variant": "#004c69",
-        "inverse-on-surface": "#2d3136",
-        "surface-dim": "#101419",
-        "on-secondary-container": "#d6a9ff",
-        "primary-container": "#8083ff",
-        "on-primary-fixed": "#07006c",
-        "surface-bright": "#36393f",
-        "on-primary": "#1000a9",
-        "tertiary-container": "#009bd1",
-        "surface-container": "#1c2025",
-        "on-surface": "#e0e2ea",
-        "surface": "#101419",
-        "secondary-container": "#6f00be",
-        "outline": "#8c909f",
-        "on-tertiary": "#00354a",
-        "secondary-fixed-dim": "#ddb7ff",
-        "primary": "#c0c1ff",
-        "surface-tint": "#c0c1ff",
-        "on-primary-fixed-variant": "#2f2ebe",
-        "on-error": "#690005",
-        "background": "#101419",
-        "tertiary": "#7bd0ff",
-        "secondary": "#ddb7ff",
-        "error": "#ffb4ab",
-        "on-error-container": "#ffdad6",
-        "secondary-fixed": "#f0dbff",
-        "surface-container-low": "#181c21",
-        "on-secondary-fixed": "#2c0051",
-        "surface-container-highest": "#31353b",
-        "on-secondary": "#490080",
-        "surface-variant": "#31353b",
-        "error-container": "#93000a",
-        "primary-fixed-dim": "#c0c1ff",
-        "on-tertiary-fixed": "#001e2c",
-        "primary-fixed": "#e1e0ff",
-        "on-surface-variant": "#c2c6d6",
-        "surface-container-high": "#262a30",
-        "outline-variant": "#424754",
-        "inverse-primary": "#494bd6",
-        "on-secondary-fixed-variant": "#6900b3",
-        "on-background": "#e0e2ea"
-      },
-      borderRadius: {
-        DEFAULT: "0.25rem",
-        lg: "0.5rem",
-        xl: "0.75rem",
-        full: "9999px"
-      },
-      fontFamily: {
-        headline: ["Manrope"],
-        body: ["Inter"],
-        label: ["Inter"]
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Talentra AI | Sign In</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-container": "#002d40",
+            "tertiary-fixed-dim": "#7bd0ff",
+            "tertiary-fixed": "#c4e7ff",
+            "surface-container-lowest": "#0a0e13",
+            "on-primary-container": "#0d0096",
+            "inverse-surface": "#e0e2ea",
+            "on-tertiary-fixed-variant": "#004c69",
+            "inverse-on-surface": "#2d3136",
+            "surface-dim": "#101419",
+            "on-secondary-container": "#d6a9ff",
+            "primary-container": "#8083ff",
+            "on-primary-fixed": "#07006c",
+            "surface-bright": "#36393f",
+            "on-primary": "#1000a9",
+            "tertiary-container": "#009bd1",
+            "surface-container": "#1c2025",
+            "on-surface": "#e0e2ea",
+            "surface": "#101419",
+            "secondary-container": "#6f00be",
+            "outline": "#8c909f",
+            "on-tertiary": "#00354a",
+            "secondary-fixed-dim": "#ddb7ff",
+            "primary": "#c0c1ff",
+            "surface-tint": "#c0c1ff",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "on-error": "#690005",
+            "background": "#101419",
+            "tertiary": "#7bd0ff",
+            "secondary": "#ddb7ff",
+            "error": "#ffb4ab",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#f0dbff",
+            "surface-container-low": "#181c21",
+            "on-secondary-fixed": "#2c0051",
+            "surface-container-highest": "#31353b",
+            "on-secondary": "#490080",
+            "surface-variant": "#31353b",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#c0c1ff",
+            "on-tertiary-fixed": "#001e2c",
+            "primary-fixed": "#e1e0ff",
+            "on-surface-variant": "#c2c6d6",
+            "surface-container-high": "#262a30",
+            "outline-variant": "#424754",
+            "inverse-primary": "#494bd6",
+            "on-secondary-fixed-variant": "#6900b3",
+            "on-background": "#e0e2ea"
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          },
+          fontFamily: {
+            headline: ["Manrope"],
+            body: ["Inter"],
+            label: ["Inter"]
+          }
+        }
       }
     }
-  }
-}
-</script>
-<style>
-  .glass-panel {
-    background: rgba(49, 53, 59, 0.15);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(66, 71, 84, 0.15);
-  }
-  .btn-gradient {
-    background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
-    box-shadow: 0 4px 15px -3px rgba(192, 193, 255, 0.2);
-  }
-  .btn-gradient:hover {
-    box-shadow: 0 0 20px rgba(192, 193, 255, 0.35);
-    transform: translateY(-1px);
-  }
-  .text-gradient-primary {
-    background: linear-gradient(45deg, #c0c1ff, #ddb7ff);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .input-focus-glow:focus {
-    box-shadow: 0 0 0 2px rgba(192, 193, 255, 0.15);
-    border-color: rgba(192, 193, 255, 0.4);
-  }
-  .card-scene {
-    perspective: 1200px;
-    width: 100%;
-    max-width: 28rem;
-  }
-  .card-flipper {
-    position: relative;
-    width: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
-  }
-  .card-flipper.flipped {
-    transform: rotateY(180deg);
-  }
-  .card-face {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    width: 100%;
-    min-height: 600px; /* 👈 ADD THIS LINE */
-}
-  .card-face.back {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: rotateY(180deg);
-  }
-</style>
+  </script>
+  <style>
+    .glass-panel {
+      background: rgba(49, 53, 59, 0.15);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(66, 71, 84, 0.15);
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #c0c1ff 0%, #8083ff 100%);
+      box-shadow: 0 4px 15px -3px rgba(192, 193, 255, 0.2);
+    }
+
+    .btn-gradient:hover {
+      box-shadow: 0 0 20px rgba(192, 193, 255, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .text-gradient-primary {
+      background: linear-gradient(45deg, #c0c1ff, #ddb7ff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .input-focus-glow:focus {
+      box-shadow: 0 0 0 2px rgba(192, 193, 255, 0.15);
+      border-color: rgba(192, 193, 255, 0.4);
+    }
+
+    .card-scene {
+      perspective: 1200px;
+      width: 100%;
+      max-width: 28rem;
+    }
+
+    .card-flipper {
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+    }
+
+    .card-flipper.flipped {
+      transform: rotateY(180deg);
+    }
+
+    .card-face {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      width: 100%;
+    }
+
+    /* 👇 ADD THIS */
+    .card-face.front {
+      min-height: 380px;
+      /* login height */
+    }
+
+    .card-face.back {
+      min-height: 600px;
+      /* signup height */
+    }
+
+    .card-face.back {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: rotateY(180deg);
+    }
+  </style>
 </head>
+
 <body class="bg-background text-on-background font-body min-h-screen selection:bg-primary/30 selection:text-primary">
 
-<!-- Header -->
-<header class="fixed top-0 w-full z-50 px-8 h-16 flex items-center justify-between">
-  <div class="flex items-center gap-2">
-    <h1 class="text-xl font-headline font-bold tracking-[0.1em] text-on-surface">Talentra</h1>
-  </div>
-  <a href="./index.html" class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all">
-    Back to Home
-  </a>
-</header>
+  <!-- Header -->
+  <header class="fixed top-0 w-full z-50 px-8 h-16 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <h1 class="text-xl font-headline font-bold tracking-[0.1em] text-on-surface">Talentra</h1>
+    </div>
+    <a href="./index.html"
+      class="bg-gradient-to-r from-primary to-primary-container text-on-primary-container px-6 py-2.5 rounded-xl font-bold hover:opacity-90 active:scale-95 transition-all">
+      Back to Home
+    </a>
+  </header>
 
-<main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
- 
-  <!-- Left Section: Branding & Identity -->
-  <section class="hidden md:flex flex-col justify-center w-1/2 px-16 relative bg-surface overflow-hidden">
-    <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
-    <div class="absolute bottom-1/4 -right-24 w-64 h-64 bg-secondary/10 rounded-full blur-[100px]"></div>
-    <div class="relative z-10 space-y-6 max-w-lg">
-      <div class="inline-block px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 text-[10px] uppercase tracking-widest text-primary font-bold">
-        The Digital Luminary
+  <main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
+
+    <!-- Left Section: Branding & Identity -->
+    <section class="hidden md:flex flex-col justify-center w-1/2 px-16 relative bg-surface overflow-hidden">
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-primary/10 rounded-full blur-[120px]"></div>
+      <div class="absolute bottom-1/4 -right-24 w-64 h-64 bg-secondary/10 rounded-full blur-[100px]"></div>
+      <div class="relative z-10 space-y-6 max-w-lg">
+        <div
+          class="inline-block px-3 py-1 rounded-full bg-surface-container-high border border-outline-variant/20 text-[10px] uppercase tracking-widest text-primary font-bold">
+          The Digital Luminary
+        </div>
+        <h2 class="text-5xl font-headline font-extrabold tracking-tight leading-tight text-on-surface">
+          Smarter Hiring.<br />
+          <span class="text-gradient-primary">Fairer Decisions.</span>
+        </h2>
+        <p class="text-lg text-on-surface-variant font-light leading-relaxed">
+          Eliminate bias and accelerate your recruitment pipeline with the world's most advanced AI-driven talent
+          intelligence platform.
+        </p>
+        <div class="pt-8 grid grid-cols-2 gap-8">
+          <div></div>
+          <div></div>
+        </div>
       </div>
-      <h2 class="text-5xl font-headline font-extrabold tracking-tight leading-tight text-on-surface">
-        Smarter Hiring.<br/>
-        <span class="text-gradient-primary">Fairer Decisions.</span>
-      </h2>
-      <p class="text-lg text-on-surface-variant font-light leading-relaxed">
-        Eliminate bias and accelerate your recruitment pipeline with the world's most advanced AI-driven talent intelligence platform.
-      </p>
-      <div class="pt-8 grid grid-cols-2 gap-8">
-        <div></div>
-        <div></div>
+      <div class="absolute inset-0 opacity-20 pointer-events-none">
+        <div class="absolute inset-0"
+          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAunH8Q0mVodJKFk0YuYaAgIMjWGV_5PKCPhFROowBxCVPJwg35nF6J_jGFvDiVQCEDGDmxBAd-lM-EBCTnrx9cA7sQxe-o1qHMQ7xT7W2KY2h9EnTIFtmvF9DreKtfQp-NVEJJeoeT6AgfTOhDbRc92S9pETWoKgvvLwWi2ELdaeIxq09crOKkogoWA8Hoku--6_I9B7KQKIfZV-y56_plMGoaBPqW3laKIzSAAq10zISRlDTeFEb5nyvV5nBGBPa1OrtCtKBFoQ'); background-size: cover; background-position: center; mix-blend-mode: soft-light;">
+        </div>
       </div>
-    </div>
-    <div class="absolute inset-0 opacity-20 pointer-events-none">
-      <div class="absolute inset-0" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAunH8Q0mVodJKFk0YuYaAgIMjWGV_5PKCPhFROowBxCVPJwg35nF6J_jGFvDiVQCEDGDmxBAd-lM-EBCTnrx9cA7sQxe-o1qHMQ7xT7W2KY2h9EnTIFtmvF9DreKtfQp-NVEJJeoeT6AgfTOhDbRc92S9pETWoKgvvLwWi2ELdaeIxq09crOKkogoWA8Hoku--6_I9B7KQKIfZV-y56_plMGoaBPqW3laKIzSAAq10zISRlDTeFEb5nyvV5nBGBPa1OrtCtKBFoQ'); background-size: cover; background-position: center; mix-blend-mode: soft-light;"></div>
-    </div>
-  </section>
- 
-  <!-- Right Section: Auth Card -->
-  <section class="flex flex-col items-center justify-center flex-1 p-6 md:p-12 bg-surface-container-lowest relative">
- 
-    <!-- Mobile Brand Visibility -->
-    <div class="md:hidden mb-12 flex flex-col items-center gap-4">
-      <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
-      <div class="text-center">
-        <h1 class="text-2xl font-headline font-bold tracking-[0.1em] text-on-surface">Talentra AI</h1>
-        <p class="text-sm text-on-surface-variant">Smarter Hiring. Fairer Decisions.</p>
+    </section>
+
+    <!-- Right Section: Auth Card -->
+    <section class="flex flex-col items-center justify-center flex-1 p-6 md:p-12 bg-surface-container-lowest relative">
+
+      <!-- Mobile Brand Visibility -->
+      <div class="md:hidden mb-12 flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-primary text-4xl"
+          style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+        <div class="text-center">
+          <h1 class="text-2xl font-headline font-bold tracking-[0.1em] text-on-surface">Talentra AI</h1>
+          <p class="text-sm text-on-surface-variant">Smarter Hiring. Fairer Decisions.</p>
+        </div>
       </div>
-    </div>
- 
-    <!-- Flip Card Container -->
-    <div class="card-scene">
-      <div class="card-flipper" id="flipper">
- 
-        <!-- ===================== FRONT FACE: Login ===================== -->
-        <div class="card-face front glass-panel rounded-xl p-8 shadow-2xl">
-          <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
-            <button onclick="flip(false)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all bg-surface-container-high text-primary shadow-sm">Login</button>
-            <button onclick="flip(true)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Sign Up</button>
-          </div>
- 
-          <!-- STATE 1: Default — username + 2 method buttons -->
-          <div id="login-default" class="login-state">
-            <div class="space-y-2 mb-5">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Username / Full Name</label>
-              <div class="relative group">
-                <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban Mondal" type="text"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">person</span>
+
+      <!-- Flip Card Container -->
+      <div class="card-scene">
+        <div class="card-flipper" id="flipper">
+
+          <!-- ===================== FRONT FACE: Login ===================== -->
+          <div class="card-face front glass-panel rounded-xl p-8 shadow-2xl">
+            <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
+              <button onclick="flip(false)"
+                class="flex-1 py-2 text-sm font-medium rounded-md transition-all bg-surface-container-high text-primary shadow-sm">Login</button>
+              <button onclick="flip(true)"
+                class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Sign
+                Up</button>
+            </div>
+
+            <!-- STATE 1: Default — username + 2 method buttons -->
+            <div id="login-default" class="login-state">
+              <div class="space-y-2 mb-5">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Username /
+                  Full Name</label>
+                <div class="relative group">
+                  <input id="login-username"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="Anirban Mondal" type="text" />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">person</span>
+                </div>
+              </div>
+              <div class="flex flex-col gap-3">
+                <button onclick="checkUsernameAndProceed('email')"
+                  class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+                  Login with Email ID
+                </button>
+                <button onclick="checkUsernameAndProceed('mobile')"
+                  class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
+                  Login with Mobile No.
+                </button>
               </div>
             </div>
-            <div class="flex flex-col gap-3">
-              <button onclick="showEmailLogin()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
-                Login with Email ID
-              </button>
-              <button onclick="showMobileLogin()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
-                Login with Mobile No.
-              </button>
-            </div>
-          </div>
- 
-          <!-- STATE 2: Email + Password -->
-          <div id="login-email" class="login-state hidden">
-            <span class="back-link" onclick="resetLogin()">
-              <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
-              Back
-            </span>
-            <div class="space-y-5 anim-in">
-              <div class="space-y-2">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Email Address</label>
-                <div class="relative group">
-                  <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
-                  <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+
+            <!-- STATE 2: Email + Password -->
+            <div id="login-email" class="login-state hidden">
+              <span class="back-link" onclick="resetLogin()">
+                <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+                Back
+              </span>
+              <div class="space-y-5 anim-in">
+                <div class="space-y-2">
+                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Email
+                    Address</label>
+                  <div class="relative group">
+                    <input
+                      class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                      placeholder="name@company.ai" type="email" />
+                    <span
+                      class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+                  </div>
                 </div>
-              </div>
-              <div class="space-y-2">
-                <div class="flex justify-between items-center ml-1">
-                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Password</label>
-                  <a class="text-[11px] text-primary hover:underline font-medium" href="#">Forgot password?</a>
+                <div class="space-y-2">
+                  <div class="flex justify-between items-center ml-1">
+                    <label
+                      class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider">Password</label>
+                    <a class="text-[11px] text-primary hover:underline font-medium" href="#">Forgot password?</a>
+                  </div>
+                  <div class="relative group">
+                    <input
+                      class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                      placeholder="••••••••" type="password" />
+                    <span
+                      class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
+                  </div>
                 </div>
-                <div class="relative group">
-                  <input class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
-                  <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
-                </div>
-              </div>
-              <button onclick="loginUser()" class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
-                Sign In
-              </button>
-            </div>
-          </div>
- 
-          <!-- STATE 3: Mobile OTP -->
-          <div id="login-mobile" class="login-state hidden">
-            <span class="back-link" onclick="resetLogin()">
-              <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
-              Back
-            </span>
-            <div class="space-y-5 anim-in">
- 
-              <!-- Mobile number field -->
-              <div class="space-y-1">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
-                <div class="relative group">
-                  <input id="mobile-input" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
-                  <svg class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors" style="width:18px;height:18px;opacity:0.4;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/>
-                  </svg>
-                </div>
-                <div style="display:flex;align-items:center;">
-                  <span id="otp-send-btn" class="hint-action" onclick="sendOTP()">Send OTP</span>
-                  <span id="otp-timer" class="timer-badge" style="display:none;"></span>
-                </div>
-              </div>
- 
-              <!-- OTP input (hidden until Send OTP clicked) -->
-              <div id="otp-field" class="space-y-1 hidden">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Enter OTP</label>
-                <div class="relative group">
-                  <input id="otp-input" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all text-center tracking-[0.3em]" placeholder="• • • • • •" type="text" maxlength="6"/>
-                </div>
-                <span class="hint-action" onclick="verifyOTP()">Verify</span>
-              </div>
- 
-              <!-- Sign In button (hidden until Verify clicked) -->
-              <div id="signin-btn-wrap" class="hidden">
-                <button onclick="loginUser()" class="w-full py-3 rounded-xl border transition-all font-semibold" style="background:rgba(192,193,255,0.08);border-color:rgba(192,193,255,0.35);color:#c0c1ff;">
+                <button onclick="loginUser()"
+                  class="w-full py-3 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium">
                   Sign In
                 </button>
               </div>
- 
+            </div>
+
+            <!-- STATE 3: Mobile OTP -->
+            <div id="login-mobile" class="login-state hidden">
+              <span class="back-link" onclick="resetLogin()">
+                <span class="material-symbols-outlined" style="font-size:16px;">arrow_back</span>
+                Back
+              </span>
+              <div class="space-y-5 anim-in">
+
+                <!-- Mobile number field -->
+                <div class="space-y-1">
+                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile
+                    Number</label>
+                  <div class="relative group">
+                    <input id="mobile-input"
+                      class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                      placeholder="+91 70445 05600" type="tel" />
+                    <svg
+                      class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors"
+                      style="width:18px;height:18px;opacity:0.4;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                      fill="currentColor">
+                      <path
+                        d="M17 1.01 7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z" />
+                    </svg>
+                  </div>
+                  <div style="display:flex;align-items:center;">
+                    <span id="otp-send-btn" class="hint-action" onclick="sendOTP()">Send OTP</span>
+                    <span id="otp-timer" class="timer-badge" style="display:none;"></span>
+                  </div>
+                </div>
+
+                <!-- OTP input (hidden until Send OTP clicked) -->
+                <div id="otp-field" class="space-y-1 hidden">
+                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Enter
+                    OTP</label>
+                  <div class="relative group">
+                    <input id="otp-input"
+                      class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all text-center tracking-[0.3em]"
+                      placeholder="• • • • • •" type="text" maxlength="6" />
+                  </div>
+                  <span class="hint-action" onclick="verifyOTP()">Verify</span>
+                </div>
+
+                <!-- Sign In button (hidden until Verify clicked) -->
+                <div id="signin-btn-wrap" class="hidden">
+                  <button onclick="loginUser()" class="w-full py-3 rounded-xl border transition-all font-semibold"
+                    style="background:rgba(192,193,255,0.08);border-color:rgba(192,193,255,0.35);color:#c0c1ff;">
+                    Sign In
+                  </button>
+                </div>
+
+              </div>
             </div>
           </div>
- 
-          <!-- Divider & Google (always visible) -->
-          <div class="relative my-8">
-            <div class="absolute inset-0 flex items-center">
-              <span class="w-full border-t border-outline-variant/15"></span>
+          <!-- ===================== END FRONT FACE ===================== -->
+
+          <!-- ===================== BACK FACE: Sign Up ===================== -->
+          <div class="card-face back glass-panel rounded-xl p-8 shadow-2xl">
+            <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
+              <button onclick="flip(false)"
+                class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Login</button>
+              <button onclick="flip(true)"
+                class="flex-1 py-2 text-sm font-medium rounded-md transition-all bg-surface-container-high text-primary shadow-sm">Sign
+                Up</button>
             </div>
-            <div class="relative flex justify-center text-xs">
-              <span class="px-4 bg-surface-container-low text-on-surface-variant uppercase tracking-widest rounded-full border border-outline-variant/10">or continue with</span>
-            </div>
-          </div>
-          <div class="flex justify-center">
-            <button class="flex items-center justify-center gap-3 py-3 px-6 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all group">
-              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100"/>
-              <span class="text-sm font-medium text-on-surface">Google</span>
-            </button>
-          </div>
-        </div>
-        <!-- ===================== END FRONT FACE ===================== -->
- 
-        <!-- ===================== BACK FACE: Sign Up ===================== -->
-        <div class="card-face back glass-panel rounded-xl p-8 shadow-2xl">
-          <div class="flex gap-1 p-1 bg-surface-container-lowest rounded-lg mb-8">
-            <button onclick="flip(false)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all text-on-surface-variant hover:text-on-surface">Login</button>
-            <button onclick="flip(true)" class="flex-1 py-2 text-sm font-medium rounded-md transition-all bg-surface-container-high text-primary shadow-sm">Sign Up</button>
-          </div>
-          <form class="space-y-5" onsubmit="return false">
-            <div class="grid grid-cols-2 gap-4">
-              <div class="space-y-2">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Name</label>
-                <input id="signup-firstname"class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Anirban" type="text"/>
+            <form class="space-y-5" onsubmit="return false">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-2">
+                  <label
+                    class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Name</label>
+                  <input id="signup-firstname"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="Anirban" type="text" />
+                </div>
+                <div class="space-y-2">
+                  <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Last
+                    Name</label>
+                  <input id="signup-lastname"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="Mondal" type="text" />
+                </div>
               </div>
               <div class="space-y-2">
-                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Last Name</label>
-                <input id="signup-lastname" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="Mondal" type="text"/>
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Work
+                  Email</label>
+                <div class="relative group">
+                  <input id="signup-email"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="name@company.ai" type="email" />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+                </div>
               </div>
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Work Email</label>
-              <div class="relative group">
-                <input id="signup-email" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="name@company.ai" type="email"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">mail</span>
+              <div class="space-y-2">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile
+                  Number</label>
+                <div class="relative group">
+                  <input id="signup-phone"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="+91 70445 05600" type="tel" />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">phone</span>
+                </div>
               </div>
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Mobile Number</label>
-              <div class="relative group">
-                <input id="signup-phone" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="+91 70445 05600" type="tel"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">phone</span>
+              <div class="space-y-2">
+                <label
+                  class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Password</label>
+                <div class="relative group">
+                  <input id="signup-password"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="••••••••" type="password" />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
+                </div>
               </div>
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Password</label>
-              <div class="relative group">
-                <input id="signup-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock</span>
+              <div class="space-y-2">
+                <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Confirm
+                  Password</label>
+                <div class="relative group">
+                  <input id="signup-confirm-password"
+                    class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all"
+                    placeholder="••••••••" type="password" />
+                  <span
+                    class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock_open</span>
+                </div>
               </div>
-            </div>
-            <div class="space-y-2">
-              <label class="text-xs font-semibold text-on-surface-variant uppercase tracking-wider ml-1">Confirm Password</label>
-              <div class="relative group">
-                <input id="signup-confirm-password" class="w-full bg-surface-container-low border-0 rounded-xl px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 focus:ring-0 input-focus-glow transition-all" placeholder="••••••••" type="password"/>
-                <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant/40 group-focus-within:text-primary transition-colors text-lg">lock_open</span>
+              <div class="flex items-start gap-3 py-1">
+                <input
+                  class="w-4 h-4 mt-0.5 rounded border-0 bg-surface-container-low text-primary focus:ring-offset-background focus:ring-primary/20"
+                  id="terms" type="checkbox" />
+                <label class="text-sm text-on-surface-variant select-none leading-relaxed" for="terms">
+                  I agree to the <a class="text-primary hover:underline" href="./legal.html">Terms of Service</a> and <a
+                    class="text-primary hover:underline" href="./legal.html">Privacy Policy</a>
+                </label>
               </div>
-            </div>
-            <div class="flex items-start gap-3 py-1">
-              <input class="w-4 h-4 mt-0.5 rounded border-0 bg-surface-container-low text-primary focus:ring-offset-background focus:ring-primary/20" id="terms" type="checkbox"/>
-              <label class="text-sm text-on-surface-variant select-none leading-relaxed" for="terms">
-                I agree to the <a class="text-primary hover:underline" href="./legal.html">Terms of Service</a> and <a class="text-primary hover:underline" href="./legal.html">Privacy Policy</a>
-              </label>
-            </div>
-            <button class="w-full py-4 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium" type="submit" onclick="signupUser()">
-              Create Account
-            </button>
-          </form>
-          <div class="relative my-6">
-            <div class="absolute inset-0 flex items-center">
-              <span class="w-full border-t border-outline-variant/15"></span>
-            </div>
-            <div class="relative flex justify-center text-xs">
-              <span class="px-4 bg-surface-container-low text-on-surface-variant uppercase tracking-widest rounded-full border border-outline-variant/10">or sign up with</span>
+              <button
+                class="w-full py-4 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all font-medium"
+                type="submit" onclick="signupUser()">
+                Create Account
+              </button>
+            </form>
+            <div class="relative my-6">
+              <div class="absolute inset-0 flex items-center">
+                <span class="w-full border-t border-outline-variant/15"></span>
+              </div>
             </div>
           </div>
-          <div class="flex justify-center">
-            <button class="flex items-center justify-center gap-3 py-3 px-6 rounded-xl bg-surface-container-high border border-outline-variant/20 hover:border-primary/40 transition-all group">
-              <img src="/assets/icons/google.png" class="w-5 h-5 opacity-80 group-hover:opacity-100"/>
-              <span class="text-sm font-medium text-on-surface">Google</span>
-            </button>
-          </div>
+          <!-- ===================== END BACK FACE ===================== -->
         </div>
-        <!-- ===================== END BACK FACE ===================== -->
- 
       </div>
-    </div>
- 
-    <p class="mt-8 text-[11px] font-label uppercase tracking-widest text-on-surface-variant/60">
-      © 2026 Talentra. All rights reserved.
-    </p>
-  </section>
-</main>
+
+      <p class="mt-8 text-[11px] font-label uppercase tracking-widest text-on-surface-variant/60">
+        © 2026 Talentra. All rights reserved.
+      </p>
+    </section>
+  </main>
 
 
-<footer class="md:fixed bottom-0 left-0 w-1/2 p-8 hidden md:flex items-center gap-8 text-[11px] font-label uppercase tracking-[0.2em] text-on-surface-variant/40">
-  <a class="hover:text-primary transition-colors" href="./legal.html">Privacy Policy</a>
-  <a class="hover:text-primary transition-colors" href="./legal.html">Terms of Service</a>
-  <a class="hover:text-primary transition-colors" href="./legal.html">Support</a>
-</footer>
+  <footer
+    class="md:fixed bottom-0 left-0 w-1/2 p-8 hidden md:flex items-center gap-8 text-[11px] font-label uppercase tracking-[0.2em] text-on-surface-variant/40">
+    <a class="hover:text-primary transition-colors" href="./legal.html">Privacy Policy</a>
+    <a class="hover:text-primary transition-colors" href="./legal.html">Terms of Service</a>
+    <a class="hover:text-primary transition-colors" href="./legal.html">Support</a>
+  </footer>
 
-<script>
-  /* ── Flip card ── */
-  function flip(toSignUp) {
-    const flipper = document.getElementById('flipper');
-    if (toSignUp) {
-      flipper.classList.add('flipped');
-    } else {
-      flipper.classList.remove('flipped');
-      resetLogin();
-    }
-    setTimeout(() => {
-      flipper.style.minHeight = flipper.scrollHeight + 'px';
-    }, 50);
-  }
- 
-  window.addEventListener('load', () => {
-    const flipper = document.getElementById('flipper');
-    flipper.style.minHeight = flipper.scrollHeight + 'px';
-  });
- 
-  /* ── Login state machine ── */
-  let otpTimerInterval = null;
-  let otpSent = false;
- 
-  function showState(id) {
-    ['login-default', 'login-email', 'login-mobile'].forEach(s => {
-      const el = document.getElementById(s);
-      if (el) el.classList.add('hidden');
-    });
-    const target = document.getElementById(id);
-    if (target) {
-      target.classList.remove('hidden');
-      // re-trigger animation
-      const anim = target.querySelector('.anim-in');
-      if (anim) { anim.classList.remove('anim-in'); void anim.offsetWidth; anim.classList.add('anim-in'); }
-    }
-    setTimeout(() => {
+  <script>
+    /* ── Flip card ── */
+    function flip(toSignUp) {
       const flipper = document.getElementById('flipper');
-      flipper.style.minHeight = flipper.scrollHeight + 'px';
-    }, 50);
-  }
- 
-  function showEmailLogin() { showState('login-email'); }
-  function showMobileLogin() { resetOTP(); showState('login-mobile'); }
- 
-  function resetLogin() {
-    clearInterval(otpTimerInterval);
-    otpSent = false;
-    resetOTP();
-    showState('login-default');
-  }
- 
-  function resetOTP() {
-    clearInterval(otpTimerInterval);
-    otpSent = false;
-    const sendBtn = document.getElementById('otp-send-btn');
-    if (sendBtn) { sendBtn.textContent = 'Send OTP'; sendBtn.className = 'hint-action'; }
-    const timer = document.getElementById('otp-timer');
-    if (timer) timer.style.display = 'none';
-    const otpField = document.getElementById('otp-field');
-    if (otpField) otpField.classList.add('hidden');
-    const otpInput = document.getElementById('otp-input');
-    if (otpInput) otpInput.value = '';
-    const signinWrap = document.getElementById('signin-btn-wrap');
-    if (signinWrap) signinWrap.classList.add('hidden');
-  }
- 
-  function sendOTP() {
-    if (otpSent) return;
-    otpSent = true;
- 
-    const sendBtn = document.getElementById('otp-send-btn');
-    sendBtn.textContent = 'OTP Sent';
-    sendBtn.className = 'hint-action sent';
- 
-    const timerEl = document.getElementById('otp-timer');
-    timerEl.style.display = 'inline';
- 
-    let secs = 30;
-    timerEl.textContent = '(' + secs + 's)';
- 
-    otpTimerInterval = setInterval(() => {
-      secs--;
-      if (secs > 0) {
-        timerEl.textContent = '(' + secs + 's)';
+      if (toSignUp) {
+        flipper.classList.add('flipped');
       } else {
-        clearInterval(otpTimerInterval);
-        timerEl.style.display = 'none';
-        sendBtn.textContent = 'Resend OTP';
-        sendBtn.className = 'hint-action';
-        otpSent = false;
+        flipper.classList.remove('flipped');
+        resetLogin();
       }
-    }, 1000);
- 
-    // Reveal OTP field
-    const otpField = document.getElementById('otp-field');
-    otpField.classList.remove('hidden');
-    otpField.classList.add('anim-in');
- 
-    setTimeout(() => {
+      setTimeout(() => {
+        flipper.style.minHeight = flipper.scrollHeight + 'px';
+      }, 50);
+    }
+
+    window.addEventListener('load', () => {
       const flipper = document.getElementById('flipper');
       flipper.style.minHeight = flipper.scrollHeight + 'px';
-    }, 50);
-  }
- 
-  function verifyOTP() {
-    const wrap = document.getElementById('signin-btn-wrap');
-    wrap.classList.remove('hidden');
-    wrap.classList.add('anim-in');
-    setTimeout(() => {
-      const flipper = document.getElementById('flipper');
-      flipper.style.minHeight = flipper.scrollHeight + 'px';
-    }, 50);
-  }
+    });
 
-// SIGNUP
-async function signupUser() {
-  const firstName = document.getElementById("signup-firstname").value;
-  const lastName = document.getElementById("signup-lastname").value;
-  const email = document.getElementById("signup-email").value;
-  const phone = document.getElementById("signup-phone").value;
-  const password = document.getElementById("signup-password").value;
-  const confirmPassword = document.getElementById("signup-confirm-password").value;
+    /* ── Login state machine ── */
+    let otpTimerInterval = null;
+    let otpSent = false;
 
-  if (!firstName || !lastName || !email || !password) {
-    alert("Please fill all required fields");
-    return;
-  }
+    function showState(id) {
+      ['login-default', 'login-email', 'login-mobile'].forEach(s => {
+        const el = document.getElementById(s);
+        if (el) el.classList.add('hidden');
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.remove('hidden');
+        // re-trigger animation
+        const anim = target.querySelector('.anim-in');
+        if (anim) { anim.classList.remove('anim-in'); void anim.offsetWidth; anim.classList.add('anim-in'); }
+      }
+      setTimeout(() => {
+        const flipper = document.getElementById('flipper');
+        flipper.style.minHeight = flipper.scrollHeight + 'px';
+      }, 50);
+    }
+    async function checkUsernameAndProceed(type) {
+      const username = document.getElementById("login-username").value.trim();
 
-  if (password !== confirmPassword) {
-    alert("Passwords do not match");
-    return;
-  }
+      if (!username) {
+        alert("Enter full name");
+        return;
+      }
 
-  const res = await fetch("http://127.0.0.1:8000/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      first_name: firstName,
-      last_name: lastName,
-      email: email,
-      phone: phone,
-      password: password
-    })
-  });
+      const res = await fetch("http://127.0.0.1:8000/check-username", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ username })
+      });
 
-  const data = await res.json();
+      const data = await res.json();
 
-  if (data.message !== "New User Created") {
-    alert("User already exists. Redirect to login....");
-    flip(false); // switch to login tab
-    return;
-  }
+      if (!data.exists) {
+        alert("Wrong username ❌");
+        return;
+      }
 
-  alert("Signup successful ✅");
-  window.location.href = "./result.html";
-}
+      // ✅ ADD THIS LINE (VERY IMPORTANT)
+      localStorage.setItem("login_username", username);
+
+      if (type === "email") {
+        showEmailLogin();
+      } else {
+        showMobileLogin();
+      }
+    }
+    function showEmailLogin() { showState('login-email'); }
+    function showMobileLogin() { resetOTP(); showState('login-mobile'); }
+
+    function resetLogin() {
+      clearInterval(otpTimerInterval);
+      otpSent = false;
+      resetOTP();
+      showState('login-default');
+    }
+
+    function resetOTP() {
+      clearInterval(otpTimerInterval);
+      otpSent = false;
+      const sendBtn = document.getElementById('otp-send-btn');
+      if (sendBtn) { sendBtn.textContent = 'Send OTP'; sendBtn.className = 'hint-action'; }
+      const timer = document.getElementById('otp-timer');
+      if (timer) timer.style.display = 'none';
+      const otpField = document.getElementById('otp-field');
+      if (otpField) otpField.classList.add('hidden');
+      const otpInput = document.getElementById('otp-input');
+      if (otpInput) otpInput.value = '';
+      const signinWrap = document.getElementById('signin-btn-wrap');
+      if (signinWrap) signinWrap.classList.add('hidden');
+    }
+
+    function sendOTP() {
+      if (otpSent) return;
+      otpSent = true;
+
+      const sendBtn = document.getElementById('otp-send-btn');
+      sendBtn.textContent = 'OTP Sent';
+      sendBtn.className = 'hint-action sent';
+
+      const timerEl = document.getElementById('otp-timer');
+      timerEl.style.display = 'inline';
+
+      let secs = 30;
+      timerEl.textContent = '(' + secs + 's)';
+
+      otpTimerInterval = setInterval(() => {
+        secs--;
+        if (secs > 0) {
+          timerEl.textContent = '(' + secs + 's)';
+        } else {
+          clearInterval(otpTimerInterval);
+          timerEl.style.display = 'none';
+          sendBtn.textContent = 'Resend OTP';
+          sendBtn.className = 'hint-action';
+          otpSent = false;
+        }
+      }, 1000);
+
+      // Reveal OTP field
+      const otpField = document.getElementById('otp-field');
+      otpField.classList.remove('hidden');
+      otpField.classList.add('anim-in');
+
+      setTimeout(() => {
+        const flipper = document.getElementById('flipper');
+        flipper.style.minHeight = flipper.scrollHeight + 'px';
+      }, 50);
+    }
+
+    function verifyOTP() {
+      const wrap = document.getElementById('signin-btn-wrap');
+      wrap.classList.remove('hidden');
+      wrap.classList.add('anim-in');
+      setTimeout(() => {
+        const flipper = document.getElementById('flipper');
+        flipper.style.minHeight = flipper.scrollHeight + 'px';
+      }, 50);
+    }
+
+    // SIGNUP
+    async function signupUser() {
+      const firstName = document.getElementById("signup-firstname").value;
+      const lastName = document.getElementById("signup-lastname").value;
+      const email = document.getElementById("signup-email").value;
+      const phone = document.getElementById("signup-phone").value;
+      const password = document.getElementById("signup-password").value;
+      const confirmPassword = document.getElementById("signup-confirm-password").value;
+
+      if (!firstName || !lastName || !email || !password) {
+        alert("Please fill all required fields");
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+
+      const res = await fetch("http://127.0.0.1:8000/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          phone: phone,
+          password: password
+        })
+      });
+
+      const data = await res.json();
+
+      if (data.message !== "New User Created") {
+        alert("User already exists. Redirect to login....");
+        flip(false); // switch to login tab
+        return;
+      }
+
+      localStorage.setItem("user_email", email);
+      alert("Signup successful ✅");
+      window.location.href = "./result.html";
+    }
 
 
-// LOGIN
-async function loginUser() {
-  const email = document.querySelector('#login-email input[type="email"]').value;
-  const password = document.querySelector('#login-email input[type="password"]').value;
+    // LOGIN
+    async function loginUser() {
+      const email = document.querySelector('#login-email input[type="email"]').value;
+      const password = document.querySelector('#login-email input[type="password"]').value;
 
-  if (!email || !password) {
-    alert("Enter email and password");
-    return;
-  }
+      if (!email || !password) {
+        alert("Enter email and password");
+        return;
+      }
 
-  const res = await fetch("http://127.0.0.1:8000/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, password })
-  });
+      const res = await fetch("http://127.0.0.1:8000/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+      });
 
-  const data = await res.json();
+      const data = await res.json();
 
-  if (res.status !== 200 || data.message !== "Login successful") {
-    alert(data.message || "Login failed");
-    return;
-  }
+      if (res.status !== 200 || data.message !== "Login successful") {
+        alert(data.message || "Login failed");
+        return;
+      }
 
-  alert("Login successful ✅");
-  window.location.href = "./result.html";  // redirect after login
-}
-</script>
+      localStorage.setItem("user_email", email);
+      alert("Login successful ✅");
+      window.location.href = "./result.html";  // redirect after login
+    }
+  </script>
 </body>
+
 </html>
- 

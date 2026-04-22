@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Candidate Evaluation Result - Talentra</title>
 
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
 
   <script>
     tailwind.config = {
@@ -53,24 +57,72 @@
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
     }
+
+    .candidate-card {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .candidate-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(192, 193, 255, 0.08);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card-animate {
+      animation: fadeInUp 0.4s ease forwards;
+      opacity: 0;
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(1);
+        opacity: 0.6;
+      }
+
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+      }
+    }
+
+    .empty-pulse::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid #424754;
+      position: absolute;
+      animation: pulse-ring 2s infinite;
+    }
   </style>
 </head>
 
 <body class="bg-surface text-on-surface font-body selection:bg-primary/30">
 
-<!-- Navbar -->
+  <!-- Navbar -->
   <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div
+      class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
       </div>
-
       <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
         <a href="./result.html" class="text-primary border-b-2 border-primary pb-1">Dashboard</a>
         <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
         <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
         <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
-        
       </nav>
     </div>
   </header>
@@ -82,172 +134,283 @@
       <!-- Page Heading -->
       <section class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h2 class="text-3xl md:text-4xl font-black font-headline text-on-surface">Candidate Evaluation Result</h2>
-          <p class="text-sm text-on-surface-variant mt-2">Final assessment will appear here after the interview is completed.</p>
+          <h2 class="text-3xl md:text-4xl font-black font-headline text-on-surface">Candidate Evaluations</h2>
+          <p class="text-sm text-on-surface-variant mt-2">All completed interview evaluations are listed below.</p>
+        </div>
+        <div id="stats-bar" class="hidden flex items-center gap-6">
+          <div class="text-center">
+            <div id="stat-total" class="text-2xl font-black font-headline text-on-surface">0</div>
+            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Total</div>
+          </div>
+          <div class="w-px h-8 bg-outline-variant/40"></div>
+          <div class="text-center">
+            <div id="stat-shortlisted" class="text-2xl font-black font-headline text-primary">0</div>
+            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Shortlisted</div>
+          </div>
+          <div class="w-px h-8 bg-outline-variant/40"></div>
+          <div class="text-center">
+            <div id="stat-rejected" class="text-2xl font-black font-headline text-secondary">0</div>
+            <div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Rejected</div>
+          </div>
         </div>
       </section>
 
-      <!-- Top Section -->
-      <section class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        <!-- Match Score -->
-        <div class="lg:col-span-4 bg-surface-container-low rounded-[1.5rem] p-8 flex flex-col items-center justify-center">
-          <h3 class="font-headline text-on-surface-variant text-sm tracking-widest uppercase mb-8">Match Score</h3>
-
-          <div class="relative w-48 h-48 flex items-center justify-center">
-            <svg class="w-full h-full -rotate-90">
-              <circle class="text-surface-container-high" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="12"></circle>
-              <circle class="text-primary" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="553" stroke-dashoffset="553" stroke-linecap="round" stroke-width="12"></circle>
-            </svg>
-
-            <div class="absolute flex flex-col items-center text-center">
-              <span class="text-4xl font-black font-headline text-on-surface">No Value</span>
-              <span class="text-xs text-on-surface-variant font-bold tracking-widest uppercase mt-2">Not Evaluated</span>
+      <!-- Empty State -->
+      <section id="empty-state" class="hidden">
+        <div class="flex flex-col items-center justify-center py-32 text-center space-y-6">
+          <div class="relative flex items-center justify-center empty-pulse">
+            <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center">
+              <span class="material-symbols-outlined text-outline text-4xl">person_search</span>
             </div>
           </div>
-        </div>
-
-        <!-- Executive Summary -->
-        <div class="lg:col-span-8 bg-surface-container-low rounded-[1.5rem] p-8 space-y-6">
-          <div class="flex justify-between items-start gap-4">
-            <div>
-              <h3 class="font-headline text-lg font-bold text-on-surface">Interview Executive Summary</h3>
-              <p class="text-sm text-on-surface-variant mt-1">Interview metadata will appear here after evaluation.</p>
-            </div>
-            <span class="bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">
-              No Value
-            </span>
+          <div class="space-y-2 mt-6">
+            <h3 class="text-xl font-bold font-headline text-on-surface">No Interviews Conducted Yet</h3>
+            <p class="text-sm text-on-surface-variant max-w-xs">Completed interview evaluations will appear here. Start
+              an interview to see candidate results.</p>
           </div>
-
-          <div class="space-y-4 text-on-surface-variant leading-relaxed">
-            <p>No Data Available</p>
-            <p>No interview insights generated yet.</p>
-            <p>Please complete at least one interview to auto-populate this section.</p>
-          </div>
+          <a href="./upload.html"
+            class="mt-4 inline-flex items-center gap-2 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold px-6 py-3 rounded-xl text-sm">
+            <span class="material-symbols-outlined text-base">add</span>
+            Start Interview
+          </a>
         </div>
       </section>
 
-      <!-- Scores -->
-      <section class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-primary/40">
-          <div class="flex justify-between items-center">
-            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Technical Proficiency</span>
-            <span class="material-symbols-outlined text-primary">code</span>
-          </div>
-          <div class="flex items-baseline space-x-2">
-            <span class="text-3xl font-black font-headline">No Value</span>
-          </div>
-          <div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
-            <div class="h-full bg-primary w-0"></div>
-          </div>
-          <p class="text-[10px] text-on-surface-variant leading-tight">No technical evaluation available yet.</p>
-        </div>
-
-        <div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-secondary/40">
-          <div class="flex justify-between items-center">
-            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Communication</span>
-            <span class="material-symbols-outlined text-secondary">chat_bubble</span>
-          </div>
-          <div class="flex items-baseline space-x-2">
-            <span class="text-3xl font-black font-headline">No Value</span>
-          </div>
-          <div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
-            <div class="h-full bg-secondary w-0"></div>
-          </div>
-          <p class="text-[10px] text-on-surface-variant leading-tight">No communication evaluation available yet.</p>
-        </div>
-
-        <div class="bg-surface-container-low p-6 rounded-xl space-y-4 border-l-4 border-tertiary/40">
-          <div class="flex justify-between items-center">
-            <span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest">Confidence Index</span>
-            <span class="material-symbols-outlined text-tertiary">psychology</span>
-          </div>
-          <div class="flex items-baseline space-x-2">
-            <span class="text-3xl font-black font-headline">No Value</span>
-          </div>
-          <div class="h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
-            <div class="h-full bg-tertiary w-0"></div>
-          </div>
-          <p class="text-[10px] text-on-surface-variant leading-tight">No confidence evaluation available yet.</p>
+      <!-- Candidate Cards Grid -->
+      <section id="cards-grid" class="hidden">
+        <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <!-- Cards injected here by JS -->
         </div>
       </section>
 
-      <!-- Fairness + Final Verdict -->
-      <section class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
-        
-        <div class="glass-panel rounded-[1.5rem] p-8 border border-outline-variant/10">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="w-10 h-10 rounded-xl bg-secondary/20 flex items-center justify-center">
-              <span class="material-symbols-outlined text-secondary">auto_awesome</span>
-            </div>
-            <h3 class="font-headline text-lg font-bold text-on-surface">AI Fairness Insight</h3>
-          </div>
-
-          <div class="space-y-4">
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              No Value
-            </p>
-            <p class="text-sm text-on-surface-variant leading-relaxed">
-              Fairness insights will be generated after the interview evaluation process is complete.
-            </p>
-          </div>
-
-          <div class="mt-6 pt-6 border-t border-outline-variant/10 flex justify-between items-center">
-            <span class="text-[10px] text-on-surface-variant uppercase tracking-widest">Audit Status: No Value</span>
-            <span class="text-secondary text-[10px] font-bold">VIEW AUDIT LOGS →</span>
-          </div>
-        </div>
-
-        <div class="bg-gradient-to-br from-[#262a30] to-[#181c21] rounded-[1.5rem] p-8 flex flex-col items-center justify-center text-center space-y-6 border border-primary/10">
-          <div class="w-16 h-16 rounded-full bg-primary/20 flex items-center justify-center mb-2">
-            <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">verified</span>
-          </div>
-
-          <div>
-            <h4 class="text-xs font-bold text-primary uppercase tracking-[0.3em] mb-2">Final Verdict</h4>
-            <h2 class="text-4xl font-black font-headline text-on-surface">No Value</h2>
-          </div>
-
-          <p class="text-on-surface-variant text-sm max-w-xs">
-            Final recommendation will be shown here after interview completion.
-          </p>
-
-          <div class="flex flex-col sm:flex-row gap-4 w-full pt-4">
-            <button class="flex-1 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-bold py-3 rounded-xl text-sm">
-              Download Report
-            </button>
-            <button class="flex-1 bg-surface-container-high text-primary border border-outline-variant/20 font-bold py-3 rounded-xl text-sm">
-              Re-analyze
-            </button>
-          </div>
-        </div>
-      </section>
     </div>
   </main>
 
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
-  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
-    <div class="space-y-4 text-center md:text-left">
-      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
-      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
+  <footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+      <div class="space-y-4 text-center md:text-left">
+        <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+        <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+      </div>
+      <div class="text-center md:text-right">
+        <p>
+          © 2026 Talentra. All rights reserved.
+          <span
+            class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">V1.0.0</span>
+        </p>
+      </div>
     </div>
-    <div class="flex flex-wrap justify-center gap-8">
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
-    </div>
-    <div class="text-center md:text-right">
-      <p>
-        © 2026 Talentra. All rights reserved.
-        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
-          V1.0.0
-        </span>
-      </p>
-    </div>
-  </div>
-</footer>
+  </footer>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────
+    //  DATABASE HOOK — replace this function with your real API call
+    //  Expected fields per candidate:
+    //    id, name, mobile, email, interviewDate, domain, verdict, matchScore
+    // ─────────────────────────────────────────────────────────────
+    async function fetchCandidates() {
+      try {
+        const email = localStorage.getItem("user_email") || "test@gmail.com";
+
+        const res = await fetch(`http://127.0.0.1:8000/my-reports?email=${email}`);
+        const data = await res.json();
+
+        return data.map(r => ({
+          id: r.id,
+          name: r.name || "Candidate",
+          mobile: r.phone || "-",
+          email: r.email || "-",
+          interviewDate: r.created_at,
+          domain: (() => {
+            if (!r.job_description) return "Evaluation";
+            const firstLine = r.job_description.trim().split('\n')[0].trim();
+            if (firstLine.toLowerCase().startsWith('role applied for:')) {
+              return firstLine.substring(17).trim();
+            }
+            return firstLine.length > 30 ? firstLine.substring(0, 30) + '...' : firstLine;
+          })(),
+          verdict: r.recommendation_percentage >= 70 ? 'Shortlisted' : r.recommendation_percentage >= 50 ? 'Under Review' : 'Rejected',
+          matchScore: r.recommendation_percentage || r.resume_score || 0
+        }));
+
+      } catch (err) {
+        console.error("Error fetching reports:", err);
+        return [];
+      }
+    }
+
+    // Domain config
+    const domainConfig = {
+      "Full Stack Developer": { color: "text-primary", bg: "bg-primary/10", icon: "hub" },
+      "Frontend Developer": { color: "text-tertiary", bg: "bg-tertiary/10", icon: "web" },
+      "Backend Developer": { color: "text-secondary", bg: "bg-secondary/10", icon: "dns" },
+      "Data Scientist": { color: "text-tertiary", bg: "bg-tertiary/10", icon: "analytics" },
+      "DevOps Engineer": { color: "text-primary", bg: "bg-primary/10", icon: "terminal" },
+      "Mobile Developer": { color: "text-secondary", bg: "bg-secondary/10", icon: "smartphone" },
+      "UI/UX Designer": { color: "text-tertiary", bg: "bg-tertiary/10", icon: "palette" },
+      "Machine Learning Engineer": { color: "text-primary", bg: "bg-primary/10", icon: "psychology" }
+    };
+
+    function getDomainCfg(domain) {
+      return domainConfig[domain] || { color: "text-on-surface-variant", bg: "bg-surface-container-high", icon: "work" };
+    }
+
+    function verdictStyle(verdict) {
+      const v = (verdict || "").toLowerCase();
+      if (v === "shortlisted") return { cls: "bg-primary/10 text-primary", dot: "bg-primary" };
+      if (v === "rejected") return { cls: "bg-red-500/10 text-red-400", dot: "bg-red-400" };
+      if (v === "under review") return { cls: "bg-yellow-400/10 text-yellow-300", dot: "bg-yellow-300" };
+      if (v === "hired") return { cls: "bg-green-500/10 text-green-400", dot: "bg-green-400" };
+      return { cls: "bg-surface-container-high text-on-surface-variant", dot: "bg-outline" };
+    }
+
+    function scoreColor(score) {
+      if (score >= 75) return "text-primary";
+      if (score >= 50) return "text-yellow-300";
+      return "text-red-400";
+    }
+
+    function formatDate(dateStr) {
+      if (!dateStr) return "—";
+      return new Date(dateStr).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" });
+    }
+
+    function initials(name) {
+      if (!name) return "?";
+      const parts = name.trim().split(" ");
+      return parts.length >= 2
+        ? (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+        : parts[0][0].toUpperCase();
+    }
+
+    const avatarGradients = [
+      "from-primary/40 to-primary-container/60",
+      "from-secondary/40 to-purple-700/60",
+      "from-tertiary/40 to-blue-600/60",
+      "from-green-400/30 to-teal-600/50",
+      "from-orange-400/30 to-red-500/50"
+    ];
+    function avatarGrad(name) {
+      return avatarGradients[(name?.charCodeAt(0) ?? 0) % avatarGradients.length];
+    }
+
+    function escHtml(str) {
+      return String(str || "")
+        .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    function buildCard(candidate, index) {
+      const dc = getDomainCfg(candidate.domain);
+      const vs = verdictStyle(candidate.verdict);
+      const sc = scoreColor(candidate.matchScore);
+      const grad = avatarGrad(candidate.name);
+      const strokeOffset = 100.5 - (candidate.matchScore / 100) * 100.5;
+      const strokeColor = candidate.matchScore >= 75 ? '#c0c1ff' : candidate.matchScore >= 50 ? '#fde047' : '#f87171';
+
+      return `
+      <div class="candidate-card card-animate bg-surface-container-low rounded-[1.5rem] p-6 flex flex-col gap-5 border border-outline-variant/10 relative overflow-hidden"
+           style="animation-delay:${index * 80}ms">
+        <div class="absolute top-0 right-0 w-32 h-32 rounded-full bg-primary/5 -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+        <!-- Header -->
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${grad} flex items-center justify-center flex-shrink-0">
+              <span class="font-black font-headline text-on-surface text-sm">${initials(candidate.name)}</span>
+            </div>
+            <div>
+              <h3 class="font-headline font-bold text-on-surface text-base leading-tight">${escHtml(candidate.name)}</h3>
+              <div class="mt-1 inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${dc.bg} ${dc.color}">
+                <span class="material-symbols-outlined text-[12px]">${dc.icon}</span>
+                ${escHtml(candidate.domain)}
+              </div>
+            </div>
+          </div>
+          <span class="flex-shrink-0 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${vs.cls}">
+            <span class="w-1.5 h-1.5 rounded-full ${vs.dot}"></span>
+            ${escHtml(candidate.verdict || "Pending")}
+          </span>
+        </div>
+
+        <!-- Info -->
+        <div class="space-y-2.5">
+          <div class="flex items-center gap-2 text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-[16px] text-outline">call</span>
+            <span>${escHtml(candidate.mobile)}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-[16px] text-outline">mail</span>
+            <span class="truncate">${escHtml(candidate.email)}</span>
+          </div>
+          <div class="flex items-center gap-2 text-sm text-on-surface-variant">
+            <span class="material-symbols-outlined text-[16px] text-outline">calendar_today</span>
+            <span>${formatDate(candidate.interviewDate)}</span>
+          </div>
+        </div>
+
+        <div class="h-px w-full bg-outline-variant/20"></div>
+
+        <!-- Score + Button -->
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="relative w-10 h-10">
+              <svg class="w-full h-full -rotate-90" viewBox="0 0 40 40">
+                <circle cx="20" cy="20" r="16" fill="none" stroke="#262a30" stroke-width="4"/>
+                <circle cx="20" cy="20" r="16" fill="none"
+                  stroke="${strokeColor}" stroke-width="4"
+                  stroke-dasharray="100.5" stroke-dashoffset="${strokeOffset}"
+                  stroke-linecap="round"/>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-[9px] font-black font-headline ${sc}">${candidate.matchScore}%</span>
+              </div>
+            </div>
+            <div>
+              <div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Match</div>
+              <div class="text-sm font-bold font-headline ${sc}">${candidate.matchScore}%</div>
+            </div>
+          </div>
+          <a href="./report.html?id=${encodeURIComponent(candidate.id)}"
+             class="inline-flex items-center gap-2 bg-gradient-to-r from-primary/20 to-primary-container/20 hover:from-primary/30 hover:to-primary-container/30 border border-primary/20 text-primary font-bold px-4 py-2.5 rounded-xl text-xs transition-all">
+            <span class="material-symbols-outlined text-[15px]">open_in_new</span>
+            View Report
+          </a>
+        </div>
+      </div>`;
+    }
+
+    function renderStats(candidates) {
+      document.getElementById("stat-total").textContent = candidates.length;
+      document.getElementById("stat-shortlisted").textContent = candidates.filter(c => c.verdict?.toLowerCase() === "shortlisted").length;
+      document.getElementById("stat-rejected").textContent = candidates.filter(c => c.verdict?.toLowerCase() === "rejected").length;
+      document.getElementById("stats-bar").classList.remove("hidden");
+      document.getElementById("stats-bar").classList.add("flex");
+    }
+
+    async function init() {
+      const candidates = await fetchCandidates();
+
+      if (!candidates || candidates.length === 0) {
+        document.getElementById("empty-state").classList.remove("hidden");
+        return;
+      }
+
+      renderStats(candidates);
+      document.getElementById("cards-container").innerHTML = candidates.map((c, i) => buildCard(c, i)).join("");
+      document.getElementById("cards-grid").classList.remove("hidden");
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
 
 </body>
+
 </html>

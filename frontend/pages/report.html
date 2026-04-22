@@ -1,105 +1,126 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Talentra | Candidate Report</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-          "surface": "#101419",
-          "surface-container-lowest": "#0a0e13",
-          "on-secondary-fixed-variant": "#6900b3",
-          "on-secondary-container": "#d6a9ff",
-          "inverse-on-surface": "#2d3136",
-          "error": "#ffb4ab",
-          "primary-container": "#8083ff",
-          "on-surface": "#e0e2ea",
-          "on-secondary-fixed": "#2c0051",
-          "inverse-surface": "#e0e2ea",
-          "on-secondary": "#490080",
-          "on-error": "#690005",
-          "on-primary-fixed": "#07006c",
-          "primary": "#c0c1ff",
-          "surface-variant": "#31353b",
-          "secondary": "#ddb7ff",
-          "on-tertiary-container": "#002d40",
-          "surface-bright": "#36393f",
-          "on-tertiary": "#00354a",
-          "surface-tint": "#c0c1ff",
-          "on-primary-container": "#0d0096",
-          "secondary-fixed-dim": "#ddb7ff",
-          "secondary-fixed": "#f0dbff",
-          "surface-container-highest": "#31353b",
-          "on-surface-variant": "#c2c6d6",
-          "inverse-primary": "#494bd6",
-          "surface-container-high": "#262a30",
-          "tertiary": "#7bd0ff",
-          "on-tertiary-fixed": "#001e2c",
-          "on-error-container": "#ffdad6",
-          "on-primary-fixed-variant": "#2f2ebe",
-          "outline-variant": "#424754",
-          "secondary-container": "#6f00be",
-          "surface-container-low": "#181c21",
-          "surface-dim": "#101419",
-          "background": "#101419",
-          "tertiary-container": "#009bd1",
-          "tertiary-fixed-dim": "#7bd0ff",
-          "on-primary": "#1000a9",
-          "surface-container": "#1c2025",
-          "error-container": "#93000a",
-          "tertiary-fixed": "#c4e7ff",
-          "on-tertiary-fixed-variant": "#004c69",
-          "on-background": "#e0e2ea",
-          "outline": "#8c909f",
-          "primary-fixed-dim": "#c0c1ff",
-          "primary-fixed": "#e1e0ff"
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Talentra | Candidate Report</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#101419",
+            "surface-container-lowest": "#0a0e13",
+            "on-secondary-fixed-variant": "#6900b3",
+            "on-secondary-container": "#d6a9ff",
+            "inverse-on-surface": "#2d3136",
+            "error": "#ffb4ab",
+            "primary-container": "#8083ff",
+            "on-surface": "#e0e2ea",
+            "on-secondary-fixed": "#2c0051",
+            "inverse-surface": "#e0e2ea",
+            "on-secondary": "#490080",
+            "on-error": "#690005",
+            "on-primary-fixed": "#07006c",
+            "primary": "#c0c1ff",
+            "surface-variant": "#31353b",
+            "secondary": "#ddb7ff",
+            "on-tertiary-container": "#002d40",
+            "surface-bright": "#36393f",
+            "on-tertiary": "#00354a",
+            "surface-tint": "#c0c1ff",
+            "on-primary-container": "#0d0096",
+            "secondary-fixed-dim": "#ddb7ff",
+            "secondary-fixed": "#f0dbff",
+            "surface-container-highest": "#31353b",
+            "on-surface-variant": "#c2c6d6",
+            "inverse-primary": "#494bd6",
+            "surface-container-high": "#262a30",
+            "tertiary": "#7bd0ff",
+            "on-tertiary-fixed": "#001e2c",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "outline-variant": "#424754",
+            "secondary-container": "#6f00be",
+            "surface-container-low": "#181c21",
+            "surface-dim": "#101419",
+            "background": "#101419",
+            "tertiary-container": "#009bd1",
+            "tertiary-fixed-dim": "#7bd0ff",
+            "on-primary": "#1000a9",
+            "surface-container": "#1c2025",
+            "error-container": "#93000a",
+            "tertiary-fixed": "#c4e7ff",
+            "on-tertiary-fixed-variant": "#004c69",
+            "on-background": "#e0e2ea",
+            "outline": "#8c909f",
+            "primary-fixed-dim": "#c0c1ff",
+            "primary-fixed": "#e1e0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
         },
-        "borderRadius": {
-          "DEFAULT": "0.25rem",
-          "lg": "0.5rem",
-          "xl": "0.75rem",
-          "full": "9999px"
-        },
-        "fontFamily": {
-          "headline": ["Manrope"],
-          "body": ["Inter"],
-          "label": ["Inter"]
-        }
-      },
+      }
     }
-  }
-</script>
-<style>
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  }
-  @media print {
-    .no-print { display: none !important; }
-    body { background: white !important; color: #101419 !important; }
-    .print-container { box-shadow: none !important; margin: 0 !important; width: 100% !important; max-width: 100% !important; }
-  }
-  .glass-panel {
-    background: rgba(49, 53, 59, 0.15);
-    backdrop-filter: blur(20px);
-  }
-  /* Animated score ring */
-  #score-ring {
-    transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-</style>
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+
+    @media print {
+      .no-print {
+        display: none !important;
+      }
+
+      body {
+        background: white !important;
+        color: #101419 !important;
+      }
+
+      .print-container {
+        box-shadow: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+    }
+
+    .glass-panel {
+      background: rgba(49, 53, 59, 0.15);
+      backdrop-filter: blur(20px);
+    }
+
+    /* Animated score ring */
+    #score-ring {
+      transition: stroke-dashoffset 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
 </head>
+
 <body class="bg-surface text-on-surface font-body selection:bg-primary selection:text-on-primary">
 
-<!-- Navbar -->
+  <!-- Navbar -->
   <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+    <div
+      class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
       </div>
@@ -109,372 +130,444 @@
         <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
         <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
         <a href="./report.html" class="text-primary border-b-2 border-primary pb-1">Report</a>
-        
+
       </nav>
     </div>
   </header>
 
-<!-- Main Content -->
-<main class="pt-10 pb-12 max-w-7xl mx-auto px-6 md:px-10">
+  <!-- Main Content -->
+  <main class="pt-10 pb-12 max-w-7xl mx-auto px-6 md:px-10">
 
-  <!-- PAGE HEADER (OUTSIDE CARD) -->
-  <div class="mb-10">
-    <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
-      Candidate Report
-    </h2>
-    <p class="text-on-surface-variant font-medium">
-      Comprehensive AI-generated evaluation and hiring recommendation.
-    </p>
-  </div>
-
-  <!-- CARD -->
-  <div class="print-container w-full bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
-    
-    <!-- Background Decorative Elements -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
-
-    <!-- Report Header -->
-    <div class="relative flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
-      <div>
-        <div class="flex items-center gap-2 mb-4" id="header-badge-row">
-          <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase hidden" id="assessment-badge">Candidate Assessment</span>
-          <span class="text-on-surface-variant text-xs hidden" id="candidate-id-tag"></span>
-        </div>
-        <!-- Skeleton placeholder shown before evaluation -->
-        <div id="name-skeleton" class="mb-2">
-          <div class="h-12 w-72 bg-surface-container-high rounded-2xl animate-pulse"></div>
-        </div>
-        <h2 class="text-5xl font-black font-headline text-on-surface tracking-tight mb-2 hidden" id="candidate-name"></h2>
-        <!-- Title skeleton -->
-        <div id="title-skeleton">
-          <div class="h-6 w-48 bg-surface-container-high rounded-xl animate-pulse mt-2"></div>
-        </div>
-        <p class="text-xl text-on-surface-variant font-medium hidden" id="candidate-title"></p>
-      </div>
-
-      <!-- Dynamic Match Score Dial -->
-      <div class="flex flex-col items-center">
-        <div class="relative w-32 h-32 flex items-center justify-center">
-          <svg class="w-full h-full -rotate-90" viewBox="0 0 128 128">
-            <!-- Track -->
-            <circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="58"
-              stroke="currentColor" stroke-width="8"/>
-            <!-- Animated Score Ring (0% by default = full dashoffset = 364.4) -->
-            <circle id="score-ring" cx="64" cy="64" fill="transparent" r="58"
-              stroke="url(#scoreGrad)" stroke-width="8"
-              stroke-dasharray="364.4" stroke-dashoffset="364.4"
-              stroke-linecap="round"/>
-            <defs>
-              <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#c0c1ff"/>
-                <stop offset="100%" stop-color="#ddb7ff"/>
-              </linearGradient>
-            </defs>
-          </svg>
-          <div class="absolute flex flex-col items-center">
-            <span class="text-3xl font-black font-headline text-on-surface" id="score-label">0%</span>
-            <span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Match</span>
-          </div>
-        </div>
-        <p class="text-xs text-on-surface-variant mt-2 text-center">Awaiting AI<br/>Evaluation</p>
-      </div>
-    </div>
-
-    <!-- Document Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
-      <!-- Sidebar Info -->
-      <div class="md:col-span-4 space-y-10">
-        <section>
-          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Core Vitals</h4>
-          <div class="space-y-4">
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-on-surface-variant text-lg">work</span>
-              <span class="text-sm text-on-surface" id="info-exp">8+ Years Experience</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-on-surface-variant text-lg">school</span>
-              <span class="text-sm text-on-surface" id="info-edu">MA, Visual Systems</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-on-surface-variant text-lg">payments</span>
-              <span class="text-sm text-on-surface" id="info-salary">$165k - $180k Range</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="material-symbols-outlined text-on-surface-variant text-lg">schedule</span>
-              <span class="text-sm text-on-surface" id="info-avail">Immediate Availability</span>
-            </div>
-          </div>
-        </section>
-
-        <section class="p-6 bg-surface-container-high rounded-3xl border border-outline-variant/5">
-          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-secondary mb-6">FairLens Insight</h4>
-          <p class="text-sm leading-relaxed text-on-surface-variant" id="ai-insight">
-            AI analysis pending. Upload a resume or complete an interview to generate insights.
-          </p>
-        </section>
-
-        <section>
-          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Social Context</h4>
-          <div class="flex gap-4">
-            <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-on-surface">link</span>
-            </div>
-            <div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center hover:bg-primary/20 transition-all cursor-pointer">
-              <span class="material-symbols-outlined text-on-surface">language</span>
-            </div>
-          </div>
-        </section>
-      </div>
-
-      <!-- Main Assessment -->
-      <div class="md:col-span-8 space-y-12">
-        <!-- Interview Summary -->
-        <section>
-          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Executive Summary</h4>
-          <p class="text-lg leading-relaxed font-light text-on-surface" id="exec-summary">
-            No evaluation data yet. Please upload a candidate resume or conduct an AI interview to generate the executive summary and competency scores.
-          </p>
-        </section>
-
-        <!-- Scores Grid -->
-        <section>
-          <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Competency Scorecard</h4>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-              <span class="text-xs text-on-surface-variant">Technical Skill</span>
-              <div class="flex items-center gap-3">
-                <span class="text-2xl font-bold font-headline" id="score-tech">—</span>
-                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-                  <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-tech" style="width:0%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-              <span class="text-xs text-on-surface-variant">Communication</span>
-              <div class="flex items-center gap-3">
-                <span class="text-2xl font-bold font-headline" id="score-comm">—</span>
-                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-                  <div class="h-full bg-secondary rounded-full transition-all duration-700" id="bar-comm" style="width:0%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-              <span class="text-xs text-on-surface-variant">Problem Solving</span>
-              <div class="flex items-center gap-3">
-                <span class="text-2xl font-bold font-headline" id="score-prob">—</span>
-                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-                  <div class="h-full bg-primary rounded-full transition-all duration-700" id="bar-prob" style="width:0%"></div>
-                </div>
-              </div>
-            </div>
-            <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
-              <span class="text-xs text-on-surface-variant">Leadership Potential</span>
-              <div class="flex items-center gap-3">
-                <span class="text-2xl font-bold font-headline" id="score-lead">—</span>
-                <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
-                  <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-lead" style="width:0%"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Recommendation Badge -->
-        <section class="relative p-1 rounded-3xl bg-gradient-to-br from-outline-variant/30 to-outline-variant/10" id="rec-badge">
-          <div class="bg-surface-container-low rounded-[1.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-6">
-              <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center">
-                <span class="material-symbols-outlined text-on-surface-variant text-4xl">pending</span>
-              </div>
-              <div>
-                <h3 class="text-2xl font-black font-headline" id="rec-title">Awaiting Evaluation</h3>
-                <p class="text-sm text-on-surface-variant" id="rec-sub">Complete AI analysis to get a recommendation.</p>
-              </div>
-            </div>
-            <div class="text-right">
-              <span class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant block mb-1">Status</span>
-              <span class="text-on-surface font-semibold bg-surface-container-highest px-4 py-1.5 rounded-full text-xs" id="rec-status">Pending</span>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-
-    <!-- Footer Details -->
-    <footer class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-[10px] tracking-widest uppercase">
-      <div class="flex items-center gap-2">
-        <span class="font-bold text-on-surface">Talentra</span>
-        <span class="opacity-40">Security Verified</span>
-      </div>
-      <button onclick="window.print()"
-        class="flex items-center gap-2 px-5 py-2 rounded-xl font-bold bg-primary-container text-on-primary-container hover:opacity-90 transition-all normal-case text-xs tracking-normal">
-        <span class="material-symbols-outlined text-sm">print</span> Export PDF
-      </button>
-    </footer>
-  </div>
-</main>
-
-<!-- Global Footer -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
-  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
-    <div class="space-y-4 text-center md:text-left">
-      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
-      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
-    </div>
-    <div class="flex flex-wrap justify-center gap-8">
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
-    </div>
-    <div class="text-center md:text-right">
-      <p>
-        © 2026 Talentra. All rights reserved.
-        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
-          V1.0.0
-        </span>
+    <!-- PAGE HEADER (OUTSIDE CARD) -->
+    <div class="mb-10">
+      <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
+        Candidate Report
+      </h2>
+      <p class="text-on-surface-variant font-medium">
+        Comprehensive AI-generated evaluation and hiring recommendation.
       </p>
     </div>
-  </div>
-</footer>
 
-<script>
-  // ── Dynamic Score Update ──────────────────────────────────────────────────
-  const CIRCUMFERENCE = 364.4; // 2 * π * 58
+    <!-- CARD -->
+    <div
+      class="print-container w-full bg-surface-container-low rounded-[2rem] p-8 md:p-16 shadow-2xl relative overflow-hidden border border-outline-variant/10">
 
-  function setScore(percent) {
-    const ring = document.getElementById('score-ring');
-    const label = document.getElementById('score-label');
-    const offset = CIRCUMFERENCE - (percent / 100) * CIRCUMFERENCE;
-    ring.style.strokeDashoffset = offset;
-    // Animate number
-    let current = 0;
-    const step = percent / 60;
-    const timer = setInterval(() => {
-      current = Math.min(current + step, percent);
-      label.textContent = Math.round(current) + '%';
-      if (current >= percent) clearInterval(timer);
-    }, 16);
-  }
+      <!-- Background Decorative Elements -->
+      <div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-[100px] -mr-48 -mt-48"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/5 rounded-full blur-[80px] -ml-32 -mb-32"></div>
 
-  function updateCompetency(id, barId, value) {
-    document.getElementById(id).textContent = value.toFixed(1);
-    document.getElementById(barId).style.width = (value / 5 * 100) + '%';
-  }
+      <!-- Report Header -->
+      <div class="relative flex flex-col md:flex-row justify-between items-start gap-8 mb-16">
+        <div>
+          <div class="flex items-center gap-2 mb-4" id="header-badge-row">
+            <span
+              class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase hidden"
+              id="assessment-badge">Candidate Assessment</span>
+            <span class="text-on-surface-variant text-xs hidden" id="candidate-id-tag"></span>
+          </div>
+          <!-- Skeleton placeholder shown before evaluation -->
+          <div id="name-skeleton" class="mb-2">
+            <div class="h-12 w-72 bg-surface-container-high rounded-2xl animate-pulse"></div>
+          </div>
+          <h2 class="text-5xl font-black font-headline text-on-surface tracking-tight mb-2 hidden" id="candidate-name">
+          </h2>
+          <!-- Title skeleton -->
+          <div id="title-skeleton">
+            <div class="h-6 w-48 bg-surface-container-high rounded-xl animate-pulse mt-2"></div>
+          </div>
+          <p class="text-xl text-on-surface-variant font-medium hidden" id="candidate-title"></p>
+        </div>
 
-  function applyEvaluation(data) {
-    // ── Candidate Identity ────────────────────────────────────────────────
-    // Hide skeletons, show real content
-    document.getElementById('name-skeleton').classList.add('hidden');
-    document.getElementById('title-skeleton').classList.add('hidden');
-    document.getElementById('assessment-badge').classList.remove('hidden');
-    document.getElementById('candidate-id-tag').classList.remove('hidden');
-    document.getElementById('candidate-name').classList.remove('hidden');
-    document.getElementById('candidate-title').classList.remove('hidden');
+        <!-- Dynamic Match Score Dial -->
+        <div class="flex flex-col items-center">
+          <div class="relative w-32 h-32 flex items-center justify-center">
+            <svg class="w-full h-full -rotate-90" viewBox="0 0 128 128">
+              <!-- Track -->
+              <circle class="text-surface-container-high" cx="64" cy="64" fill="transparent" r="58"
+                stroke="currentColor" stroke-width="8" />
+              <!-- Animated Score Ring (0% by default = full dashoffset = 364.4) -->
+              <circle id="score-ring" cx="64" cy="64" fill="transparent" r="58" stroke="url(#scoreGrad)"
+                stroke-width="8" stroke-dasharray="364.4" stroke-dashoffset="364.4" stroke-linecap="round" />
+              <defs>
+                <linearGradient id="scoreGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#c0c1ff" />
+                  <stop offset="100%" stop-color="#ddb7ff" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="absolute flex flex-col items-center">
+              <span class="text-3xl font-black font-headline text-on-surface" id="score-label">0%</span>
+              <span class="text-[10px] font-bold tracking-widest uppercase opacity-60">Match</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    document.getElementById('candidate-name').textContent = data.candidateName || 'Candidate';
-    document.getElementById('candidate-title').textContent = data.candidateTitle || '';
-    document.getElementById('candidate-id-tag').textContent = '• ID: ' + (data.candidateId || 'TL-0000');
+      <!-- Document Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
+        <!-- Sidebar Info -->
+        <div class="md:col-span-4 space-y-10">
+          <section>
+            <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Core Vitals</h4>
+            <div class="space-y-4">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-on-surface-variant text-lg">mail</span>
+                <span class="text-sm text-on-surface" id="info-email">Email missing</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-on-surface-variant text-lg">phone</span>
+                <span class="text-sm text-on-surface" id="info-phone">Phone missing</span>
+              </div>
 
-    // ── Scores ────────────────────────────────────────────────────────────
-    setScore(data.score);
-    updateCompetency('score-tech', 'bar-tech', data.tech);
-    updateCompetency('score-comm', 'bar-comm', data.comm);
-    updateCompetency('score-prob', 'bar-prob', data.prob);
-    updateCompetency('score-lead', 'bar-lead', data.lead);
+            </div>
+          </section>
 
-    // ── Text Fields ───────────────────────────────────────────────────────
-    document.getElementById('exec-summary').textContent = data.summary;
-    document.getElementById('ai-insight').textContent = data.insight;
+          <section class="p-6 bg-surface-container-high rounded-3xl border border-outline-variant/5">
+            <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-tertiary mb-4">Target Role Details</h4>
+            <div class="max-h-64 overflow-y-auto pr-2">
+              <p class="text-xs leading-relaxed text-on-surface-variant whitespace-pre-wrap" id="job-description-text">
+                No job description provided.</p>
+            </div>
+          </section>
+          <section>
+            <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Social Context</h4>
+            <div class="flex flex-col gap-4">
+              <!-- GitHub Box -->
+              <div
+                class="flex items-center justify-between p-3 bg-surface-container-high rounded-xl border border-outline-variant/10">
+                <div class="flex flex-col min-w-0 flex-1 pr-2">
+                  <span
+                    class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-1">GitHub</span>
+                  <span class="text-xs text-on-surface truncate" id="text-github">Not provided</span>
+                </div>
+                <button onclick="copyToClipboard(this, 'text-github')" title="Copy GitHub URL"
+                  class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container hover:bg-primary/20 transition-colors">
+                  <span class="material-symbols-outlined text-sm text-on-surface">content_copy</span>
+                </button>
+              </div>
 
-    // Core Vitals
-    if (data.experience) document.getElementById('info-exp').textContent = data.experience;
-    if (data.education)  document.getElementById('info-edu').textContent = data.education;
-    if (data.salary)     document.getElementById('info-salary').textContent = data.salary;
-    if (data.availability) document.getElementById('info-avail').textContent = data.availability;
+              <!-- LinkedIn Box -->
+              <div
+                class="flex items-center justify-between p-3 bg-surface-container-high rounded-xl border border-outline-variant/10">
+                <div class="flex flex-col min-w-0 flex-1 pr-2">
+                  <span
+                    class="text-[10px] font-bold tracking-widest text-on-surface-variant uppercase mb-1">LinkedIn</span>
+                  <span class="text-xs text-on-surface truncate" id="text-linkedin">Not provided</span>
+                </div>
+                <button onclick="copyToClipboard(this, 'text-linkedin')" title="Copy LinkedIn URL"
+                  class="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg bg-surface-container hover:bg-primary/20 transition-colors">
+                  <span class="material-symbols-outlined text-sm text-on-surface">content_copy</span>
+                </button>
+              </div>
+            </div>
+          </section>
+        </div>
 
-    // ── Recommendation Badge ──────────────────────────────────────────────
-    document.getElementById('rec-title').textContent = data.recommendation;
-    document.getElementById('rec-sub').textContent = data.recSub;
-    document.getElementById('rec-status').textContent = data.status;
+        <!-- Main Assessment -->
+        <div class="md:col-span-8 space-y-12">
+          <!-- Interview Summary -->
+          <section>
+            <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Executive Summary</h4>
+            <p class="text-lg leading-relaxed font-light text-on-surface" id="exec-summary">
+              No evaluation data yet. Please upload a candidate resume or conduct an AI interview to generate the
+              executive summary and competency scores.
+            </p>
+          </section>
 
-    const badge = document.getElementById('rec-badge');
-    const iconEl = badge.querySelector('.material-symbols-outlined');
-    const iconWrap = iconEl.parentElement;
+          <!-- Scores Grid -->
+          <section>
+            <h4 class="text-[10px] font-bold tracking-[0.2em] uppercase text-primary mb-6">Competency Scorecard</h4>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+                <span class="text-xs text-on-surface-variant">Technical Skill</span>
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl font-bold font-headline" id="score-tech">—</span>
+                  <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-tech"
+                      style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+                <span class="text-xs text-on-surface-variant">Communication</span>
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl font-bold font-headline" id="score-comm">—</span>
+                  <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-secondary rounded-full transition-all duration-700" id="bar-comm"
+                      style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+                <span class="text-xs text-on-surface-variant">Problem Solving</span>
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl font-bold font-headline" id="score-prob">—</span>
+                  <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-primary rounded-full transition-all duration-700" id="bar-prob"
+                      style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-5 bg-surface-container-lowest rounded-2xl flex flex-col gap-2">
+                <span class="text-xs text-on-surface-variant">Leadership Potential</span>
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl font-bold font-headline" id="score-lead">—</span>
+                  <div class="h-1 flex-1 bg-surface-container-high rounded-full overflow-hidden">
+                    <div class="h-full bg-tertiary rounded-full transition-all duration-700" id="bar-lead"
+                      style="width:0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
 
-    if (data.score >= 80) {
-      // Strong hire — gradient border, verified icon in primary color
-      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-primary to-secondary';
-      iconWrap.className = 'w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center';
-      iconEl.textContent = 'verified';
-      iconEl.className = 'material-symbols-outlined text-primary text-4xl';
-    } else if (data.score >= 60) {
-      // Consider — amber-ish neutral
-      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-tertiary/60 to-outline-variant/30';
-      iconWrap.className = 'w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center';
-      iconEl.textContent = 'thumb_up';
-      iconEl.className = 'material-symbols-outlined text-tertiary text-4xl';
-    } else {
-      // Not recommended
-      badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-error/40 to-outline-variant/10';
-      iconWrap.className = 'w-16 h-16 rounded-full bg-error/10 flex items-center justify-center';
-      iconEl.textContent = 'cancel';
-      iconEl.className = 'material-symbols-outlined text-error text-4xl';
+          <!-- Recommendation Badge -->
+          <section class="relative p-1 rounded-3xl bg-gradient-to-br from-outline-variant/30 to-outline-variant/10"
+            id="rec-badge">
+            <div
+              class="bg-surface-container-low rounded-[1.4rem] p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+              <div class="flex items-center gap-6">
+                <div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center">
+                  <span class="material-symbols-outlined text-on-surface-variant text-4xl">pending</span>
+                </div>
+                <div>
+                  <h3 class="text-2xl font-black font-headline" id="rec-title">Awaiting Evaluation</h3>
+                  <p class="text-sm text-on-surface-variant" id="rec-sub">Complete AI analysis to get a recommendation.
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <span
+                  class="text-[10px] font-bold tracking-[0.2em] uppercase text-on-surface-variant block mb-1">Status</span>
+                <span
+                  class="text-on-surface font-semibold bg-surface-container-highest px-4 py-1.5 rounded-full text-xs"
+                  id="rec-status">Pending</span>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Footer Details -->
+      <footer
+        class="mt-16 pt-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4 text-on-surface-variant text-[10px] tracking-widest uppercase">
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-on-surface">Talentra</span>
+          <span class="opacity-40">Security Verified</span>
+        </div>
+        <button onclick="window.print()"
+          class="flex items-center gap-2 px-5 py-2 rounded-xl font-bold bg-primary-container text-on-primary-container hover:opacity-90 transition-all normal-case text-xs tracking-normal">
+          <span class="material-symbols-outlined text-sm">print</span> Export PDF
+        </button>
+      </footer>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+      <div class="space-y-4 text-center md:text-left">
+        <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+        <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+      </div>
+      <div class="text-center md:text-right">
+        <p>
+          © 2026 Talentra. All rights reserved.
+          <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+            V1.0.0
+          </span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Dynamic Score Update ──────────────────────────────────────────────────
+    const CIRCUMFERENCE = 364.4; // 2 * π * 58
+
+    function setScore(percent) {
+      const ring = document.getElementById('score-ring');
+      const label = document.getElementById('score-label');
+      const offset = CIRCUMFERENCE - (percent / 100) * CIRCUMFERENCE;
+      ring.style.strokeDashoffset = offset;
+      // Animate number
+      let current = 0;
+      const step = percent / 60;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, percent);
+        label.textContent = Math.round(current) + '%';
+        if (current >= percent) clearInterval(timer);
+      }, 16);
     }
 
-    // ── Date stamp ────────────────────────────────────────────────────────
-    document.getElementById('gen-date').textContent = 'Generated: ' + new Date().toLocaleDateString('en-US', {year:'numeric', month:'short', day:'numeric'});
-  }
+    function updateCompetency(id, barId, value) {
+      document.getElementById(id).textContent = value.toFixed(1);
+      document.getElementById(barId).style.width = (value / 5 * 100) + '%';
+    }
 
-  // ── File Upload Handlers ──────────────────────────────────────────────────
-  function handleFileDrop(event) {
-    event.preventDefault();
-    const file = event.dataTransfer.files[0];
-    if (file) showFilename(file.name);
-  }
+    function copyToClipboard(btn, elementId) {
+      const text = document.getElementById(elementId).textContent;
+      if (text === 'Not provided') return;
 
-  function handleFileSelect(event) {
-    const file = event.target.files[0];
-    if (file) showFilename(file.name);
-  }
+      navigator.clipboard.writeText(text).then(() => {
+        const icon = btn.querySelector('span');
+        icon.textContent = 'check';
+        icon.classList.remove('text-on-surface');
+        icon.classList.add('text-primary');
 
-  function showFilename(name) {
-    document.getElementById('upload-filename').textContent = '📎 ' + name + ' ready for analysis';
-  }
-
-  function simulateUpload() {
-    document.getElementById('upload-modal').classList.add('hidden');
-    // Show a brief loading state on the score label
-    document.getElementById('score-label').textContent = '…';
-
-    // Simulate AI backend response after ~1s
-    setTimeout(() => {
-      applyEvaluation({
-        // ── Identity (from backend/resume parse) ──
-        candidateName:  'Elena Rodriguez',
-        candidateTitle: 'Senior Product Designer • New York, NY',
-        candidateId:    'TL-9842',
-        experience:     '8+ Years Experience',
-        education:      'MA, Visual Systems',
-        salary:         '$165k – $180k Range',
-        availability:   'Immediate Availability',
-        // ── AI Scores ──
-        score: 93,
-        tech:  4.9,
-        comm:  4.5,
-        prob:  4.8,
-        lead:  4.2,
-        // ── AI Text ──
-        summary:    'Elena demonstrated exceptional systems thinking during the case study. Her ability to articulate the trade-offs between component flexibility and developer experience is top-tier. She showed a proactive approach to inclusive design, particularly in high-contrast navigation patterns.',
-        insight:    'AI analysis detects strong analytical empathy. Elena consistently prioritizes accessibility without compromising visual fidelity.',
-        // ── Recommendation ──
-        recommendation: 'Strong Hire',
-        recSub:         'Top 2% of candidates assessed this quarter.',
-        status:         'Ready for Offer'
+        setTimeout(() => {
+          icon.textContent = 'content_copy';
+          icon.classList.remove('text-primary');
+          icon.classList.add('text-on-surface');
+        }, 2000);
+      }).catch(err => {
+        console.error("Failed to copy!", err);
       });
-    }, 900);
-  }
-</script>
+    }
+
+    function applyEvaluation(data) {
+      // ── Candidate Identity ────────────────────────────────────────────────
+      // Hide skeletons, show real content
+      document.getElementById('name-skeleton').classList.add('hidden');
+      document.getElementById('title-skeleton').classList.add('hidden');
+      document.getElementById('assessment-badge').classList.remove('hidden');
+      document.getElementById('candidate-id-tag').classList.remove('hidden');
+      document.getElementById('candidate-name').classList.remove('hidden');
+      document.getElementById('candidate-title').classList.remove('hidden');
+
+      document.getElementById('candidate-name').textContent = data.candidateName || 'Candidate';
+      document.getElementById('candidate-title').textContent = data.candidateTitle || '';
+      document.getElementById('candidate-id-tag').textContent = '• ID: ' + (data.candidateId || 'TL-0000');
+
+      // ── Scores ────────────────────────────────────────────────────────────
+      setScore(data.score);
+      updateCompetency('score-tech', 'bar-tech', data.tech);
+      updateCompetency('score-comm', 'bar-comm', data.comm);
+      updateCompetency('score-prob', 'bar-prob', data.prob);
+      updateCompetency('score-lead', 'bar-lead', data.lead);
+
+      // ── Text Fields ───────────────────────────────────────────────────────
+      document.getElementById('exec-summary').textContent = data.summary;
+      if (document.getElementById('job-description-text')) {
+        document.getElementById('job-description-text').textContent = data.jobDescription;
+      }
+
+      // ── Social Links ──────────────────────────────────────────────────────
+      function isValidUrl(url) {
+        return url && typeof url === 'string' && url.trim().length > 0 && !['n/a', 'none', 'null', 'not found', 'missing'].includes(url.toLowerCase().trim()) && (url.startsWith('http') || url.includes('.com') || url.includes('.net') || url.includes('.org') || url.includes('.io'));
+      }
+
+      if (isValidUrl(data.githubUrl)) {
+        const ghEl = document.getElementById('text-github');
+        if (ghEl) ghEl.textContent = data.githubUrl;
+      }
+      if (isValidUrl(data.linkedinUrl)) {
+        const liEl = document.getElementById('text-linkedin');
+        if (liEl) liEl.textContent = data.linkedinUrl;
+      }
+
+      // Core Vitals
+      if (data.email) document.getElementById('info-email').textContent = data.email;
+      if (data.phone) document.getElementById('info-phone').textContent = data.phone;
+
+      // ── Recommendation Badge ──────────────────────────────────────────────
+      document.getElementById('rec-title').textContent = data.recommendation;
+      document.getElementById('rec-sub').textContent = data.recSub;
+      document.getElementById('rec-status').textContent = data.status;
+
+      const badge = document.getElementById('rec-badge');
+      const iconEl = badge.querySelector('.material-symbols-outlined');
+      const iconWrap = iconEl.parentElement;
+
+      if (data.score >= 80) {
+        // Strong hire — gradient border, verified icon in primary color
+        badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-primary to-secondary';
+        iconWrap.className = 'w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center';
+        iconEl.textContent = 'verified';
+        iconEl.className = 'material-symbols-outlined text-primary text-4xl';
+      } else if (data.score >= 60) {
+        // Consider — amber-ish neutral
+        badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-tertiary/60 to-outline-variant/30';
+        iconWrap.className = 'w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center';
+        iconEl.textContent = 'thumb_up';
+        iconEl.className = 'material-symbols-outlined text-tertiary text-4xl';
+      } else {
+        // Not recommended
+        badge.className = 'relative p-1 rounded-3xl bg-gradient-to-br from-error/40 to-outline-variant/10';
+        iconWrap.className = 'w-16 h-16 rounded-full bg-error/10 flex items-center justify-center';
+        iconEl.textContent = 'cancel';
+        iconEl.className = 'material-symbols-outlined text-error text-4xl';
+      }
+
+      // ── Date stamp ────────────────────────────────────────────────────────
+      document.getElementById('gen-date').textContent = 'Generated: ' + new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    // ── File Upload Handlers ──────────────────────────────────────────────────
+    function handleFileDrop(event) {
+      event.preventDefault();
+      const file = event.dataTransfer.files[0];
+      if (file) showFilename(file.name);
+    }
+
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      if (file) showFilename(file.name);
+    }
+
+    function showFilename(name) {
+      document.getElementById('upload-filename').textContent = '📎 ' + name + ' ready for analysis';
+    }
+
+    async function loadReport() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+
+      if (!id) {
+        console.error("No Report ID provided.");
+        return;
+      }
+
+      try {
+        const res = await fetch('http://127.0.0.1:8000/report/' + id);
+        if (!res.ok) throw new Error('Report not found');
+        const r = await res.json();
+
+        applyEvaluation({
+          candidateName: r.name || 'Candidate',
+          candidateTitle: 'AI Evaluation Report',
+          candidateId: 'TL-' + (r.id ? r.id.toString().substring(0, 4) : '0000'),
+          jobDescription: r.job_description || 'No job description provided.',
+          email: r.email || 'Email missing',
+          phone: r.phone || 'Phone missing',
+          resumeScore: r.resume_score || 0,
+          score: r.recommendation_percentage || 0,
+          tech: (r.technical_score || 0) / 20, /* Map from 0-100 to 0-5 */
+          comm: (r.communication_score || 0) / 20,
+          prob: 4.5, /* Placeholder/default from Gemini later */
+          lead: 4.0, /* Placeholder/default from Gemini later */
+          summary: r.evaluation_summary || 'No summary available.',
+          insight: "Strengths: " + (r.strengths || []).join(', ') + " | Gaps: " + (r.gaps || []).join(', '),
+          recommendation: (r.recommendation_percentage || 0) >= 70 ? 'Strong Hire' : (r.recommendation_percentage || 0) >= 50 ? 'Consider' : 'Not Recommended',
+          recSub: 'Recommendation Score: ' + (r.recommendation_percentage || 0) + '%',
+          status: 'Evaluated',
+          githubUrl: r.github_url,
+          linkedinUrl: r.linkedin_url
+        });
+      } catch (err) {
+        console.error("Failed to load report data:", err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadReport);
+  </script>
 </body>
+
 </html>

@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Candidate Analysis | Talentra</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
+<html class="dark" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Candidate Analysis | Talentra</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
@@ -76,459 +81,599 @@
             },
         }
     </script>
-<style>
+    <style>
         .glass-panel {
             background: rgba(49, 53, 59, 0.15);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
         }
+
         .insight-lens {
             background: rgba(49, 53, 59, 0.4);
             backdrop-filter: blur(24px);
             border: 1px solid rgba(192, 193, 255, 0.1);
         }
+
         .material-symbols-outlined {
             font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
         }
+
         @keyframes scoreCount {
-            from { opacity: 0.4; }
-            to { opacity: 1; }
+            from {
+                opacity: 0.4;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
+
         .score-animate {
             animation: scoreCount 0.3s ease-in-out;
         }
+
         .circle-transition {
             transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
+
         .preview-fade-in {
             animation: fadeInUp 0.5s ease forwards;
         }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+
         .analyzing-spin {
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
+
 <body class="bg-surface font-body text-on-surface">
-<!-- Navbar -->
-  <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
-    <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-      <div class="flex items-center justify-between">
-        <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
-      </div>
-
-      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
-        <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
-        <a href="./upload.html" class="text-primary border-b-2 border-primary pb-1">Upload</a>
-        <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
-        <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
-        
-      </nav>
-    </div>
-  </header>
-
-<!-- Main Content Canvas -->
-<main class="min-h-screen">
-  <div class="max-w-7xl mx-auto px-6 md:px-10 py-10">
-<!-- Header Section -->
-<header class="mb-12">
-<h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">Candidate Analysis</h2>
-<p class="text-on-surface-variant font-medium">Evaluate candidate profile and role fit with AI-driven talent intelligence.</p>
-</header>
-<div class="grid grid-cols-12 gap-8 items-start">
-<!-- Left Column: Input Panel -->
-<div class="col-span-12 lg:col-span-7 space-y-8">
-<section class="glass-panel p-8 rounded-2xl border border-outline-variant/10 shadow-2xl relative overflow-hidden">
-<div class="absolute -top-24 -left-24 w-48 h-48 bg-secondary/5 blur-[100px]"></div>
-<div class="space-y-8 relative z-10">
-<!-- Resume Upload -->
-<div class="space-y-4">
-<label class="text-sm font-bold tracking-widest uppercase text-on-surface-variant opacity-80">1. Resume Upload</label>
-
-<input type="file" id="resumeFileInput" accept=".pdf,.docx,.doc" class="hidden" />
-
-<div id="uploadDropZone" class="group relative flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 hover:border-primary/50 bg-surface-container-lowest transition-all duration-300 p-12 rounded-xl cursor-pointer" onclick="document.getElementById('resumeFileInput').click()">
-<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform" id="uploadIconWrapper">
-<span class="material-symbols-outlined text-primary text-3xl" id="uploadIcon">upload_file</span>
-</div>
-<p class="text-on-surface font-medium" id="uploadText">Drag &amp; drop candidate CV or <span class="text-primary underline">browse</span></p>
-<p class="text-on-surface-variant text-xs mt-2 italic" id="uploadSubText">PDF, DOCX up to 10MB</p>
-<div id="uploadedFileInfo" class="hidden mt-3 flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
-    <span class="material-symbols-outlined text-primary text-sm">description</span>
-    <span id="uploadedFileName" class="text-primary text-xs font-bold"></span>
-    <button id="removeFileBtn" onclick="removeFile(event)" class="ml-2 text-on-surface-variant hover:text-error transition-colors">
-        <span class="material-symbols-outlined text-sm">close</span>
-    </button>
-</div>
-<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl pointer-events-none"></div>
-</div>
-</div>
-<!-- Job Description -->
-<div class="space-y-4">
-<label class="text-sm font-bold tracking-widest uppercase text-on-surface-variant opacity-80">2. Job Description</label>
-<textarea id="jobDescriptionInput" class="w-full h-48 bg-surface-container-lowest border-0 rounded-xl p-6 text-on-surface focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-outline-variant/60" placeholder="Paste the target job description or requirements here..."></textarea>
-</div>
-<!-- Analyze Button -->
-<button id="analyzeBtn" onclick="runAnalysis()" class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-black rounded-xl text-lg hover:shadow-[0_0_20px_rgba(192,193,255,0.3)] active:scale-[0.98] transition-all flex items-center justify-center space-x-2">
-<span class="material-symbols-outlined" id="analyzeBtnIcon">insights</span>
-<span id="analyzeBtnText">Analyze Candidate Fit</span>
-</button>
-</div>
-</section>
-</div>
-<!-- Right Column: Dynamic AI Result -->
-<div class="col-span-12 lg:col-span-5">
-
-    <!-- Placeholder shown before analysis -->
-    <div id="analysisPlaceholder" class="insight-lens rounded-[2rem] p-8 flex flex-col items-center justify-center min-h-[400px] space-y-4 text-center">
-        <div class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2">
-            <span class="material-symbols-outlined text-on-surface-variant text-4xl">bar_chart</span>
-        </div>
-        <h3 class="text-lg font-bold font-headline text-on-surface">Analysis Preview</h3>
-        <p class="text-sm text-on-surface-variant max-w-[200px]">Upload a resume and job description, then click <span class="text-primary font-semibold">Analyze Candidate Fit</span> to see results here.</p>
-    </div>
-
-    <!-- Analysis Result Card (hidden initially) -->
-    <div id="analysisResultCard" class="insight-lens rounded-[2rem] p-8 space-y-8 sticky top-8 hidden">
-        <div class="flex items-center justify-between">
-            <h3 class="text-xl font-bold font-headline">Analysis Preview</h3>
-            <span class="px-3 py-1 bg-secondary-container/30 text-secondary text-[10px] font-black uppercase tracking-widest rounded-full">AI Contextualized</span>
-        </div>
-        <!-- Match Score -->
-        <div class="flex flex-col items-center py-6">
-            <div class="relative w-40 h-40">
-                <svg class="w-full h-full -rotate-90" viewBox="0 0 160 160">
-                    <circle class="text-surface-container-highest" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
-                    <circle id="scoreCircle" class="text-primary drop-shadow-[0_0_8px_rgba(192,193,255,0.8)] circle-transition" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round" stroke-width="10"></circle>
-                </svg>
-                <div class="absolute inset-0 flex flex-col items-center justify-center">
-                    <span id="scoreText" class="text-5xl font-black font-headline tracking-tighter">0%</span>
-                    <span class="text-[10px] font-bold text-on-surface-variant uppercase">Match Score</span>
-                </div>
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
+        <div
+            class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            <div class="flex items-center justify-between">
+                <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
             </div>
-        </div>
-        <!-- Strengths -->
-        <div class="space-y-4">
-            <p class="text-xs font-bold text-on-surface-variant flex items-center">
-                <span class="material-symbols-outlined text-primary text-sm mr-2">verified</span>
-                TOP STRENGTHS
-            </p>
-            <div id="strengthsContainer" class="flex flex-wrap gap-2"></div>
-        </div>
-        <!-- Missing Skills -->
-        <div class="space-y-4">
-            <p class="text-xs font-bold text-on-surface-variant flex items-center">
-                <span class="material-symbols-outlined text-error text-sm mr-2">warning</span>
-                GAPS DETECTED
-            </p>
-            <div id="gapsContainer" class="flex flex-wrap gap-2"></div>
-        </div>
-        <!-- CTA -->
-        <div class="pt-6 border-t border-outline-variant/20">
-            <button onclick="proceedToInterview()" class="w-full py-4 bg-surface-container-high text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center space-x-2">
-                <span>Proceed to Interview</span>
-                <span class="material-symbols-outlined">arrow_forward</span>
-            </button>
-        </div>
-    </div>
-</div>
-</div>
-<!-- Secondary Insights Grid -->
-<div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
-<div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-tertiary mb-4">schedule</span>
-<h4 class="font-bold text-on-surface mb-2">Experience Depth</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">High density of technical leadership projects in enterprise environments.</p>
-</div>
-<div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-secondary mb-4">psychology</span>
-<h4 class="font-bold text-on-surface mb-2">Soft Skills Radar</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Keywords suggest strong collaborative and mentor-ship mindset.</p>
-</div>
-<div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
-<span class="material-symbols-outlined text-primary mb-4">trending_up</span>
-<h4 class="font-bold text-on-surface mb-2">Salary Expectation</h4>
-<p class="text-sm text-on-surface-variant leading-relaxed">Aligned with mid-range for Senior Engineering Manager roles.</p>
-</div>
-</div>
-</div>
-</main>
-<!-- Footer Shell -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
-  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
-    <div class="space-y-4 text-center md:text-left">
-      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
-      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
-    </div>
-    <div class="flex flex-wrap justify-center gap-8">
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
-    </div>
-    <div class="text-center md:text-right">
-      <p>
-        © 2026 Talentra. All rights reserved.
-        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
-          V1.0.0
-        </span>
-      </p>
-    </div>
-  </div>
-</footer>
 
+            <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+                <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
+                <a href="./upload.html" class="text-primary border-b-2 border-primary pb-1">Upload</a>
+                <a href="./interview.html"
+                    class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
+                <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
 
-<!-- Interview Page (hidden overlay) -->
-<div id="interviewPage" class="hidden fixed inset-0 z-50 bg-surface overflow-auto">
-    <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-8 py-4">
-        <div class="flex items-center gap-6">
-            <span class="text-2xl font-black text-on-surface tracking-tighter font-headline">Talentra</span>
-            <div class="h-6 w-[1px] bg-outline-variant/30"></div>
-            <div class="flex flex-col">
-                <span class="text-on-surface font-headline font-bold text-sm tracking-tight" id="interviewCandidateName">Candidate</span>
-                <span class="text-on-surface-variant font-label text-xs">Interview Session</span>
-            </div>
+            </nav>
         </div>
-        <div class="flex items-center gap-4">
-            <div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-full">
-                <span class="flex h-2 w-2 rounded-full bg-error animate-pulse"></span>
-                <span class="text-xs font-bold font-label tracking-widest text-on-surface">LIVE RECORDING</span>
-            </div>
-            <button onclick="closeInterview()" class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-xs font-bold transition-colors">
-                <span class="material-symbols-outlined text-sm">arrow_back</span>
-                Back to Analysis
-            </button>
-            <div class="flex items-center gap-3">
-                <span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-all">notifications</span>
-                <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
-                    <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgnjUidSweo-WuOh5T8Liv-5rH-UknMmrxg5ECd0UA6whroiLj3t_UnwMA-mViq2dgna0AqsUujkXcFfPCABiVJe3Shz-V15WetlaRIFaI_yY8YE7dIU2H3-cS9OL5hW-tbAloINZpUk8USEF0VLo3dI-y3U5-5KfVGOR8PQQyAPh23SVk9E_ZNq6UfOMuEU-2yNRFrt3pz5JegHjvJWSGk_jrMy-Wpb_ceE6tnd_1r2bvPVPQSWxnjbLPUX8mGNwYfFDF__OCpg"/>
-                </div>
-            </div>
-        </div>
-    </nav>
+    </header>
 
-    <style>
-        .interview-glass { background: rgba(49, 53, 59, 0.15); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
-        .mic-glow { box-shadow: 0 0 40px rgba(192, 193, 255, 0.2); }
-        .waveform-bar { width: 4px; border-radius: 2px; background: linear-gradient(to top, #c0c1ff, #ddb7ff); }
-        .asymmetric-grid { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; }
-        .rounded-xxl { border-radius: 1.5rem; }
-    </style>
+    <!-- Main Content Canvas -->
+    <main class="min-h-screen">
+        <div class="max-w-7xl mx-auto px-6 md:px-10 py-10">
+            <!-- Header Section -->
+            <header class="mb-12">
+                <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">Candidate Analysis
+                </h2>
+                <p class="text-on-surface-variant font-medium">Evaluate candidate profile and role fit with AI-driven
+                    talent intelligence.</p>
+            </header>
+            <div class="grid grid-cols-12 gap-8 items-start">
+                <!-- Left Column: Input Panel -->
+                <div class="col-span-12 lg:col-span-7 space-y-8">
+                    <section
+                        class="glass-panel p-8 rounded-2xl border border-outline-variant/10 shadow-2xl relative overflow-hidden">
+                        <div class="absolute -top-24 -left-24 w-48 h-48 bg-secondary/5 blur-[100px]"></div>
+                        <div class="space-y-8 relative z-10">
+                            <!-- Resume Upload -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-sm font-bold tracking-widest uppercase text-on-surface-variant opacity-80">1.
+                                    Resume Upload</label>
 
-    <main class="pt-24 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
-        <div class="asymmetric-grid flex-grow">
-            <div class="flex flex-col space-y-6">
-                <div class="relative group h-[480px] rounded-xxl overflow-hidden bg-surface-container-low flex flex-col items-center justify-center border border-outline-variant/10">
-                    <div class="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-surface-container-low to-surface-container-lowest"></div>
-                    <div class="z-10 flex flex-col items-center space-y-8">
-                        <div class="relative">
-                            <div class="absolute -inset-4 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
-                            <button class="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mic-glow active:scale-95 transition-transform">
-                                <span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;">mic</span>
+                                <input type="file" id="resumeFileInput" accept=".pdf,.docx,.doc" class="hidden" />
+
+                                <div id="uploadDropZone"
+                                    class="group relative flex flex-col items-center justify-center border-2 border-dashed border-outline-variant/30 hover:border-primary/50 bg-surface-container-lowest transition-all duration-300 p-12 rounded-xl cursor-pointer"
+                                    onclick="document.getElementById('resumeFileInput').click()">
+                                    <div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform"
+                                        id="uploadIconWrapper">
+                                        <span class="material-symbols-outlined text-primary text-3xl"
+                                            id="uploadIcon">upload_file</span>
+                                    </div>
+                                    <p class="text-on-surface font-medium" id="uploadText">Drag &amp; drop candidate CV
+                                        or <span class="text-primary underline">browse</span></p>
+                                    <p class="text-on-surface-variant text-xs mt-2 italic" id="uploadSubText">PDF, DOCX
+                                        up to 10MB</p>
+                                    <div id="uploadedFileInfo"
+                                        class="hidden mt-3 flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full border border-primary/20">
+                                        <span class="material-symbols-outlined text-primary text-sm">description</span>
+                                        <span id="uploadedFileName" class="text-primary text-xs font-bold"></span>
+                                        <button id="removeFileBtn" onclick="removeFile(event)"
+                                            class="ml-2 text-on-surface-variant hover:text-error transition-colors">
+                                            <span class="material-symbols-outlined text-sm">close</span>
+                                        </button>
+                                    </div>
+                                    <div
+                                        class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-xl pointer-events-none">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Candidate Details -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-sm font-bold tracking-widest uppercase text-on-surface-variant opacity-80">2.
+                                    Candidate Details</label>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <input type="text" id="manualName" placeholder="Full Name"
+                                        class="w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                    <input type="email" id="manualEmail" placeholder="Email Address"
+                                        class="w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                    <input type="text" id="manualPhone" placeholder="Phone Number"
+                                        class="w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                    <input type="text" id="manualRole" placeholder="Job Description (Applied For)"
+                                        class="w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                    <input type="text" id="manualGithub" placeholder="GitHub URL"
+                                        class="md:col-span-2 w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                    <input type="text" id="manualLinkedin" placeholder="LinkedIn URL"
+                                        class="md:col-span-2 w-full bg-surface-container-lowest border-0 rounded-xl p-4 text-sm text-on-surface focus:ring-1 focus:ring-primary/50 placeholder:text-outline-variant/60" />
+                                </div>
+                            </div>
+                            <!-- Job Description -->
+                            <div class="space-y-4">
+                                <label
+                                    class="text-sm font-bold tracking-widest uppercase text-on-surface-variant opacity-80">3.
+                                    Job Description</label>
+                                <textarea id="jobDescriptionInput"
+                                    class="w-full h-48 bg-surface-container-lowest border-0 rounded-xl p-6 text-on-surface focus:ring-1 focus:ring-primary/50 transition-all placeholder:text-outline-variant/60"
+                                    placeholder="Paste the target job description or requirements here..."></textarea>
+                            </div>
+                            <!-- Analyze Button -->
+                            <button id="analyzeBtn" onclick="runAnalysis()"
+                                class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary-container font-black rounded-xl text-lg hover:shadow-[0_0_20px_rgba(192,193,255,0.3)] active:scale-[0.98] transition-all flex items-center justify-center space-x-2">
+                                <span class="material-symbols-outlined" id="analyzeBtnIcon">insights</span>
+                                <span id="analyzeBtnText">Analyze Candidate Fit</span>
                             </button>
                         </div>
-                        <div class="flex flex-col items-center gap-2">
-                            <span class="text-primary font-headline text-lg font-medium tracking-wide">Listening...</span>
-                            <div class="flex items-end gap-1 h-8 px-4">
-                                <div class="waveform-bar h-2"></div>
-                                <div class="waveform-bar h-5"></div>
-                                <div class="waveform-bar h-8"></div>
-                                <div class="waveform-bar h-4"></div>
-                                <div class="waveform-bar h-6"></div>
-                                <div class="waveform-bar h-3"></div>
-                                <div class="waveform-bar h-7"></div>
-                                <div class="waveform-bar h-5"></div>
-                                <div class="waveform-bar h-4"></div>
-                                <div class="waveform-bar h-2"></div>
+                    </section>
+                </div>
+                <!-- Right Column: Dynamic AI Result -->
+                <div class="col-span-12 lg:col-span-5">
+
+                    <!-- Placeholder shown before analysis -->
+                    <div id="analysisPlaceholder"
+                        class="insight-lens rounded-[2rem] p-8 flex flex-col items-center justify-center min-h-[400px] space-y-4 text-center">
+                        <div
+                            class="w-20 h-20 rounded-full bg-surface-container-high flex items-center justify-center mb-2">
+                            <span class="material-symbols-outlined text-on-surface-variant text-4xl">bar_chart</span>
+                        </div>
+                        <h3 class="text-lg font-bold font-headline text-on-surface">Analysis Preview</h3>
+                        <p class="text-sm text-on-surface-variant max-w-[200px]">Upload a resume and job description,
+                            then click <span class="text-primary font-semibold">Analyze Candidate Fit</span> to see
+                            results here.</p>
+                    </div>
+
+                    <!-- Analysis Result Card (hidden initially) -->
+                    <div id="analysisResultCard" class="insight-lens rounded-[2rem] p-8 space-y-8 sticky top-8 hidden">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-xl font-bold font-headline">Analysis Preview</h3>
+                            <span
+                                class="px-3 py-1 bg-secondary-container/30 text-secondary text-[10px] font-black uppercase tracking-widest rounded-full">AI
+                                Contextualized</span>
+                        </div>
+                        <!-- Match Score -->
+                        <div class="flex flex-col items-center py-6">
+                            <div class="relative w-40 h-40">
+                                <svg class="w-full h-full -rotate-90" viewBox="0 0 160 160">
+                                    <circle class="text-surface-container-highest" cx="80" cy="80" fill="transparent"
+                                        r="70" stroke="currentColor" stroke-width="8"></circle>
+                                    <circle id="scoreCircle"
+                                        class="text-primary drop-shadow-[0_0_8px_rgba(192,193,255,0.8)] circle-transition"
+                                        cx="80" cy="80" fill="transparent" r="70" stroke="currentColor"
+                                        stroke-dasharray="440" stroke-dashoffset="440" stroke-linecap="round"
+                                        stroke-width="10"></circle>
+                                </svg>
+                                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                                    <span id="scoreText"
+                                        class="text-5xl font-black font-headline tracking-tighter">0%</span>
+                                    <span class="text-[10px] font-bold text-on-surface-variant uppercase">Match
+                                        Score</span>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex gap-4">
-                            <button class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
-                                <span class="material-symbols-outlined text-lg">pause</span> Pause
-                            </button>
-                            <button class="px-6 py-2 rounded-full bg-surface-container-high text-error text-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
-                                <span class="material-symbols-outlined text-lg">stop</span> Stop
-                            </button>
-                        </div>
-                    </div>
-                    <div class="absolute bottom-6 right-6 flex items-center gap-2 bg-surface-container-lowest/80 backdrop-blur-md px-4 py-2 rounded-xl border border-outline-variant/10">
-                        <span class="text-on-surface-variant font-label text-xs tracking-wider">AI SENSITIVITY:</span>
-                        <span class="text-tertiary font-bold text-xs">ADAPTIVE HIGH</span>
-                    </div>
-                </div>
-                <div class="interview-glass rounded-xxl p-6 border border-outline-variant/10 flex flex-col gap-4">
-                    <div class="flex justify-between items-center">
-                        <h3 class="font-headline font-bold text-on-surface text-sm tracking-widest uppercase">Live Transcript</h3>
-                        <span class="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded tracking-widest font-bold">REAL-TIME</span>
-                    </div>
-                    <div class="space-y-4 max-h-[180px] overflow-y-auto pr-2">
-                        <div class="flex gap-4">
-                            <span class="text-xs font-bold text-secondary font-label w-12 pt-1">08:12</span>
-                            <p class="text-sm text-on-surface-variant leading-relaxed">
-                                <span class="text-on-surface font-medium">Candidate:</span> In my previous role at Meta, I focused heavily on data-driven design systems that could scale across multiple platforms while maintaining accessibility standards.
+                        <!-- Strengths -->
+                        <div class="space-y-4">
+                            <p class="text-xs font-bold text-on-surface-variant flex items-center">
+                                <span class="material-symbols-outlined text-primary text-sm mr-2">verified</span>
+                                TOP STRENGTHS
                             </p>
+                            <div id="strengthsContainer" class="flex flex-wrap gap-2"></div>
                         </div>
-                        <div class="flex gap-4">
-                            <span class="text-xs font-bold text-secondary font-label w-12 pt-1">08:24</span>
-                            <p class="text-sm text-on-surface-variant leading-relaxed">
-                                <span class="text-on-surface font-medium">Candidate:</span> One major challenge was reconciling the needs of different product teams with the global brand identity... <span class="inline-block w-2 h-4 bg-primary/40 ml-1 animate-pulse"></span>
+                        <!-- Missing Skills -->
+                        <div class="space-y-4">
+                            <p class="text-xs font-bold text-on-surface-variant flex items-center">
+                                <span class="material-symbols-outlined text-error text-sm mr-2">warning</span>
+                                GAPS DETECTED
                             </p>
+                            <div id="gapsContainer" class="flex flex-wrap gap-2"></div>
+                        </div>
+                        <!-- CTA -->
+                        <div class="pt-6 border-t border-outline-variant/20">
+                            <button onclick="proceedToInterview()"
+                                class="w-full py-4 bg-surface-container-high text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-on-primary transition-all flex items-center justify-center space-x-2">
+                                <span>Proceed to Interview</span>
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
-            <aside class="flex flex-col space-y-6">
-                <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10 space-y-6">
-                    <div class="space-y-1">
-                        <span class="text-[10px] text-on-surface-variant font-bold tracking-[0.2em] uppercase">Session Timer</span>
-                        <div class="text-4xl font-headline font-extralight text-on-surface tracking-tight">24:42<span class="text-lg text-on-surface-variant">/45:00</span></div>
-                    </div>
-                    <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
-                        <div class="bg-primary h-full w-[55%]"></div>
-                    </div>
-                    <div class="space-y-4 pt-4 border-t border-outline-variant/10">
-                        <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">Current Instruction</h4>
-                        <div class="p-4 bg-surface-container-lowest rounded-xl border-l-2 border-primary">
-                            <p class="text-xs text-on-surface-variant leading-relaxed">
-                                Evaluate the candidate's approach to <span class="text-primary">System Thinking</span>. Look for specific examples of cross-functional collaboration.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="space-y-4 pt-2">
-                        <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">Discussion Topics</h4>
-                        <ul class="space-y-3">
-                            <li class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <span class="text-xs text-on-surface-variant">Introduction &amp; Background</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
-                                <span class="text-xs text-on-surface-variant">Design System Philosophy</span>
-                            </li>
-                            <li class="flex items-center gap-3">
-                                <div class="w-3.5 h-3.5 rounded-full border border-primary"></div>
-                                <span class="text-xs text-on-surface">Conflict Resolution in Design</span>
-                            </li>
-                            <li class="flex items-center gap-3 opacity-40">
-                                <div class="w-3.5 h-3.5 rounded-full border border-outline"></div>
-                                <span class="text-xs text-on-surface-variant">Technical Skills Deep-dive</span>
-                            </li>
-                        </ul>
-                    </div>
+            <!-- Secondary Insights Grid -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
+                    <span class="material-symbols-outlined text-tertiary mb-4">schedule</span>
+                    <h4 class="font-bold text-on-surface mb-2">Experience Depth</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">High density of technical leadership
+                        projects in enterprise environments.</p>
                 </div>
-                <div class="flex-grow"></div>
-                <button onclick="closeInterview()" class="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-sm tracking-wide shadow-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
-                    End Interview &amp; Analyze
-                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">analytics</span>
-                </button>
-            </aside>
+                <div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
+                    <span class="material-symbols-outlined text-secondary mb-4">psychology</span>
+                    <h4 class="font-bold text-on-surface mb-2">Soft Skills Radar</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Keywords suggest strong collaborative and
+                        mentor-ship mindset.</p>
+                </div>
+                <div class="surface-container-low p-6 rounded-2xl border border-outline-variant/5">
+                    <span class="material-symbols-outlined text-primary mb-4">trending_up</span>
+                    <h4 class="font-bold text-on-surface mb-2">Salary Expectation</h4>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Aligned with mid-range for Senior
+                        Engineering Manager roles.</p>
+                </div>
+            </div>
         </div>
     </main>
+    <!-- Footer Shell -->
+    <footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+        <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+            <div class="space-y-4 text-center md:text-left">
+                <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+                <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by
+                    ethical AI.</p>
+            </div>
+            <div class="flex flex-wrap justify-center gap-8">
+                <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+                <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of
+                    Service</a>
+                <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+                <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+            </div>
+            <div class="text-center md:text-right">
+                <p>
+                    © 2026 Talentra. All rights reserved.
+                    <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+                        V1.0.0
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
 
 
-</div>
+    <!-- Interview Page (hidden overlay) -->
+    <div id="interviewPage" class="hidden fixed inset-0 z-50 bg-surface overflow-auto">
+        <nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl flex justify-between items-center px-8 py-4">
+            <div class="flex items-center gap-6">
+                <span class="text-2xl font-black text-on-surface tracking-tighter font-headline">Talentra</span>
+                <div class="h-6 w-[1px] bg-outline-variant/30"></div>
+                <div class="flex flex-col">
+                    <span class="text-on-surface font-headline font-bold text-sm tracking-tight"
+                        id="interviewCandidateName">Candidate</span>
+                    <span class="text-on-surface-variant font-label text-xs">Interview Session</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container-high rounded-full">
+                    <span class="flex h-2 w-2 rounded-full bg-error animate-pulse"></span>
+                    <span class="text-xs font-bold font-label tracking-widest text-on-surface">LIVE RECORDING</span>
+                </div>
+                <button onclick="closeInterview()"
+                    class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface text-xs font-bold transition-colors">
+                    <span class="material-symbols-outlined text-sm">arrow_back</span>
+                    Back to Analysis
+                </button>
+                <div class="flex items-center gap-3">
+                    <span
+                        class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-high p-2 rounded-full transition-all">notifications</span>
+                    <div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant/30">
+                        <img class="w-full h-full object-cover"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgnjUidSweo-WuOh5T8Liv-5rH-UknMmrxg5ECd0UA6whroiLj3t_UnwMA-mViq2dgna0AqsUujkXcFfPCABiVJe3Shz-V15WetlaRIFaI_yY8YE7dIU2H3-cS9OL5hW-tbAloINZpUk8USEF0VLo3dI-y3U5-5KfVGOR8PQQyAPh23SVk9E_ZNq6UfOMuEU-2yNRFrt3pz5JegHjvJWSGk_jrMy-Wpb_ceE6tnd_1r2bvPVPQSWxnjbLPUX8mGNwYfFDF__OCpg" />
+                    </div>
+                </div>
+            </div>
+        </nav>
 
-<script>
-    let uploadedFile = null;
+        <style>
+            .interview-glass {
+                background: rgba(49, 53, 59, 0.15);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+            }
 
-    const dropZone = document.getElementById('uploadDropZone');
+            .mic-glow {
+                box-shadow: 0 0 40px rgba(192, 193, 255, 0.2);
+            }
 
-    dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        dropZone.classList.add('border-primary/50');
-    });
+            .waveform-bar {
+                width: 4px;
+                border-radius: 2px;
+                background: linear-gradient(to top, #c0c1ff, #ddb7ff);
+            }
 
-    dropZone.addEventListener('dragleave', () => {
-        dropZone.classList.remove('border-primary/50');
-    });
+            .asymmetric-grid {
+                display: grid;
+                grid-template-columns: 1fr 320px;
+                gap: 2rem;
+            }
 
-    dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        dropZone.classList.remove('border-primary/50');
-        const file = e.dataTransfer.files[0];
-        if (file) handleFileSelected(file);
-    });
+            .rounded-xxl {
+                border-radius: 1.5rem;
+            }
+        </style>
 
-    document.getElementById('resumeFileInput').addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) handleFileSelected(file);
-    });
+        <main class="pt-24 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
+            <div class="asymmetric-grid flex-grow">
+                <div class="flex flex-col space-y-6">
+                    <div
+                        class="relative group h-[480px] rounded-xxl overflow-hidden bg-surface-container-low flex flex-col items-center justify-center border border-outline-variant/10">
+                        <div
+                            class="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-surface-container-low to-surface-container-lowest">
+                        </div>
+                        <div class="z-10 flex flex-col items-center space-y-8">
+                            <div class="relative">
+                                <div class="absolute -inset-4 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+                                <button
+                                    class="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mic-glow active:scale-95 transition-transform">
+                                    <span class="material-symbols-outlined text-on-primary text-5xl"
+                                        style="font-variation-settings: 'FILL' 1;">mic</span>
+                                </button>
+                            </div>
+                            <div class="flex flex-col items-center gap-2">
+                                <span
+                                    class="text-primary font-headline text-lg font-medium tracking-wide">Listening...</span>
+                                <div class="flex items-end gap-1 h-8 px-4">
+                                    <div class="waveform-bar h-2"></div>
+                                    <div class="waveform-bar h-5"></div>
+                                    <div class="waveform-bar h-8"></div>
+                                    <div class="waveform-bar h-4"></div>
+                                    <div class="waveform-bar h-6"></div>
+                                    <div class="waveform-bar h-3"></div>
+                                    <div class="waveform-bar h-7"></div>
+                                    <div class="waveform-bar h-5"></div>
+                                    <div class="waveform-bar h-4"></div>
+                                    <div class="waveform-bar h-2"></div>
+                                </div>
+                            </div>
+                            <div class="flex gap-4">
+                                <button
+                                    class="px-6 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+                                    <span class="material-symbols-outlined text-lg">pause</span> Pause
+                                </button>
+                                <button
+                                    class="px-6 py-2 rounded-full bg-surface-container-high text-error text-sm font-bold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+                                    <span class="material-symbols-outlined text-lg">stop</span> Stop
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute bottom-6 right-6 flex items-center gap-2 bg-surface-container-lowest/80 backdrop-blur-md px-4 py-2 rounded-xl border border-outline-variant/10">
+                            <span class="text-on-surface-variant font-label text-xs tracking-wider">AI
+                                SENSITIVITY:</span>
+                            <span class="text-tertiary font-bold text-xs">ADAPTIVE HIGH</span>
+                        </div>
+                    </div>
+                    <div class="interview-glass rounded-xxl p-6 border border-outline-variant/10 flex flex-col gap-4">
+                        <div class="flex justify-between items-center">
+                            <h3 class="font-headline font-bold text-on-surface text-sm tracking-widest uppercase">Live
+                                Transcript</h3>
+                            <span
+                                class="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded tracking-widest font-bold">REAL-TIME</span>
+                        </div>
+                        <div class="space-y-4 max-h-[180px] overflow-y-auto pr-2">
+                            <div class="flex gap-4">
+                                <span class="text-xs font-bold text-secondary font-label w-12 pt-1">08:12</span>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    <span class="text-on-surface font-medium">Candidate:</span> In my previous role at
+                                    Meta, I focused heavily on data-driven design systems that could scale across
+                                    multiple platforms while maintaining accessibility standards.
+                                </p>
+                            </div>
+                            <div class="flex gap-4">
+                                <span class="text-xs font-bold text-secondary font-label w-12 pt-1">08:24</span>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">
+                                    <span class="text-on-surface font-medium">Candidate:</span> One major challenge was
+                                    reconciling the needs of different product teams with the global brand identity...
+                                    <span class="inline-block w-2 h-4 bg-primary/40 ml-1 animate-pulse"></span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <aside class="flex flex-col space-y-6">
+                    <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10 space-y-6">
+                        <div class="space-y-1">
+                            <span
+                                class="text-[10px] text-on-surface-variant font-bold tracking-[0.2em] uppercase">Session
+                                Timer</span>
+                            <div class="text-4xl font-headline font-extralight text-on-surface tracking-tight">
+                                24:42<span class="text-lg text-on-surface-variant">/45:00</span></div>
+                        </div>
+                        <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                            <div class="bg-primary h-full w-[55%]"></div>
+                        </div>
+                        <div class="space-y-4 pt-4 border-t border-outline-variant/10">
+                            <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">
+                                Current Instruction</h4>
+                            <div class="p-4 bg-surface-container-lowest rounded-xl border-l-2 border-primary">
+                                <p class="text-xs text-on-surface-variant leading-relaxed">
+                                    Evaluate the candidate's approach to <span class="text-primary">System
+                                        Thinking</span>. Look for specific examples of cross-functional collaboration.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="space-y-4 pt-2">
+                            <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">
+                                Discussion Topics</h4>
+                            <ul class="space-y-3">
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-sm"
+                                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    <span class="text-xs text-on-surface-variant">Introduction &amp; Background</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <span class="material-symbols-outlined text-primary text-sm"
+                                        style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                                    <span class="text-xs text-on-surface-variant">Design System Philosophy</span>
+                                </li>
+                                <li class="flex items-center gap-3">
+                                    <div class="w-3.5 h-3.5 rounded-full border border-primary"></div>
+                                    <span class="text-xs text-on-surface">Conflict Resolution in Design</span>
+                                </li>
+                                <li class="flex items-center gap-3 opacity-40">
+                                    <div class="w-3.5 h-3.5 rounded-full border border-outline"></div>
+                                    <span class="text-xs text-on-surface-variant">Technical Skills Deep-dive</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="flex-grow"></div>
+                    <button onclick="closeInterview()"
+                        class="w-full py-4 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold text-sm tracking-wide shadow-xl active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+                        End Interview &amp; Analyze
+                        <span
+                            class="material-symbols-outlined group-hover:translate-x-1 transition-transform">analytics</span>
+                    </button>
+                </aside>
+            </div>
+        </main>
 
-    function handleFileSelected(file) {
-        const allowed = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
-        if (!allowed.includes(file.type) && !file.name.match(/\.(pdf|docx|doc)$/i)) {
-            alert('Please upload a PDF or DOCX file.');
-            return;
+
+    </div>
+
+    <script>
+        let uploadedFile = null;
+
+        const dropZone = document.getElementById('uploadDropZone');
+
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('border-primary/50');
+        });
+
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('border-primary/50');
+        });
+
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('border-primary/50');
+            const file = e.dataTransfer.files[0];
+            if (file) handleFileSelected(file);
+        });
+
+        document.getElementById('resumeFileInput').addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) handleFileSelected(file);
+        });
+
+        function handleFileSelected(file) {
+            const allowed = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
+            if (!allowed.includes(file.type) && !file.name.match(/\.(pdf|docx|doc)$/i)) {
+                alert('Please upload a PDF or DOCX file.');
+                return;
+            }
+            if (file.size > 10 * 1024 * 1024) {
+                alert('File size must be under 10MB.');
+                return;
+            }
+            uploadedFile = file;
+            document.getElementById('uploadIcon').textContent = 'check_circle';
+            document.getElementById('uploadIcon').classList.remove('text-primary');
+            document.getElementById('uploadIcon').classList.add('text-green-400');
+            document.getElementById('uploadText').innerHTML = 'File ready for analysis';
+            document.getElementById('uploadSubText').textContent = '';
+            document.getElementById('uploadedFileName').textContent = file.name;
+            document.getElementById('uploadedFileInfo').classList.remove('hidden');
+            document.getElementById('uploadedFileInfo').classList.add('flex');
         }
-        if (file.size > 10 * 1024 * 1024) {
-            alert('File size must be under 10MB.');
-            return;
-        }
-        uploadedFile = file;
-        document.getElementById('uploadIcon').textContent = 'check_circle';
-        document.getElementById('uploadIcon').classList.remove('text-primary');
-        document.getElementById('uploadIcon').classList.add('text-green-400');
-        document.getElementById('uploadText').innerHTML = 'File ready for analysis';
-        document.getElementById('uploadSubText').textContent = '';
-        document.getElementById('uploadedFileName').textContent = file.name;
-        document.getElementById('uploadedFileInfo').classList.remove('hidden');
-        document.getElementById('uploadedFileInfo').classList.add('flex');
-    }
 
-    function removeFile(e) {
-        e.stopPropagation();
-        uploadedFile = null;
-        document.getElementById('resumeFileInput').value = '';
-        document.getElementById('uploadIcon').textContent = 'upload_file';
-        document.getElementById('uploadIcon').classList.add('text-primary');
-        document.getElementById('uploadIcon').classList.remove('text-green-400');
-        document.getElementById('uploadText').innerHTML = 'Drag &amp; drop candidate CV or <span class="text-primary underline">browse</span>';
-        document.getElementById('uploadSubText').textContent = 'PDF, DOCX up to 10MB';
-        document.getElementById('uploadedFileInfo').classList.add('hidden');
-        document.getElementById('uploadedFileInfo').classList.remove('flex');
-    }
-
-    async function runAnalysis() {
-        if (!uploadedFile) {
-            alert('Please upload a resume first.');
-            return;
-        }
-        const jd = document.getElementById('jobDescriptionInput').value.trim();
-        if (!jd) {
-            alert('Please enter a job description.');
-            return;
+        function removeFile(e) {
+            e.stopPropagation();
+            uploadedFile = null;
+            document.getElementById('resumeFileInput').value = '';
+            document.getElementById('uploadIcon').textContent = 'upload_file';
+            document.getElementById('uploadIcon').classList.add('text-primary');
+            document.getElementById('uploadIcon').classList.remove('text-green-400');
+            document.getElementById('uploadText').innerHTML = 'Drag &amp; drop candidate CV or <span class="text-primary underline">browse</span>';
+            document.getElementById('uploadSubText').textContent = 'PDF, DOCX up to 10MB';
+            document.getElementById('uploadedFileInfo').classList.add('hidden');
+            document.getElementById('uploadedFileInfo').classList.remove('flex');
         }
 
-        const btn = document.getElementById('analyzeBtn');
-        const btnIcon = document.getElementById('analyzeBtnIcon');
-        const btnText = document.getElementById('analyzeBtnText');
-        btn.disabled = true;
-        btn.classList.add('opacity-70');
-        btnIcon.classList.add('analyzing-spin');
-        btnText.textContent = 'Analyzing...';
+        async function runAnalysis() {
+            if (!uploadedFile) {
+                alert('Please upload a resume first.');
+                return;
+            }
+            const jdRaw = document.getElementById('jobDescriptionInput').value.trim();
+            const manualRole = document.getElementById('manualRole').value.trim();
+            if (!jdRaw) {
+                alert('Please enter a job description.');
+                return;
+            }
+            const jd = manualRole ? `Role Applied For: ${manualRole}\n\n${jdRaw}` : jdRaw;
 
-        document.getElementById('analysisPlaceholder').classList.add('hidden');
-        document.getElementById('analysisResultCard').classList.remove('hidden');
-        document.getElementById('analysisResultCard').classList.add('preview-fade-in');
-        setScore(0);
-        document.getElementById('strengthsContainer').innerHTML = '';
-        document.getElementById('gapsContainer').innerHTML = '';
+            const btn = document.getElementById('analyzeBtn');
+            const btnIcon = document.getElementById('analyzeBtnIcon');
+            const btnText = document.getElementById('analyzeBtnText');
+            btn.disabled = true;
+            btn.classList.add('opacity-70');
+            btnIcon.classList.add('analyzing-spin');
+            btnText.textContent = 'Analyzing...';
 
-        let resumeContent = '';
-        try {
-            resumeContent = await readFileAsText(uploadedFile);
-        } catch {
-            resumeContent = `[Resume file: ${uploadedFile.name}]`;
-        }
+            document.getElementById('analysisPlaceholder').classList.add('hidden');
+            document.getElementById('analysisResultCard').classList.remove('hidden');
+            document.getElementById('analysisResultCard').classList.add('preview-fade-in');
+            setScore(0);
+            document.getElementById('strengthsContainer').innerHTML = '';
+            document.getElementById('gapsContainer').innerHTML = '';
 
-        const prompt = `You are an expert HR talent analyst. Analyze this candidate resume against the job description and return ONLY a JSON object with this exact structure, no markdown, no preamble:
+            let resumeContent = '';
+            try {
+                resumeContent = await readFileAsText(uploadedFile);
+            } catch {
+                resumeContent = `[Resume file: ${uploadedFile.name}]`;
+            }
+
+            const prompt = `You are an expert HR talent analyst. Analyze this candidate resume against the job description and return ONLY a JSON object with this exact structure, no markdown, no preamble:
 {
   "score": <number 0-100>,
   "strengths": [<array of 3-5 short skill/strength strings>],
@@ -541,98 +686,108 @@ ${resumeContent.slice(0, 3000)}
 JOB DESCRIPTION:
 ${jd.slice(0, 2000)}`;
 
-        try {
-            const formData = new FormData();
-            formData.append("file", uploadedFile);
-            formData.append("job_description", jd);
+            try {
+                const formData = new FormData();
+                formData.append("file", uploadedFile);
+                formData.append("job_description", jd);
 
-            const response = await fetch("http://127.0.0.1:8000/analyze", {
-                method: "POST",
-                body: formData
-            });
+                const response = await fetch("http://127.0.0.1:8000/analyze", {
+                    method: "POST",
+                    body: formData
+                });
 
-            const data = await response.json();
+                const data = await response.json();
 
-            // Gemini returns text → convert to JSON
-            const parsed = data;
+                const parsed = data;
 
-            animateScore(parsed.score || 0);
+                // Save to localStorage for interview flow
+                localStorage.setItem('resume_score', parsed.score || 0);
+                localStorage.setItem('job_description', jd);
+                localStorage.setItem('candidate_name', document.getElementById('manualName').value.trim() || parsed.name || '');
+                localStorage.setItem('candidate_email', document.getElementById('manualEmail').value.trim() || parsed.email || '');
+                localStorage.setItem('candidate_phone', document.getElementById('manualPhone').value.trim() || parsed.phone || '');
+                localStorage.setItem('candidate_github', document.getElementById('manualGithub').value.trim() || parsed.github_url || '');
+                localStorage.setItem('candidate_linkedin', document.getElementById('manualLinkedin').value.trim() || parsed.linkedin_url || '');
 
-            const sc = document.getElementById('strengthsContainer');
-            sc.innerHTML = '';
-            (parsed.strengths || []).forEach(s => {
-                sc.innerHTML += `<span class="bg-surface-container-high px-4 py-2 rounded-full text-xs font-medium border border-outline-variant/10 text-on-surface">${s}</span>`;
-            });
+                animateScore(parsed.score || 0);
 
-            const gc = document.getElementById('gapsContainer');
-            gc.innerHTML = '';
-            (parsed.gaps || []).forEach(g => {
-                gc.innerHTML += `<span class="bg-error/10 text-error px-4 py-2 rounded-full text-xs font-medium border border-error/20">${g}</span>`;
-            });
+                const sc = document.getElementById('strengthsContainer');
+                sc.innerHTML = '';
+                (parsed.strengths || []).forEach(s => {
+                    sc.innerHTML += `<span class="bg-surface-container-high px-4 py-2 rounded-full text-xs font-medium border border-outline-variant/10 text-on-surface">${s}</span>`;
+                });
 
-            if (!parsed.gaps || parsed.gaps.length === 0) {
-                gc.innerHTML = `<span class="text-xs text-on-surface-variant italic">No significant gaps detected.</span>`;
+                const gc = document.getElementById('gapsContainer');
+                gc.innerHTML = '';
+                (parsed.gaps || []).forEach(g => {
+                    gc.innerHTML += `<span class="bg-error/10 text-error px-4 py-2 rounded-full text-xs font-medium border border-error/20">${g}</span>`;
+                });
+
+                if (!parsed.gaps || parsed.gaps.length === 0) {
+                    gc.innerHTML = `<span class="text-xs text-on-surface-variant italic">No significant gaps detected.</span>`;
+                }
+
+            } catch (err) {
+                console.error(err);
+                alert('Analysis failed. Please check your connection and try again.');
+                document.getElementById('analysisPlaceholder').classList.remove('hidden');
+                document.getElementById('analysisResultCard').classList.add('hidden');
             }
 
-        } catch (err) {
-            console.error(err);
-            alert('Analysis failed. Please check your connection and try again.');
-            document.getElementById('analysisPlaceholder').classList.remove('hidden');
-            document.getElementById('analysisResultCard').classList.add('hidden');
+            btn.disabled = false;
+            btn.classList.remove('opacity-70');
+            btnIcon.classList.remove('analyzing-spin');
+            btnIcon.textContent = 'insights';
+            btnText.textContent = 'Analyze Candidate Fit';
         }
 
-        btn.disabled = false;
-        btn.classList.remove('opacity-70');
-        btnIcon.classList.remove('analyzing-spin');
-        btnIcon.textContent = 'insights';
-        btnText.textContent = 'Analyze Candidate Fit';
-    }
+        function readFileAsText(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.onload = e => resolve(e.target.result);
+                reader.onerror = reject;
+                reader.readAsText(file);
+            });
+        }
 
-    function readFileAsText(file) {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.onload = e => resolve(e.target.result);
-            reader.onerror = reject;
-            reader.readAsText(file);
-        });
-    }
+        function setScore(score) {
+            const circumference = 440;
+            document.getElementById('scoreCircle').style.strokeDashoffset = circumference;
+            document.getElementById('scoreText').textContent = score + '%';
+        }
 
-    function setScore(score) {
-        const circumference = 440;
-        document.getElementById('scoreCircle').style.strokeDashoffset = circumference;
-        document.getElementById('scoreText').textContent = score + '%';
-    }
+        function animateScore(targetScore) {
+            const circumference = 440;
+            const circle = document.getElementById('scoreCircle');
+            const scoreEl = document.getElementById('scoreText');
 
-    function animateScore(targetScore) {
-        const circumference = 440;
-        const circle = document.getElementById('scoreCircle');
-        const scoreEl = document.getElementById('scoreText');
+            let current = 0;
+            const duration = 1500;
+            const step = duration / targetScore;
+            const counter = setInterval(() => {
+                current++;
+                scoreEl.textContent = current + '%';
+                if (current >= targetScore) {
+                    clearInterval(counter);
+                    scoreEl.textContent = targetScore + '%';
+                }
+            }, step);
 
-        let current = 0;
-        const duration = 1500;
-        const step = duration / targetScore;
-        const counter = setInterval(() => {
-            current++;
-            scoreEl.textContent = current + '%';
-            if (current >= targetScore) {
-                clearInterval(counter);
-                scoreEl.textContent = targetScore + '%';
-            }
-        }, step);
+            setTimeout(() => {
+                const offset = circumference - (targetScore / 100) * circumference;
+                circle.style.strokeDashoffset = offset;
+            }, 50);
+        }
 
-        setTimeout(() => {
-            const offset = circumference - (targetScore / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
-        }, 50);
-    }
+        function proceedToInterview() {
+            window.location.href = "./interview.html";
+        }
 
-    function proceedToInterview() {
-        window.location.href = "./interview.html";
-    }
+        function closeInterview() {
+            document.getElementById('interviewPage').classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
 
-    function closeInterview() {
-        document.getElementById('interviewPage').classList.add('hidden');
-        document.body.style.overflow = '';
-    }
-</script>
-</body></html>
+</html>

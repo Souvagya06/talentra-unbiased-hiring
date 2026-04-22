@@ -7,21 +7,28 @@ from fastapi import Request
 import bcrypt
 from supabase import create_client, Client
 import os
-import google.generativeai as genai
 from fastapi import FastAPI, UploadFile, Form
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import io
 from google import genai
+from groq import Groq
+import asyncio
+import moviepy.editor as mp
+from pydantic import BaseModel
+
+class UsernameCheck(BaseModel):
+    username: str
 
 # load env
-load_dotenv(os.path.join(os.path.dirname(__file__), "../.env"))
+load_dotenv()
+SUPABASE_URL = os.getenv("SUPABASE_URL")
+SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # create app FIRST
 app = FastAPI()
-
-# THEN configure Gemini
-
 
 # THEN define routes
 # Replace the /analyze route with this:
@@ -47,11 +54,16 @@ async def analyze_resume(
 
     prompt = f"""You are an expert ATS system.
 Analyze the resume against the job description.
-Return ONLY JSON with no markdown, no preamble:
+Return ONLY valid JSON with no markdown, no preamble:
 {{
-  "score": <number 0-100>,
+  "score": <number 0-100 indicating match percentage>,
   "strengths": ["strength1", "strength2", "strength3"],
-  "gaps": ["gap1", "gap2"]
+  "gaps": ["gap1", "gap2"],
+  "name": "Extract full name from resume. Return empty string if not found.",
+  "email": "Extract email from resume. Return empty string if not found.",
+  "phone": "Extract phone from resume. Return empty string if not found.",
+  "github_url": "Extract github url from resume. Return empty string if not found.",
+  "linkedin_url": "Extract linkedin url from resume. Return empty string if not found."
 }}
 
 RESUME:
@@ -62,10 +74,23 @@ JOB DESCRIPTION:
 
     client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
+    models_to_try = ["gemini-2.5-flash-lite"]
+    response = None
+
+    for model_name in models_to_try:
+        try:
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=model_name,
+                contents=prompt
+            )
+            break
+        except Exception as e:
+            print(f"Model {model_name} failed: {e}")
+            continue
+
+    if not response:
+        return {"technical_score": 0, "communication_score": 0, "feedback": "AI service unavailable, please try again."}
 
     text = response.text    
 
@@ -77,12 +102,206 @@ JOB DESCRIPTION:
         print("Gemini raw response:", text)
         return {"score": 0, "strengths": [], "gaps": []}
 
+# Load Groq model once (fast)
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"), timeout=300.0)
+import uuid
 
-load_dotenv(dotenv_path="../.env")
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
+@app.post("/analyze-interview")
+async def analyze_interview(
+    file: UploadFile,
+    user_email: str = Form("test@gmail.com"),
+    name: str = Form(""),
+    email: str = Form(""),
+    phone: str = Form(""),
+    github_url: str = Form(""),
+    linkedin_url: str = Form(""),
+    job_description: str = Form(""),
+    resume_score: str = Form("0")
+):
+    content = await file.read()
 
-supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+    filename = file.filename.lower()
+    
+    unique_id = uuid.uuid4().hex
+    # Ensure extension is valid for groq
+    ext = ".wav" if filename.endswith(".wav") else ".webm"
+    temp_input = f"temp_input_{unique_id}{ext}"
+    
+    with open(temp_input, "wb") as f:
+        f.write(content)
+
+    temp_audio = temp_input
+
+    # TRY extract audio if it's considered a video format
+    if filename.endswith((".mp4", ".webm", ".mov", ".mkv")):
+        try:
+            temp_extracted = f"temp_audio_{unique_id}.wav"
+            video = mp.VideoFileClip(temp_input)
+            if video.audio is not None:
+                video.audio.write_audiofile(temp_extracted, logger=None)
+                temp_audio = temp_extracted
+            video.close()
+        except Exception as e:
+            # It's an audio only file packaged in webm/mkv, process it directly
+            pass
+            
+    # Safely parse resume_score
+    try:
+        r_score = int(float(resume_score))
+    except:
+        r_score = 0
+
+    # STEP 1: Groq Whisper transcription
+    with open(temp_audio, "rb") as audio_file:
+        audio_data = audio_file.read()
+        
+    # Check max file size (25MB) limit for Groq
+    if len(audio_data) > 25 * 1024 * 1024:
+        return {"error": "File too large. Please limit recording to under 25MB."}
+
+    transcription = groq_client.audio.transcriptions.create(
+        file=(os.path.basename(temp_audio), audio_data),
+        model="whisper-large-v3"
+    )
+
+    transcript = transcription.text
+
+    if not transcript:
+        return {"analysis": "No speech detected"}
+
+    # STEP 2: Gemini analysis
+    name_instruction = f"The candidate's name is '{name}'. Please use their name in the summary instead of making one up. Make sure the name spelling is exactly as provided." if name else "Do not assume a candidate name if not explicitly mentioned in the transcript."
+
+    prompt = f"""
+    You are an interview evaluator.
+    {name_instruction}
+
+    Analyze this transcript and return ONLY valid JSON:
+
+    {{
+        "technical_score": <number 0-100>,
+        "communication_score": <number 0-100>,
+        "strengths": ["point1", "point2"],
+        "gaps": ["gap1", "gap2"],
+        "evaluation_summary": "A short 2-3 sentence paragraph summarizing candidate performance.",
+        "recommendation_percentage": <number 0-100, based on overall fit>,
+        "recommendation": "Strong Hire" or "Consider" or "Not Recommended"
+    }}
+
+    Transcript:
+    {transcript}
+    """
+
+    client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+
+    models_to_try = ["gemini-2.5-flash-lite"]
+    response = None
+
+    for model_name in models_to_try:
+        try:
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=model_name,   # <-- use model_name, not hardcoded string
+                contents=prompt
+            )
+            break
+        except Exception as e:
+            print(f"Model {model_name} failed: {e}")
+            continue
+
+    if not response:
+        return {"technical_score": 0, "communication_score": 0, "feedback": "AI service unavailable, please try again."}
+
+    text = response.text
+
+    try:
+        cleaned = text.replace("```json", "").replace("```", "").strip()
+        parsed = json.loads(cleaned)
+
+        # ✅ SAVE REPORT HERE
+        insert_response = supabase.table("reports").insert({
+            "user_email": user_email,
+            "name": name,
+            "email": email,
+            "phone": phone,
+            "github_url": github_url,
+            "linkedin_url": linkedin_url,
+            "job_description": job_description,
+            "resume_score": r_score,
+            "technical_score": parsed.get("technical_score", 0),
+            "communication_score": parsed.get("communication_score", 0),
+            "strengths": parsed.get("strengths", []),
+            "gaps": parsed.get("gaps", []),
+            "evaluation_summary": parsed.get("evaluation_summary", ""),
+            "recommendation_percentage": parsed.get("recommendation_percentage", 0)
+        }).execute()
+        
+        if insert_response.data and len(insert_response.data) > 0:
+            parsed["report_id"] = insert_response.data[0].get("id")
+
+        return parsed
+
+    except Exception as e:
+        print("Error saving to supabase:", e)
+        return {
+            "analysis": text,
+            "transcript": transcript[:500]
+        }
+
+# THEN API Route
+@app.post("/check-username")
+async def check_username(data: UsernameCheck):
+    try:
+        username = data.username.strip().lower()
+
+        # Split safely
+        parts = username.split()
+        if len(parts) < 2:
+            return {"exists": False}
+
+        first_name = parts[0]
+        last_name = parts[-1]
+
+        # Fetch ALL users (safe for now)
+        response = supabase.table("users").select("*").execute()
+
+        if not response.data:
+            return {"exists": False}
+
+        # Manual matching (BEST FIX)
+        for user in response.data:
+            db_first = (user.get("first_name") or "").strip().lower()
+            db_last = (user.get("last_name") or "").strip().lower()
+
+            if db_first == first_name and db_last == last_name:
+                return {"exists": True}
+
+        return {"exists": False}
+
+    except Exception as e:
+        print("ERROR:", e)
+        return {"exists": False}
+
+# fetch API
+@app.get("/my-reports")
+def get_reports(email: str):
+    res = supabase.table("reports") \
+        .select("*") \
+        .eq("user_email", email) \
+        .order("created_at", desc=True) \
+        .execute()
+
+    return res.data
+@app.get("/report/{id}")
+def get_single_report(id: str):
+    res = supabase.table("reports") \
+        .select("*") \
+        .eq("id", id) \
+        .single() \
+        .execute()
+
+    return res.data
+
 
 @app.get("/users")
 def get_users():

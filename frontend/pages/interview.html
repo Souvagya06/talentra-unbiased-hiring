@@ -1,1050 +1,1401 @@
 <!DOCTYPE html>
 <html class="dark" lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>FairLens AI | Interview Session</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-  tailwind.config = {
-    darkMode: "class",
-    theme: {
-      extend: {
-        "colors": {
-          "surface": "#101419",
-          "surface-container-lowest": "#0a0e13",
-          "on-secondary-fixed-variant": "#6900b3",
-          "on-secondary-container": "#d6a9ff",
-          "inverse-on-surface": "#2d3136",
-          "error": "#ffb4ab",
-          "primary-container": "#8083ff",
-          "on-surface": "#e0e2ea",
-          "on-secondary-fixed": "#2c0051",
-          "inverse-surface": "#e0e2ea",
-          "on-secondary": "#490080",
-          "on-error": "#690005",
-          "on-primary-fixed": "#07006c",
-          "primary": "#c0c1ff",
-          "surface-variant": "#31353b",
-          "secondary": "#ddb7ff",
-          "on-tertiary-container": "#002d40",
-          "surface-bright": "#36393f",
-          "on-tertiary": "#00354a",
-          "surface-tint": "#c0c1ff",
-          "on-primary-container": "#0d0096",
-          "secondary-fixed-dim": "#ddb7ff",
-          "secondary-fixed": "#f0dbff",
-          "surface-container-highest": "#31353b",
-          "on-surface-variant": "#c2c6d6",
-          "inverse-primary": "#494bd6",
-          "surface-container-high": "#262a30",
-          "tertiary": "#7bd0ff",
-          "on-tertiary-fixed": "#001e2c",
-          "on-error-container": "#ffdad6",
-          "on-primary-fixed-variant": "#2f2ebe",
-          "outline-variant": "#424754",
-          "secondary-container": "#6f00be",
-          "surface-container-low": "#181c21",
-          "surface-dim": "#101419",
-          "background": "#101419",
-          "tertiary-container": "#009bd1",
-          "tertiary-fixed-dim": "#7bd0ff",
-          "on-primary": "#1000a9",
-          "surface-container": "#1c2025",
-          "error-container": "#93000a",
-          "tertiary-fixed": "#c4e7ff",
-          "on-tertiary-fixed-variant": "#004c69",
-          "on-background": "#e0e2ea",
-          "outline": "#8c909f",
-          "primary-fixed-dim": "#c0c1ff",
-          "primary-fixed": "#e1e0ff"
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>FairLens AI | Interview Session</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;500;700;800&family=Inter:wght@300;400;500;600&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#101419",
+            "surface-container-lowest": "#0a0e13",
+            "on-secondary-fixed-variant": "#6900b3",
+            "on-secondary-container": "#d6a9ff",
+            "inverse-on-surface": "#2d3136",
+            "error": "#ffb4ab",
+            "primary-container": "#8083ff",
+            "on-surface": "#e0e2ea",
+            "on-secondary-fixed": "#2c0051",
+            "inverse-surface": "#e0e2ea",
+            "on-secondary": "#490080",
+            "on-error": "#690005",
+            "on-primary-fixed": "#07006c",
+            "primary": "#c0c1ff",
+            "surface-variant": "#31353b",
+            "secondary": "#ddb7ff",
+            "on-tertiary-container": "#002d40",
+            "surface-bright": "#36393f",
+            "on-tertiary": "#00354a",
+            "surface-tint": "#c0c1ff",
+            "on-primary-container": "#0d0096",
+            "secondary-fixed-dim": "#ddb7ff",
+            "secondary-fixed": "#f0dbff",
+            "surface-container-highest": "#31353b",
+            "on-surface-variant": "#c2c6d6",
+            "inverse-primary": "#494bd6",
+            "surface-container-high": "#262a30",
+            "tertiary": "#7bd0ff",
+            "on-tertiary-fixed": "#001e2c",
+            "on-error-container": "#ffdad6",
+            "on-primary-fixed-variant": "#2f2ebe",
+            "outline-variant": "#424754",
+            "secondary-container": "#6f00be",
+            "surface-container-low": "#181c21",
+            "surface-dim": "#101419",
+            "background": "#101419",
+            "tertiary-container": "#009bd1",
+            "tertiary-fixed-dim": "#7bd0ff",
+            "on-primary": "#1000a9",
+            "surface-container": "#1c2025",
+            "error-container": "#93000a",
+            "tertiary-fixed": "#c4e7ff",
+            "on-tertiary-fixed-variant": "#004c69",
+            "on-background": "#e0e2ea",
+            "outline": "#8c909f",
+            "primary-fixed-dim": "#c0c1ff",
+            "primary-fixed": "#e1e0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "xxl": "1.5rem",
+            "full": "9999px"
+          },
+          "fontFamily": {
+            "headline": ["Manrope"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          }
         },
-        "borderRadius": {
-          "DEFAULT": "0.25rem",
-          "lg": "0.5rem",
-          "xl": "0.75rem",
-          "xxl": "1.5rem",
-          "full": "9999px"
-        },
-        "fontFamily": {
-          "headline": ["Manrope"],
-          "body": ["Inter"],
-          "label": ["Inter"]
-        }
       },
-    },
-  }
-</script>
-<style>
-  .material-symbols-outlined {
-    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-  }
-  .glass-panel {
-    background: rgba(143, 183, 243, 0.15);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-  }
-  .mic-glow {
-    box-shadow: 0 0 40px rgba(72, 74, 170, 0.2);
-  }
-  .mic-glow-active {
-    box-shadow: 0 0 60px rgba(192, 193, 255, 0.5);
-  }
-  .waveform-bar {
-    width: 4px;
-    border-radius: 2px;
-    background: linear-gradient(to top, #c0c1ff, #ddb7ff);
-    transition: height 0.15s ease;
-  }
-  .asymmetric-grid {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 2rem;
-  }
-  @keyframes waveAnim {
-    0%, 100% { height: 4px; }
-    50% { height: var(--max-h); }
-  }
-  .wave-animate .waveform-bar:nth-child(1) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 8px; animation-delay: 0s; }
-  .wave-animate .waveform-bar:nth-child(2) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 20px; animation-delay: 0.1s; }
-  .wave-animate .waveform-bar:nth-child(3) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 30px; animation-delay: 0.2s; }
-  .wave-animate .waveform-bar:nth-child(4) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 16px; animation-delay: 0.3s; }
-  .wave-animate .waveform-bar:nth-child(5) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 24px; animation-delay: 0.4s; }
-  .wave-animate .waveform-bar:nth-child(6) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 12px; animation-delay: 0.5s; }
-  .wave-animate .waveform-bar:nth-child(7) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 28px; animation-delay: 0.6s; }
-  .wave-animate .waveform-bar:nth-child(8) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 20px; animation-delay: 0.7s; }
-  .wave-animate .waveform-bar:nth-child(9) { animation: waveAnim 0.8s ease-in-out infinite; --max-h: 16px; animation-delay: 0.8s; }
-  .wave-animate .waveform-bar:nth-child(10){ animation: waveAnim 0.8s ease-in-out infinite; --max-h: 8px;  animation-delay: 0.9s; }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
 
-  /* Toast notification */
-  #toast {
-    position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 9999;
-    pointer-events: none;
-  }
-  #toast.show {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
+    .glass-panel {
+      background: rgba(143, 183, 243, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
 
-  .btn-start {
-    background: linear-gradient(135deg, #494bd6, #c0c1ff);
-    color: #07006c;
-  }
-  .btn-start:hover {
-    background: linear-gradient(135deg, #5b5df0, #d6d7ff);
-    transform: scale(1.02);
-  }
-  .btn-start:disabled {
-    opacity: 0.4;
-    cursor: not-allowed;
-    transform: none !important;
-  }
+    .mic-glow {
+      box-shadow: 0 0 40px rgba(72, 74, 170, 0.2);
+    }
 
-  .state-idle { display: flex; }
-  .state-active { display: none; }
-  .state-ended { display: none; }
+    .mic-glow-active {
+      box-shadow: 0 0 60px rgba(192, 193, 255, 0.5);
+    }
 
-  body[data-state="active"] .state-idle { display: none; }
-  body[data-state="active"] .state-active { display: flex; }
-  body[data-state="active"] .state-ended { display: none; }
+    .waveform-bar {
+      width: 4px;
+      border-radius: 2px;
+      background: linear-gradient(to top, #c0c1ff, #ddb7ff);
+      transition: height 0.15s ease;
+    }
 
-  body[data-state="ended"] .state-idle { display: none; }
-  body[data-state="ended"] .state-active { display: none; }
-  body[data-state="ended"] .state-ended { display: flex; }
+    .asymmetric-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 2rem;
+    }
 
-  .score-row { display: flex; gap: 1rem; align-items: flex-start; }
-  .score-val { font-size: 1.5rem; font-weight: 800; font-family: 'Manrope', sans-serif; }
-  .score-badge {
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 9999px;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-  }
+    @keyframes waveAnim {
 
-  .topic-item { display: flex; align-items: center; gap: 0.75rem; padding: 6px 0; }
-  .topic-pending .topic-dot { width: 14px; height: 14px; border-radius: 50%; border: 1px solid #c0c1ff; flex-shrink: 0; }
-  .topic-done .topic-dot-icon { color: #c0c1ff; font-size: 18px; }
-  .topic-active .topic-label { color: #e0e2ea; font-weight: 600; }
-  .topic-pending .topic-label { color: #c2c6d6; }
-  .topic-done .topic-label { color: #8c909f; }
+      0%,
+      100% {
+        height: 4px;
+      }
 
-  input[type="text"], textarea, select {
-    background: #1c2025;
-    border: 1px solid #424754;
-    color: #e0e2ea;
-    border-radius: 0.75rem;
-    padding: 10px 14px;
-    font-size: 13px;
-    width: 100%;
-    outline: none;
-    transition: border-color 0.2s;
-  }
-  input[type="text"]:focus, textarea:focus, select:focus {
-    border-color: #c0c1ff;
-  }
-  input.error-field, textarea.error-field, select.error-field {
-    border-color: #ffb4ab !important;
-  }
-  .field-error-msg {
-    color: #ffb4ab;
-    font-size: 11px;
-    margin-top: 4px;
-    display: none;
-  }
-  .field-error-msg.visible { display: block; }
+      50% {
+        height: var(--max-h);
+      }
+    }
 
-  /* ── Mode Cards ─────────────────────────────────────────────────────────── */
-  .mode-card {
-    position: relative;
-    flex: 1;
-    display: flex;
-    align-items: flex-start;
-    gap: 14px;
-    padding: 18px 20px;
-    border-radius: 1rem;
-    border: 1.5px solid #424754;
-    background: #181c21;
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.15s;
-    user-select: none;
-  }
-  .mode-card:hover {
-    border-color: #8083ff;
-    background: #1c2230;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 24px rgba(192, 193, 255, 0.08);
-  }
-  .mode-card.selected {
-    border-color: #c0c1ff;
-    background: linear-gradient(135deg, rgba(73,75,214,0.18), rgba(192,193,255,0.06));
-    box-shadow: 0 0 0 1px #c0c1ff33, 0 4px 32px rgba(192,193,255,0.12);
-  }
-  .mode-card .mode-icon-wrap {
-    width: 42px;
-    height: 42px;
-    border-radius: 0.75rem;
-    background: #262a30;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .mode-card:hover .mode-icon-wrap,
-  .mode-card.selected .mode-icon-wrap {
-    background: rgba(192,193,255,0.12);
-  }
-  .mode-card .mode-icon-wrap .material-symbols-outlined {
-    color: #8c909f;
-    font-size: 22px;
-    transition: color 0.2s;
-  }
-  .mode-card:hover .mode-icon-wrap .material-symbols-outlined,
-  .mode-card.selected .mode-icon-wrap .material-symbols-outlined {
-    color: #c0c1ff;
-  }
-  .mode-card .mode-title {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 14px;
-    color: #c2c6d6;
-    transition: color 0.2s;
-  }
-  .mode-card.selected .mode-title { color: #e0e2ea; }
-  .mode-card .mode-desc {
-    font-size: 11.5px;
-    color: #8c909f;
-    margin-top: 3px;
-    line-height: 1.5;
-  }
-  .mode-card .mode-check {
-    position: absolute;
-    top: 12px;
-    right: 14px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    border: 1.5px solid #424754;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.2s, background 0.2s;
-    flex-shrink: 0;
-  }
-  .mode-card.selected .mode-check {
-    border-color: #c0c1ff;
-    background: #c0c1ff;
-  }
-  .mode-card .mode-check .material-symbols-outlined {
-    font-size: 12px;
-    color: #07006c;
-    opacity: 0;
-    transition: opacity 0.15s;
-    font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 20;
-  }
-  .mode-card.selected .mode-check .material-symbols-outlined { opacity: 1; }
+    .wave-animate .waveform-bar:nth-child(1) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 8px;
+      animation-delay: 0s;
+    }
 
-  /* ── Online mode inner content ─────────────────────────────────────────── */
-  .online-content { display: none; }
-  .offline-content { display: flex; }
-  body[data-mode="online"] .online-content { display: flex; }
-  body[data-mode="online"] .offline-content { display: none; }
-  body[data-mode="offline"] .offline-content { display: flex; }
-  body[data-mode="offline"] .online-content { display: none; }
+    .wave-animate .waveform-bar:nth-child(2) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 20px;
+      animation-delay: 0.1s;
+    }
 
-  /* Recording pulse for online mode */
-  @keyframes recordPulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.15); }
-  }
-  .rec-pulse { animation: recordPulse 1.2s ease-in-out infinite; }
+    .wave-animate .waveform-bar:nth-child(3) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 30px;
+      animation-delay: 0.2s;
+    }
 
-  .btn-meet {
-    padding: 9px 18px;
-    border-radius: 0.75rem;
-    font-size: 12.5px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .btn-meet-open {
-    background: rgba(123, 208, 255, 0.1);
-    border: 1px solid rgba(123, 208, 255, 0.3);
-    color: #7bd0ff;
-  }
-  .btn-meet-open:hover {
-    background: rgba(123, 208, 255, 0.18);
-    border-color: #7bd0ff;
-    transform: translateY(-1px);
-  }
-  .btn-meet-record {
-    background: rgba(192, 193, 255, 0.1);
-    border: 1px solid rgba(192, 193, 255, 0.3);
-    color: #c0c1ff;
-  }
-  .btn-meet-record:hover {
-    background: rgba(192, 193, 255, 0.18);
-    border-color: #c0c1ff;
-    transform: translateY(-1px);
-  }
+    .wave-animate .waveform-bar:nth-child(4) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 16px;
+      animation-delay: 0.3s;
+    }
 
-  /* View Full Report button in sidebar */
-  #view-report-btn {
-    transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-  }
-  #view-report-btn.report-disabled {
-    opacity: 0.35;
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-  #view-report-btn.report-enabled {
-    opacity: 1;
-    cursor: pointer;
-    pointer-events: auto;
-  }
-  #view-report-btn.report-enabled:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 4px 20px rgba(192,193,255,0.2);
-  }
-  @keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    20% { transform: translateX(-5px); }
-    40% { transform: translateX(5px); }
-    60% { transform: translateX(-4px); }
-    80% { transform: translateX(4px); }
-  }
-  .shake { animation: shake 0.4s ease; }
+    .wave-animate .waveform-bar:nth-child(5) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 24px;
+      animation-delay: 0.4s;
+    }
 
-  /* Upload video button */
-  .btn-upload-video {
-    background: rgba(192, 193, 255, 0.1);
-    border: 1px solid rgba(192, 193, 255, 0.3);
-    color: #c0c1ff;
-  }
-  .btn-upload-video:hover {
-    background: rgba(192, 193, 255, 0.18);
-    border-color: #c0c1ff;
-    transform: translateY(-1px);
-  }
-  /* Uploaded file chip */
-  #uploaded-file-chip {
-    display: none;
-    align-items: center;
-    gap: 6px;
-    padding: 5px 10px;
-    background: rgba(192,193,255,0.08);
-    border: 1px solid rgba(192,193,255,0.2);
-    border-radius: 9999px;
-    font-size: 11px;
-    color: #c0c1ff;
-    max-width: 220px;
-  }
-  #uploaded-file-chip.visible { display: flex; }
-  .no-mode-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 20;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: rgba(16,20,25,0.55);
-    backdrop-filter: blur(3px);
-    border-radius: 1.5rem;
-    transition: opacity 0.3s;
-  }
-  body[data-mode="offline"] .no-mode-overlay,
-  body[data-mode="online"] .no-mode-overlay { display: none; }
-</style>
+    .wave-animate .waveform-bar:nth-child(6) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 12px;
+      animation-delay: 0.5s;
+    }
+
+    .wave-animate .waveform-bar:nth-child(7) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 28px;
+      animation-delay: 0.6s;
+    }
+
+    .wave-animate .waveform-bar:nth-child(8) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 20px;
+      animation-delay: 0.7s;
+    }
+
+    .wave-animate .waveform-bar:nth-child(9) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 16px;
+      animation-delay: 0.8s;
+    }
+
+    .wave-animate .waveform-bar:nth-child(10) {
+      animation: waveAnim 0.8s ease-in-out infinite;
+      --max-h: 8px;
+      animation-delay: 0.9s;
+    }
+
+    /* Toast notification */
+    #toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 9999;
+      pointer-events: none;
+    }
+
+    #toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .btn-start {
+      background: linear-gradient(135deg, #494bd6, #c0c1ff);
+      color: #07006c;
+    }
+
+    .btn-start:hover {
+      background: linear-gradient(135deg, #5b5df0, #d6d7ff);
+      transform: scale(1.02);
+    }
+
+    .btn-start:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .state-idle {
+      display: flex;
+    }
+
+    .state-active {
+      display: none;
+    }
+
+    .state-ended {
+      display: none;
+    }
+
+    body[data-state="active"] .state-idle {
+      display: none;
+    }
+
+    body[data-state="active"] .state-active {
+      display: flex;
+    }
+
+    body[data-state="active"] .state-ended {
+      display: none;
+    }
+
+    body[data-state="ended"] .state-idle {
+      display: none;
+    }
+
+    body[data-state="ended"] .state-active {
+      display: none;
+    }
+
+    body[data-state="ended"] .state-ended {
+      display: flex;
+    }
+
+    .score-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .score-val {
+      font-size: 1.5rem;
+      font-weight: 800;
+      font-family: 'Manrope', sans-serif;
+    }
+
+    .score-badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 6px 0;
+    }
+
+    .topic-pending .topic-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 1px solid #c0c1ff;
+      flex-shrink: 0;
+    }
+
+    .topic-done .topic-dot-icon {
+      color: #c0c1ff;
+      font-size: 18px;
+    }
+
+    .topic-active .topic-label {
+      color: #e0e2ea;
+      font-weight: 600;
+    }
+
+    .topic-pending .topic-label {
+      color: #c2c6d6;
+    }
+
+    .topic-done .topic-label {
+      color: #8c909f;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      background: #1c2025;
+      border: 1px solid #424754;
+      color: #e0e2ea;
+      border-radius: 0.75rem;
+      padding: 10px 14px;
+      font-size: 13px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus,
+    select:focus {
+      border-color: #c0c1ff;
+    }
+
+    input.error-field,
+    textarea.error-field,
+    select.error-field {
+      border-color: #ffb4ab !important;
+    }
+
+    .field-error-msg {
+      color: #ffb4ab;
+      font-size: 11px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .field-error-msg.visible {
+      display: block;
+    }
+
+    /* ── Mode Cards ─────────────────────────────────────────────────────────── */
+    .mode-card {
+      position: relative;
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      border-radius: 1rem;
+      border: 1.5px solid #424754;
+      background: #181c21;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s, transform 0.15s;
+      user-select: none;
+    }
+
+    .mode-card:hover {
+      border-color: #8083ff;
+      background: #1c2230;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(192, 193, 255, 0.08);
+    }
+
+    .mode-card.selected {
+      border-color: #c0c1ff;
+      background: linear-gradient(135deg, rgba(73, 75, 214, 0.18), rgba(192, 193, 255, 0.06));
+      box-shadow: 0 0 0 1px #c0c1ff33, 0 4px 32px rgba(192, 193, 255, 0.12);
+    }
+
+    .mode-card .mode-icon-wrap {
+      width: 42px;
+      height: 42px;
+      border-radius: 0.75rem;
+      background: #262a30;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+
+    .mode-card:hover .mode-icon-wrap,
+    .mode-card.selected .mode-icon-wrap {
+      background: rgba(192, 193, 255, 0.12);
+    }
+
+    .mode-card .mode-icon-wrap .material-symbols-outlined {
+      color: #8c909f;
+      font-size: 22px;
+      transition: color 0.2s;
+    }
+
+    .mode-card:hover .mode-icon-wrap .material-symbols-outlined,
+    .mode-card.selected .mode-icon-wrap .material-symbols-outlined {
+      color: #c0c1ff;
+    }
+
+    .mode-card .mode-title {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #c2c6d6;
+      transition: color 0.2s;
+    }
+
+    .mode-card.selected .mode-title {
+      color: #e0e2ea;
+    }
+
+    .mode-card .mode-desc {
+      font-size: 11.5px;
+      color: #8c909f;
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    .mode-card .mode-check {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid #424754;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, background 0.2s;
+      flex-shrink: 0;
+    }
+
+    .mode-card.selected .mode-check {
+      border-color: #c0c1ff;
+      background: #c0c1ff;
+    }
+
+    .mode-card .mode-check .material-symbols-outlined {
+      font-size: 12px;
+      color: #07006c;
+      opacity: 0;
+      transition: opacity 0.15s;
+      font-variation-settings: 'FILL' 1, 'wght' 700, 'GRAD' 0, 'opsz' 20;
+    }
+
+    .mode-card.selected .mode-check .material-symbols-outlined {
+      opacity: 1;
+    }
+
+    /* ── Online mode inner content ─────────────────────────────────────────── */
+    .online-content {
+      display: none;
+    }
+
+    .offline-content {
+      display: flex;
+    }
+
+    body[data-mode="online"] .online-content {
+      display: flex;
+    }
+
+    body[data-mode="online"] .offline-content {
+      display: none;
+    }
+
+    body[data-mode="offline"] .offline-content {
+      display: flex;
+    }
+
+    body[data-mode="offline"] .online-content {
+      display: none;
+    }
+
+    /* Recording pulse for online mode */
+    @keyframes recordPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(1.15);
+      }
+    }
+
+    .rec-pulse {
+      animation: recordPulse 1.2s ease-in-out infinite;
+    }
+
+    .btn-meet {
+      padding: 9px 18px;
+      border-radius: 0.75rem;
+      font-size: 12.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-meet-open {
+      background: rgba(123, 208, 255, 0.1);
+      border: 1px solid rgba(123, 208, 255, 0.3);
+      color: #7bd0ff;
+    }
+
+    .btn-meet-open:hover {
+      background: rgba(123, 208, 255, 0.18);
+      border-color: #7bd0ff;
+      transform: translateY(-1px);
+    }
+
+    .btn-meet-record {
+      background: rgba(192, 193, 255, 0.1);
+      border: 1px solid rgba(192, 193, 255, 0.3);
+      color: #c0c1ff;
+    }
+
+    .btn-meet-record:hover {
+      background: rgba(192, 193, 255, 0.18);
+      border-color: #c0c1ff;
+      transform: translateY(-1px);
+    }
+
+    /* View Full Report button in sidebar */
+    #view-report-btn {
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    #view-report-btn.report-disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    #view-report-btn.report-enabled {
+      opacity: 1;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    #view-report-btn.report-enabled:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(192, 193, 255, 0.2);
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20% {
+        transform: translateX(-5px);
+      }
+
+      40% {
+        transform: translateX(5px);
+      }
+
+      60% {
+        transform: translateX(-4px);
+      }
+
+      80% {
+        transform: translateX(4px);
+      }
+    }
+
+    .shake {
+      animation: shake 0.4s ease;
+    }
+
+    /* Upload video button */
+    .btn-upload-video {
+      background: rgba(192, 193, 255, 0.1);
+      border: 1px solid rgba(192, 193, 255, 0.3);
+      color: #c0c1ff;
+    }
+
+    .btn-upload-video:hover {
+      background: rgba(192, 193, 255, 0.18);
+      border-color: #c0c1ff;
+      transform: translateY(-1px);
+    }
+
+    /* Uploaded file chip */
+    #uploaded-file-chip {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      background: rgba(192, 193, 255, 0.08);
+      border: 1px solid rgba(192, 193, 255, 0.2);
+      border-radius: 9999px;
+      font-size: 11px;
+      color: #c0c1ff;
+      max-width: 220px;
+    }
+
+    #uploaded-file-chip.visible {
+      display: flex;
+    }
+
+    .no-mode-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 20;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: rgba(16, 20, 25, 0.55);
+      backdrop-filter: blur(3px);
+      border-radius: 1.5rem;
+      transition: opacity 0.3s;
+    }
+
+    body[data-mode="offline"] .no-mode-overlay,
+    body[data-mode="online"] .no-mode-overlay {
+      display: none;
+    }
+  </style>
 </head>
-<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen" data-state="idle" data-mode="">
 
-<!-- Toast -->
-<div id="toast" class="flex items-center gap-3 bg-surface-container border border-outline-variant rounded-full px-5 py-3 shadow-xl">
-  <span id="toast-icon" class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;">warning</span>
-  <span id="toast-msg" class="text-sm font-medium text-on-surface"></span>
-</div>
+<body
+  class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen"
+  data-state="idle" data-mode="">
 
-<!-- Navbar -->
-<header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
-  <div class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-    <div class="flex items-center justify-between">
-      <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
-    </div>
-    <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
-      <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
-      <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
-      <a href="./interview.html" class="text-primary border-b-2 border-primary pb-1">Interview</a>
-      <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
-    </nav>
+  <!-- Toast -->
+  <div id="toast"
+    class="flex items-center gap-3 bg-surface-container border border-outline-variant rounded-full px-5 py-3 shadow-xl">
+    <span id="toast-icon" class="material-symbols-outlined text-lg"
+      style="font-variation-settings:'FILL' 1;">warning</span>
+    <span id="toast-msg" class="text-sm font-medium text-on-surface"></span>
   </div>
-</header>
 
-<!-- Main -->
-<main class="pt-10 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
-
-  <!-- HEADER -->
-  <header class="mb-8">
-    <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
-      Interview Session
-    </h2>
-    <p class="text-on-surface-variant font-medium">
-      Conduct and evaluate candidate performance through AI-assisted live interview analysis.
-    </p>
+  <!-- Navbar -->
+  <header class="sticky top-0 z-50 bg-[#101419]/90 backdrop-blur-xl border-b border-outline-variant/20">
+    <div
+      class="max-w-7xl mx-auto px-6 md:px-10 py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div class="flex items-center justify-between">
+        <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
+      </div>
+      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+        <a href="./result.html" class="text-on-surface-variant hover:text-on-surface transition">Dashboard</a>
+        <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
+        <a href="./interview.html" class="text-primary border-b-2 border-primary pb-1">Interview</a>
+        <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- ── MODE SELECTION ────────────────────────────────────────────────────── -->
-  <div class="mb-8">
-    <p class="text-xs font-bold text-on-surface-variant tracking-[0.18em] uppercase mb-3">Select Interview Mode</p>
-    <div class="flex gap-4">
+  <!-- Main -->
+  <main class="pt-10 pb-12 px-8 max-w-7xl mx-auto min-h-screen flex flex-col">
 
-      <!-- Offline Mode Card -->
-      <div class="mode-card" id="card-offline" onclick="selectMode('offline')">
-        <div class="mode-icon-wrap">
-          <span class="material-symbols-outlined">mic</span>
-        </div>
-        <div class="flex-1 min-w-0">
-          <div class="mode-title">Offline Mode</div>
-          <div class="mode-desc">Record interview using system microphone</div>
-        </div>
-        <div class="mode-check">
-          <span class="material-symbols-outlined">check</span>
-        </div>
-      </div>
-
-      <!-- Online Mode Card -->
-      <div class="mode-card" id="card-online" onclick="selectMode('online')">
-        <div class="mode-icon-wrap">
-          <span class="material-symbols-outlined">videocam</span>
-        </div>
-        <div class="flex-1 min-w-0">
-          <div class="mode-title">Online Mode</div>
-          <div class="mode-desc">Record live meeting session</div>
-        </div>
-        <div class="mode-check">
-          <span class="material-symbols-outlined">check</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  <!-- ── END MODE SELECTION ────────────────────────────────────────────────── -->
-
-  <div class="asymmetric-grid flex-grow">
-
-    <!-- LEFT COLUMN -->
-    <div class="flex flex-col space-y-6">
-
-      <!-- MIC / Recording Box -->
-      <div class="relative group h-[480px] rounded-xxl overflow-hidden bg-surface-container-low flex flex-col items-center justify-center border border-outline-variant/10">
-        <div class="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-surface-container-low to-surface-container-lowest"></div>
-
-        <!-- No-mode overlay (shown when no mode selected) -->
-        <div class="no-mode-overlay">
-          <span class="material-symbols-outlined text-4xl text-on-surface-variant opacity-50">touch_app</span>
-          <p class="text-sm text-on-surface-variant opacity-60 font-medium">Select an interview mode above to begin</p>
-        </div>
-
-        <!-- IDLE STATE -->
-        <div class="state-idle z-10 flex-col items-center space-y-6 w-full px-8">
-
-          <!-- OFFLINE idle content -->
-          <div class="offline-content flex-col items-center space-y-6 w-full">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-primary/5 rounded-full blur-2xl"></div>
-              <div class="relative w-28 h-28 rounded-full bg-surface-container flex items-center justify-center border-2 border-outline-variant/30">
-                <span class="material-symbols-outlined text-on-surface-variant text-5xl">mic_off</span>
-              </div>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <span class="text-on-surface-variant font-headline text-lg font-medium">Session Not Started</span>
-              <span class="text-xs text-on-surface-variant/60">Configure and start your interview above</span>
-            </div>
-            <button id="start-btn-offline-idle" onclick="startInterview()"
-              class="btn-start px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all active:scale-95">
-              <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;">play_arrow</span>
-              Start Recording
-            </button>
-          </div>
-
-          <!-- ONLINE idle content -->
-          <div class="online-content flex-col items-center space-y-5 w-full max-w-sm">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-tertiary/5 rounded-full blur-2xl"></div>
-              <div class="relative w-28 h-28 rounded-full bg-surface-container flex items-center justify-center border-2 border-outline-variant/30">
-                <span class="material-symbols-outlined text-on-surface-variant text-5xl">videocam_off</span>
-              </div>
-            </div>
-            <div class="flex flex-col items-center gap-1 text-center">
-              <span class="text-on-surface-variant font-headline text-lg font-medium">Meeting Not Started</span>
-              <span class="text-xs text-on-surface-variant/60">Open Meet to start the session, then upload the recording</span>
-            </div>
-            <!-- Action buttons -->
-            <div class="flex gap-3 w-full justify-center">
-              <button onclick="openMeet()" class="btn-meet btn-meet-open">
-                <span class="material-symbols-outlined text-base">open_in_new</span>
-                Open Meet
-              </button>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ACTIVE STATE: Mic + Waveform + Analyze + End -->
-        <div class="state-active z-10 flex-col items-center space-y-6 w-full px-8">
-
-          <!-- OFFLINE active content -->
-          <div class="offline-content flex-col items-center space-y-6">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
-              <button id="mic-btn" onclick="toggleMic()" class="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mic-glow-active active:scale-95 transition-transform">
-                <span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;" id="mic-icon">mic</span>
-              </button>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <span id="listen-status" class="text-primary font-headline text-lg font-medium tracking-wide">Listening...</span>
-              <div id="waveform" class="flex items-end gap-1 h-8 px-4 wave-animate">
-                <div class="waveform-bar h-2"></div>
-                <div class="waveform-bar h-5"></div>
-                <div class="waveform-bar h-8"></div>
-                <div class="waveform-bar h-4"></div>
-                <div class="waveform-bar h-6"></div>
-                <div class="waveform-bar h-3"></div>
-                <div class="waveform-bar h-7"></div>
-                <div class="waveform-bar h-5"></div>
-                <div class="waveform-bar h-4"></div>
-                <div class="waveform-bar h-2"></div>
-              </div>
-            </div>
-            <button onclick="endInterview()"
-              class="px-6 py-2 rounded-full bg-error/20 text-error text-sm font-bold flex items-center gap-2 hover:bg-error/30 transition-colors border border-error/30">
-              <span class="material-symbols-outlined text-lg">stop_circle</span> End Interview
-            </button>
-          </div>
-
-          <!-- ONLINE active content -->
-          <div class="online-content flex-col items-center space-y-5">
-            <div class="relative">
-              <div class="absolute -inset-4 bg-tertiary/10 rounded-full blur-2xl animate-pulse"></div>
-              <div class="relative w-28 h-28 rounded-full bg-gradient-to-br from-tertiary/80 to-tertiary-container flex items-center justify-center" style="box-shadow: 0 0 50px rgba(123,208,255,0.35);">
-                <span class="material-symbols-outlined text-on-tertiary text-5xl" style="font-variation-settings: 'FILL' 1; color:#001e2c;">videocam</span>
-              </div>
-            </div>
-            <div class="flex flex-col items-center gap-2">
-              <div class="flex items-center gap-2">
-                <span class="rec-pulse w-2.5 h-2.5 rounded-full bg-error flex-shrink-0"></span>
-                <span class="text-tertiary font-headline text-lg font-medium tracking-wide">Recording meeting...</span>
-              </div>
-              <span id="online-meet-label" class="text-xs text-on-surface-variant/60 max-w-[220px] truncate text-center">—</span>
-            </div>
-            <!-- Status row -->
-            <div class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-surface-container-highest/40 border border-outline-variant/20">
-              <span class="material-symbols-outlined text-sm text-tertiary" style="font-variation-settings:'FILL' 1;">fiber_manual_record</span>
-              <span class="text-xs text-on-surface-variant">Screen capture active</span>
-            </div>
-            <button onclick="endInterview()"
-              class="px-6 py-2 rounded-full bg-error/20 text-error text-sm font-bold flex items-center gap-2 hover:bg-error/30 transition-colors border border-error/30">
-              <span class="material-symbols-outlined text-lg">stop_circle</span> End Session
-            </button>
-          </div>
-        </div>
-
-        <!-- ENDED STATE -->
-        <div class="state-ended z-10 flex-col items-center space-y-5">
-          <div class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
-            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings:'FILL' 1;">task_alt</span>
-          </div>
-          <div class="text-center">
-            <p class="text-on-surface font-headline font-bold text-xl">Session Ended</p>
-            <p class="text-on-surface-variant text-xs mt-1">Run analysis, then view your full report →</p>
-          </div>
-          <!-- Upload button: only shown in online mode -->
-          <div id="ended-upload-wrap" class="hidden flex-col items-center gap-2 w-full max-w-xs">
-            <button onclick="document.getElementById('video-upload-input').click()" class="btn-meet btn-upload-video w-full justify-center">
-              <span class="material-symbols-outlined text-base">upload_file</span>
-              Upload Interview Video
-            </button>
-            <input type="file" id="video-upload-input" accept="video/*" class="hidden" onchange="handleVideoUpload(event)" />
-            <div id="uploaded-file-chip">
-              <span class="material-symbols-outlined text-xs" style="font-variation-settings:'FILL' 1;">video_file</span>
-              <span id="uploaded-file-name" class="truncate max-w-[160px]">—</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Analyze Button -->
-      <button onclick="analyzeInterview()"
-        class="w-full relative px-8 py-3 rounded-xl text-indigo-200 text-sm font-bold bg-white/5 border border-indigo-400/40 backdrop-blur-md transition duration-300 ease-in-out hover:scale-[1.01] hover:shadow-[0_0_25px_rgba(124,124,255,0.5)] overflow-hidden group flex items-center justify-center gap-2">
-        <span class="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400 opacity-0 group-hover:opacity-20 transition duration-300"></span>
-        <span class="material-symbols-outlined text-lg relative z-10">analytics</span>
-        <span class="relative z-10">Analyze Interview</span>
-      </button>
-
-      <!-- Interview Report -->
-      <div class="glass-panel rounded-xxl p-6 border border-outline-variant/10 flex flex-col gap-4">
-        <div class="flex justify-between items-center">
-          <h3 class="font-headline font-bold text-on-surface text-sm tracking-widest uppercase">Interview Report</h3>
-          <span class="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded tracking-widest font-bold">REAL-TIME</span>
-        </div>
-        <div class="space-y-4 max-h-[180px] overflow-y-auto pr-2">
-
-          <!-- Technical Score -->
-          <div class="flex gap-4 items-start">
-            <div class="flex-shrink-0 pt-1">
-              <span class="text-xs font-bold text-secondary font-label block w-28">Technical Score :</span>
-              <span id="tech-score-val" class="score-val text-primary hidden">—</span>
-            </div>
-            <p id="tech-score-text" class="text-sm text-on-surface-variant leading-relaxed italic opacity-50">
-              Awaiting session analysis…
-            </p>
-          </div>
-
-          <!-- Communication Score -->
-          <div class="flex gap-4 items-start">
-            <div class="flex-shrink-0 pt-1">
-              <span class="text-xs font-bold text-secondary font-label block w-28">Communication Score :</span>
-              <span id="comm-score-val" class="score-val text-tertiary hidden">—</span>
-            </div>
-            <p id="comm-score-text" class="text-sm text-on-surface-variant leading-relaxed italic opacity-50">
-              Awaiting session analysis…
-            </p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- RIGHT SIDEBAR -->
-    <aside class="flex flex-col space-y-6">
-
-      <!-- Session Timer -->
-      <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10 space-y-4">
-        <span class="text-[10px] text-on-surface-variant font-bold tracking-[0.2em] uppercase">Session Timer</span>
-        <div id="timer-display" class="text-4xl font-headline font-extralight text-on-surface tracking-tight">
-          0:00 <span class="text-lg text-on-surface-variant" id="timer-total">/00:00</span>
-        </div>
-        <div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
-          <div id="timer-progress" class="h-full rounded-full bg-gradient-to-r from-primary to-primary-container transition-all duration-1000" style="width: 0%"></div>
-        </div>
-        <div class="flex items-center gap-2">
-          <span id="timer-status-dot" class="h-2 w-2 rounded-full bg-outline"></span>
-          <span id="timer-status-txt" class="text-xs text-on-surface-variant">Not started</span>
-        </div>
-      </div>
-
-      <!-- Mode Badge (shown after mode is selected) -->
-      <div id="mode-badge-panel" class="hidden bg-surface-container-low rounded-xxl p-4 border border-outline-variant/10">
-        <div class="flex items-center gap-3">
-          <div id="mode-badge-icon-wrap" class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <span id="mode-badge-icon" class="material-symbols-outlined text-primary text-lg">mic</span>
-          </div>
-          <div>
-            <p class="text-[10px] text-on-surface-variant font-bold tracking-[0.15em] uppercase">Active Mode</p>
-            <p id="mode-badge-label" class="text-sm font-semibold text-on-surface font-headline mt-0.5">—</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Current Instruction -->
-      <div class="space-y-4 pt-4 border-t border-outline-variant/10">
-        <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">Current Instruction</h4>
-        <div class="p-4 bg-surface-container-lowest rounded-xl border-l-2 border-primary min-h-[60px] flex items-center">
-          <p id="instruction-box" class="text-xs text-on-surface-variant leading-relaxed italic opacity-50">
-            No instruction set. Fill in setup to add one.
-          </p>
-        </div>
-      </div>
-
-      <!-- Discussion Topics -->
-      <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10">
-        <div class="space-y-4">
-          <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">Discussion Topics</h4>
-          <ul id="topics-list" class="space-y-3">
-            <li class="flex items-center gap-3 opacity-40">
-              <div class="w-3.5 h-3.5 rounded-full border border-outline flex-shrink-0"></div>
-              <span class="text-xs text-on-surface-variant">No topics added yet</span>
-            </li>
-          </ul>
-          <!-- Mark topic done button (visible during active) -->
-          <div id="topic-controls" class="hidden pt-2">
-            <button onclick="markTopicDone()" class="text-xs text-primary border border-primary/30 px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors flex items-center gap-1">
-              <span class="material-symbols-outlined text-sm">check</span> Mark Current Done
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- View Full Report (enabled after Analyze) -->
-      <div>
-        <button id="view-report-btn"
-          onclick="viewReport()"
-          title="Complete analysis first"
-          class="report-disabled w-full px-5 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 border border-primary/30 text-primary bg-primary/5 font-headline">
-          <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;">open_in_new</span>
-          View Full Report
-        </button>
-        <p id="report-btn-hint" class="text-[10px] text-on-surface-variant/50 text-center mt-1.5">Complete analysis first</p>
-      </div>
-
-      <div class="flex-grow"></div>
-
-    </aside>
-  </div>
-</main>
-
-<!-- Footer -->
-<footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
-  <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
-    <div class="space-y-4 text-center md:text-left">
-      <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
-      <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.</p>
-    </div>
-    <div class="flex flex-wrap justify-center gap-8">
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
-      <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
-    </div>
-    <div class="text-center md:text-right">
-      <p>
-        © 2026 Talentra. All rights reserved.
-        <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
-          V1.0.0
-        </span>
+    <!-- HEADER -->
+    <header class="mb-8">
+      <h2 class="text-4xl font-extrabold font-headline text-on-surface tracking-tight mb-2">
+        Interview Session
+      </h2>
+      <p class="text-on-surface-variant font-medium">
+        Conduct and evaluate candidate performance through AI-assisted live interview analysis.
       </p>
+    </header>
+
+    <!-- ── MODE SELECTION ────────────────────────────────────────────────────── -->
+    <div class="mb-8">
+      <p class="text-xs font-bold text-on-surface-variant tracking-[0.18em] uppercase mb-3">Select Interview Mode</p>
+      <div class="flex gap-4">
+
+        <!-- Offline Mode Card -->
+        <div class="mode-card" id="card-offline" onclick="selectMode('offline')">
+          <div class="mode-icon-wrap">
+            <span class="material-symbols-outlined">mic</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="mode-title">Offline Mode</div>
+            <div class="mode-desc">Record interview using system microphone</div>
+          </div>
+          <div class="mode-check">
+            <span class="material-symbols-outlined">check</span>
+          </div>
+        </div>
+
+        <!-- Online Mode Card -->
+        <div class="mode-card" id="card-online" onclick="selectMode('online')">
+          <div class="mode-icon-wrap">
+            <span class="material-symbols-outlined">videocam</span>
+          </div>
+          <div class="flex-1 min-w-0">
+            <div class="mode-title">Online Mode</div>
+            <div class="mode-desc">Record live meeting session</div>
+          </div>
+          <div class="mode-check">
+            <span class="material-symbols-outlined">check</span>
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</footer>
+    <!-- ── END MODE SELECTION ────────────────────────────────────────────────── -->
 
-<script>
-  // ─── State ───────────────────────────────────────────────────────────────────
-  let sessionState = 'idle'; // idle | active | ended
-  let currentMode = null;    // null | 'offline' | 'online'
-  let timerInterval = null;
-  let elapsedSeconds = 0;
-  let plannedSeconds = 0;
-  let micActive = true;
-  let topics = [];
-  let currentTopicIndex = 0;
+    <div class="asymmetric-grid flex-grow">
 
-  // ─── Toast ───────────────────────────────────────────────────────────────────
-  function showToast(msg, type = 'warning') {
-    const t = document.getElementById('toast');
-    const icon = document.getElementById('toast-icon');
-    const msgEl = document.getElementById('toast-msg');
-    icon.textContent = type === 'success' ? 'check_circle' : type === 'error' ? 'cancel' : 'warning';
-    icon.style.color = type === 'success' ? '#7bd0ff' : type === 'error' ? '#ffb4ab' : '#ffb4ab';
-    msgEl.textContent = msg;
-    t.classList.add('show');
-    setTimeout(() => t.classList.remove('show'), 3500);
-  }
+      <!-- LEFT COLUMN -->
+      <div class="flex flex-col space-y-6">
 
-  // ─── Mode Selection ──────────────────────────────────────────────────────────
-  function selectMode(mode) {
-    if (sessionState === 'active') {
-      showToast('Cannot change mode during an active session.', 'error');
-      return;
+        <!-- MIC / Recording Box -->
+        <div
+          class="relative group h-[480px] rounded-xxl overflow-hidden bg-surface-container-low flex flex-col items-center justify-center border border-outline-variant/10">
+          <div
+            class="absolute inset-0 z-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-surface-container-low to-surface-container-lowest">
+          </div>
+
+          <!-- No-mode overlay (shown when no mode selected) -->
+          <div class="no-mode-overlay">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant opacity-50">touch_app</span>
+            <p class="text-sm text-on-surface-variant opacity-60 font-medium">Select an interview mode above to begin
+            </p>
+          </div>
+
+          <!-- IDLE STATE -->
+          <div class="state-idle z-10 flex-col items-center space-y-6 w-full px-8">
+
+            <!-- OFFLINE idle content -->
+            <div class="offline-content flex-col items-center space-y-6 w-full">
+              <div class="relative">
+                <div class="absolute -inset-4 bg-primary/5 rounded-full blur-2xl"></div>
+                <div
+                  class="relative w-28 h-28 rounded-full bg-surface-container flex items-center justify-center border-2 border-outline-variant/30">
+                  <span class="material-symbols-outlined text-on-surface-variant text-5xl">mic_off</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <span class="text-on-surface-variant font-headline text-lg font-medium">Session Not Started</span>
+                <span class="text-xs text-on-surface-variant/60">Configure and start your interview above</span>
+              </div>
+              <button id="start-btn-offline-idle" onclick="startInterview()"
+                class="btn-start px-8 py-3 rounded-full font-bold text-sm flex items-center gap-2 transition-all active:scale-95">
+                <span class="material-symbols-outlined text-lg"
+                  style="font-variation-settings:'FILL' 1;">play_arrow</span>
+                Start Recording
+              </button>
+            </div>
+
+            <!-- ONLINE idle content -->
+            <div class="online-content flex-col items-center space-y-5 w-full max-w-sm">
+              <div class="relative">
+                <div class="absolute -inset-4 bg-tertiary/5 rounded-full blur-2xl"></div>
+                <div
+                  class="relative w-28 h-28 rounded-full bg-surface-container flex items-center justify-center border-2 border-outline-variant/30">
+                  <span class="material-symbols-outlined text-on-surface-variant text-5xl">videocam_off</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-1 text-center">
+                <span class="text-on-surface-variant font-headline text-lg font-medium">Meeting Not Started</span>
+                <span class="text-xs text-on-surface-variant/60">Open Meet to start the session, then upload the
+                  recording</span>
+              </div>
+              <!-- Action buttons -->
+              <div class="flex gap-3 w-full justify-center">
+                <button onclick="openMeet()" class="btn-meet btn-meet-open">
+                  <span class="material-symbols-outlined text-base">open_in_new</span>
+                  Open Meet
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- ACTIVE STATE: Mic + Waveform + Analyze + End -->
+          <div class="state-active z-10 flex-col items-center space-y-6 w-full px-8">
+
+            <!-- OFFLINE active content -->
+            <div class="offline-content flex-col items-center space-y-6">
+              <div class="relative">
+                <div class="absolute -inset-4 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+                <button id="mic-btn" onclick="toggleMic()"
+                  class="relative w-28 h-28 rounded-full bg-gradient-to-br from-primary to-primary-container flex items-center justify-center mic-glow-active active:scale-95 transition-transform">
+                  <span class="material-symbols-outlined text-on-primary text-5xl"
+                    style="font-variation-settings: 'FILL' 1;" id="mic-icon">mic</span>
+                </button>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <span id="listen-status"
+                  class="text-primary font-headline text-lg font-medium tracking-wide">Listening...</span>
+                <div id="waveform" class="flex items-end gap-1 h-8 px-4 wave-animate">
+                  <div class="waveform-bar h-2"></div>
+                  <div class="waveform-bar h-5"></div>
+                  <div class="waveform-bar h-8"></div>
+                  <div class="waveform-bar h-4"></div>
+                  <div class="waveform-bar h-6"></div>
+                  <div class="waveform-bar h-3"></div>
+                  <div class="waveform-bar h-7"></div>
+                  <div class="waveform-bar h-5"></div>
+                  <div class="waveform-bar h-4"></div>
+                  <div class="waveform-bar h-2"></div>
+                </div>
+              </div>
+              <button onclick="endInterview()"
+                class="px-6 py-2 rounded-full bg-error/20 text-error text-sm font-bold flex items-center gap-2 hover:bg-error/30 transition-colors border border-error/30">
+                <span class="material-symbols-outlined text-lg">stop_circle</span> End Interview
+              </button>
+            </div>
+
+            <!-- ONLINE active content -->
+            <div class="online-content flex-col items-center space-y-5">
+              <div class="relative">
+                <div class="absolute -inset-4 bg-tertiary/10 rounded-full blur-2xl animate-pulse"></div>
+                <div
+                  class="relative w-28 h-28 rounded-full bg-gradient-to-br from-tertiary/80 to-tertiary-container flex items-center justify-center"
+                  style="box-shadow: 0 0 50px rgba(123,208,255,0.35);">
+                  <span class="material-symbols-outlined text-on-tertiary text-5xl"
+                    style="font-variation-settings: 'FILL' 1; color:#001e2c;">videocam</span>
+                </div>
+              </div>
+              <div class="flex flex-col items-center gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="rec-pulse w-2.5 h-2.5 rounded-full bg-error flex-shrink-0"></span>
+                  <span class="text-tertiary font-headline text-lg font-medium tracking-wide">Recording
+                    meeting...</span>
+                </div>
+                <span id="online-meet-label"
+                  class="text-xs text-on-surface-variant/60 max-w-[220px] truncate text-center">—</span>
+              </div>
+              <!-- Status row -->
+              <div
+                class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-surface-container-highest/40 border border-outline-variant/20">
+                <span class="material-symbols-outlined text-sm text-tertiary"
+                  style="font-variation-settings:'FILL' 1;">fiber_manual_record</span>
+                <span class="text-xs text-on-surface-variant">Screen capture active</span>
+              </div>
+              <button onclick="endInterview()"
+                class="px-6 py-2 rounded-full bg-error/20 text-error text-sm font-bold flex items-center gap-2 hover:bg-error/30 transition-colors border border-error/30">
+                <span class="material-symbols-outlined text-lg">stop_circle</span> End Session
+              </button>
+            </div>
+          </div>
+
+          <!-- ENDED STATE -->
+          <div class="state-ended z-10 flex-col items-center space-y-5">
+            <div class="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center">
+              <span class="material-symbols-outlined text-primary text-4xl"
+                style="font-variation-settings:'FILL' 1;">task_alt</span>
+            </div>
+            <div class="text-center">
+              <p class="text-on-surface font-headline font-bold text-xl">Session Ended</p>
+              <p class="text-on-surface-variant text-xs mt-1">Run analysis, then view your full report →</p>
+            </div>
+            <!-- Upload button: only shown in online mode -->
+            <div id="ended-upload-wrap" class="hidden flex-col items-center gap-2 w-full max-w-xs">
+              <button onclick="document.getElementById('video-upload-input').click()"
+                class="btn-meet btn-upload-video w-full justify-center">
+                <span class="material-symbols-outlined text-base">upload_file</span>
+                Upload Interview Video
+              </button>
+              <input type="file" id="video-upload-input" accept="video/*" class="hidden"
+                onchange="handleVideoUpload(event)" />
+              <div id="uploaded-file-chip">
+                <span class="material-symbols-outlined text-xs"
+                  style="font-variation-settings:'FILL' 1;">video_file</span>
+                <span id="uploaded-file-name" class="truncate max-w-[160px]">—</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analyze Button -->
+        <button onclick="analyzeInterview()"
+          class="w-full relative px-8 py-3 rounded-xl text-indigo-200 text-sm font-bold bg-white/5 border border-indigo-400/40 backdrop-blur-md transition duration-300 ease-in-out hover:scale-[1.01] hover:shadow-[0_0_25px_rgba(124,124,255,0.5)] overflow-hidden group flex items-center justify-center gap-2">
+          <span
+            class="absolute inset-0 rounded-xl bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-400 opacity-0 group-hover:opacity-20 transition duration-300"></span>
+          <span class="material-symbols-outlined text-lg relative z-10">analytics</span>
+          <span class="relative z-10">Analyze Interview</span>
+        </button>
+
+        <!-- Interview Report -->
+        <div class="glass-panel rounded-xxl p-6 border border-outline-variant/10 flex flex-col gap-4">
+          <div class="flex justify-between items-center">
+            <h3 class="font-headline font-bold text-on-surface text-sm tracking-widest uppercase">Interview Report</h3>
+            <span
+              class="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded tracking-widest font-bold">REAL-TIME</span>
+          </div>
+          <div class="space-y-4 max-h-[180px] overflow-y-auto pr-2">
+
+            <!-- Technical Score -->
+            <div class="flex gap-4 items-start">
+              <div class="flex-shrink-0 pt-1">
+                <span class="text-xs font-bold text-secondary font-label block w-28">Technical Score :</span>
+                <span id="tech-score-val" class="score-val text-primary hidden">—</span>
+              </div>
+              <p id="tech-score-text" class="text-sm text-on-surface-variant leading-relaxed italic opacity-50">
+                Awaiting session analysis…
+              </p>
+            </div>
+
+            <!-- Communication Score -->
+            <div class="flex gap-4 items-start">
+              <div class="flex-shrink-0 pt-1">
+                <span class="text-xs font-bold text-secondary font-label block w-28">Communication Score :</span>
+                <span id="comm-score-val" class="score-val text-tertiary hidden">—</span>
+              </div>
+              <p id="comm-score-text" class="text-sm text-on-surface-variant leading-relaxed italic opacity-50">
+                Awaiting session analysis…
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDEBAR -->
+      <aside class="flex flex-col space-y-6">
+
+        <!-- Session Timer -->
+        <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10 space-y-4">
+          <span class="text-[10px] text-on-surface-variant font-bold tracking-[0.2em] uppercase">Session Timer</span>
+          <div id="timer-display" class="text-4xl font-headline font-extralight text-on-surface tracking-tight">
+            0:00 <span class="text-lg text-on-surface-variant" id="timer-total">/00:00</span>
+          </div>
+          <div class="w-full bg-surface-container-high rounded-full h-1.5 overflow-hidden">
+            <div id="timer-progress"
+              class="h-full rounded-full bg-gradient-to-r from-primary to-primary-container transition-all duration-1000"
+              style="width: 0%"></div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span id="timer-status-dot" class="h-2 w-2 rounded-full bg-outline"></span>
+            <span id="timer-status-txt" class="text-xs text-on-surface-variant">Not started</span>
+          </div>
+        </div>
+
+        <!-- Mode Badge (shown after mode is selected) -->
+        <div id="mode-badge-panel"
+          class="hidden bg-surface-container-low rounded-xxl p-4 border border-outline-variant/10">
+          <div class="flex items-center gap-3">
+            <div id="mode-badge-icon-wrap"
+              class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+              <span id="mode-badge-icon" class="material-symbols-outlined text-primary text-lg">mic</span>
+            </div>
+            <div>
+              <p class="text-[10px] text-on-surface-variant font-bold tracking-[0.15em] uppercase">Active Mode</p>
+              <p id="mode-badge-label" class="text-sm font-semibold text-on-surface font-headline mt-0.5">—</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Discussion Topics -->
+        <div class="bg-surface-container-low rounded-xxl p-6 border border-outline-variant/10">
+          <div class="space-y-4">
+            <h4 class="font-headline font-bold text-xs text-on-surface tracking-widest uppercase">Discussion Topics</h4>
+            <ul id="topics-list" class="space-y-3">
+              <li class="flex items-center gap-3 opacity-40">
+                <div class="w-3.5 h-3.5 rounded-full border border-outline flex-shrink-0"></div>
+                <span class="text-xs text-on-surface-variant">No topics added yet</span>
+              </li>
+            </ul>
+            <!-- Mark topic done button (visible during active) -->
+            <div id="topic-controls" class="hidden pt-2">
+              <button onclick="markTopicDone()"
+                class="text-xs text-primary border border-primary/30 px-3 py-1.5 rounded-full hover:bg-primary/10 transition-colors flex items-center gap-1">
+                <span class="material-symbols-outlined text-sm">check</span> Mark Current Done
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- View Full Report (enabled after Analyze) -->
+        <div>
+          <button id="view-report-btn" onclick="viewReport()" title="Complete analysis first"
+            class="report-disabled w-full px-5 py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 border border-primary/30 text-primary bg-primary/5 font-headline">
+            <span class="material-symbols-outlined text-lg" style="font-variation-settings:'FILL' 1;">open_in_new</span>
+            View Full Report
+          </button>
+          <p id="report-btn-hint" class="text-[10px] text-on-surface-variant/50 text-center mt-1.5">Complete analysis
+            first</p>
+        </div>
+
+        <div class="flex-grow"></div>
+
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="w-full border-t border-[#262a30]/30 bg-[#0a0e13] font-['Inter'] text-xs text-[#c2c6d6]">
+    <div class="flex flex-col md:flex-row justify-between items-center px-12 py-12 w-full max-w-7xl mx-auto gap-8">
+      <div class="space-y-4 text-center md:text-left">
+        <div class="text-lg font-bold text-[#e0e2ea]">Talentra</div>
+        <p class="max-w-xs text-on-surface-variant">The future of enterprise talent acquisition, powered by ethical AI.
+        </p>
+      </div>
+      <div class="flex flex-wrap justify-center gap-8">
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Privacy Policy</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Terms of Service</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">FAQ</a>
+        <a class="text-[#c2c6d6] hover:text-[#e0e2ea] transition-opacity" href="./legal.html">Support</a>
+      </div>
+      <div class="text-center md:text-right">
+        <p>
+          © 2026 Talentra. All rights reserved.
+          <span class="ml-2 px-2 py-1 text-[10px] rounded bg-surface-container-high text-on-surface-variant">
+            V1.0.0
+          </span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── State ───────────────────────────────────────────────────────────────────
+    let mediaRecorder;
+    let audioChunks = [];
+    let recordedBlob = null;
+    let sessionState = 'idle'; // idle | active | ended
+    let currentMode = null;    // null | 'offline' | 'online'
+    let timerInterval = null;
+    let elapsedSeconds = 0;
+    let plannedSeconds = 0;
+    let micActive = true;
+    let topics = [];
+    let currentTopicIndex = 0;
+    let currentReportId = null;
+
+    // ─── Toast ───────────────────────────────────────────────────────────────────
+    function showToast(msg, type = 'warning') {
+      const t = document.getElementById('toast');
+      const icon = document.getElementById('toast-icon');
+      const msgEl = document.getElementById('toast-msg');
+      icon.textContent = type === 'success' ? 'check_circle' : type === 'error' ? 'cancel' : 'warning';
+      icon.style.color = type === 'success' ? '#7bd0ff' : type === 'error' ? '#ffb4ab' : '#ffb4ab';
+      msgEl.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 3500);
     }
-    currentMode = mode;
-    document.body.dataset.mode = mode;
 
-    // Update card visuals
-    document.getElementById('card-offline').classList.toggle('selected', mode === 'offline');
-    document.getElementById('card-online').classList.toggle('selected', mode === 'online');
+    // ─── Mode Selection ──────────────────────────────────────────────────────────
+    function selectMode(mode) {
+      if (sessionState === 'active') {
+        showToast('Cannot change mode during an active session.', 'error');
+        return;
+      }
+      currentMode = mode;
+      document.body.dataset.mode = mode;
 
-    // Update mode badge in sidebar
-    const badgePanel = document.getElementById('mode-badge-panel');
-    badgePanel.classList.remove('hidden');
-    const badgeIcon = document.getElementById('mode-badge-icon');
-    const badgeLabel = document.getElementById('mode-badge-label');
-    const badgeWrap = document.getElementById('mode-badge-icon-wrap');
-    if (mode === 'offline') {
-      badgeIcon.textContent = 'mic';
-      badgeIcon.style.color = '#c0c1ff';
-      badgeWrap.style.background = 'rgba(192,193,255,0.1)';
-      badgeLabel.textContent = 'Offline Mode';
-    } else {
-      badgeIcon.textContent = 'videocam';
-      badgeIcon.style.color = '#7bd0ff';
-      badgeWrap.style.background = 'rgba(123,208,255,0.1)';
-      badgeLabel.textContent = 'Online Mode';
+      // Update card visuals
+      document.getElementById('card-offline').classList.toggle('selected', mode === 'offline');
+      document.getElementById('card-online').classList.toggle('selected', mode === 'online');
+
+      // Update mode badge in sidebar
+      const badgePanel = document.getElementById('mode-badge-panel');
+      badgePanel.classList.remove('hidden');
+      const badgeIcon = document.getElementById('mode-badge-icon');
+      const badgeLabel = document.getElementById('mode-badge-label');
+      const badgeWrap = document.getElementById('mode-badge-icon-wrap');
+      if (mode === 'offline') {
+        badgeIcon.textContent = 'mic';
+        badgeIcon.style.color = '#c0c1ff';
+        badgeWrap.style.background = 'rgba(192,193,255,0.1)';
+        badgeLabel.textContent = 'Offline Mode';
+      } else {
+        badgeIcon.textContent = 'videocam';
+        badgeIcon.style.color = '#7bd0ff';
+        badgeWrap.style.background = 'rgba(123,208,255,0.1)';
+        badgeLabel.textContent = 'Online Mode';
+      }
     }
-  }
 
-  // ─── Online Mode Helpers ─────────────────────────────────────────────────────
-  function openMeet() {
-    window.open('https://meet.google.com/landing', '_blank');
-    // Timer starts when user opens Meet (online mode flow)
-    if (currentMode === 'online' && sessionState === 'idle') {
+    // ─── Online Mode Helpers ─────────────────────────────────────────────────────
+    function openMeet() {
+      window.open('https://meet.google.com/landing', '_blank');
+      // Timer starts when user opens Meet (online mode flow)
+      if (currentMode === 'online' && sessionState === 'idle') {
+        plannedSeconds = 0;
+        document.getElementById('timer-total').textContent = '';
+        document.getElementById('timer-status-dot').classList.replace('bg-outline', 'bg-error');
+        document.getElementById('timer-status-dot').classList.add('animate-pulse');
+        document.getElementById('timer-status-txt').textContent = 'Meeting in progress';
+        startTimer();
+        // Move to active state
+        sessionState = 'active';
+        document.body.dataset.state = 'active';
+        showToast('Meeting opened — timer started.', 'success');
+      }
+    }
+
+    function handleVideoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const chip = document.getElementById('uploaded-file-chip');
+      document.getElementById('uploaded-file-name').textContent = file.name;
+      chip.classList.add('visible');
+      showToast('Video uploaded: ' + file.name, 'success');
+      // ── BACKEND HOOK ──────────────────────────────────────────────────────────
+      // const formData = new FormData(); formData.append('video', file);
+      // fetch('/api/upload-video', { method: 'POST', body: formData });
+    }
+
+    // ─── Start Interview ─────────────────────────────────────────────────────────
+    function startInterview() {
+      if (!currentMode) {
+        showToast('Please select an interview mode first.', 'error');
+        return;
+      }
+
+      if (sessionState === 'active') {
+        showToast('Interview is already in progress.', 'warning');
+        return;
+      }
+
+      // Timer
       plannedSeconds = 0;
       document.getElementById('timer-total').textContent = '';
       document.getElementById('timer-status-dot').classList.replace('bg-outline', 'bg-error');
       document.getElementById('timer-status-dot').classList.add('animate-pulse');
-      document.getElementById('timer-status-txt').textContent = 'Meeting in progress';
+      document.getElementById('timer-status-txt').textContent = 'Recording in progress';
       startTimer();
-      // Move to active state
+
+      // Switch state
       sessionState = 'active';
       document.body.dataset.state = 'active';
-      showToast('Meeting opened — timer started.', 'success');
+
+      // 🔥 ADD THIS PART (OFFLINE RECORDING)
+      if (currentMode === 'offline') {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then(stream => {
+            mediaRecorder = new MediaRecorder(stream);
+            audioChunks = [];
+
+            mediaRecorder.ondataavailable = event => {
+              audioChunks.push(event.data);
+            };
+
+            mediaRecorder.onstop = () => {
+              recordedBlob = new Blob(audioChunks, { type: 'audio/webm' });
+              console.log("Audio recorded:", recordedBlob);
+              showToast("Recording saved. Ready for analysis.", "success");
+            };
+
+            mediaRecorder.start();
+          })
+          .catch(err => {
+            console.error(err);
+            showToast("Microphone access denied", "error");
+          });
+      }
+
+      showToast('Interview session started!', 'success');
     }
-  }
 
-  function handleVideoUpload(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    const chip = document.getElementById('uploaded-file-chip');
-    document.getElementById('uploaded-file-name').textContent = file.name;
-    chip.classList.add('visible');
-    showToast('Video uploaded: ' + file.name, 'success');
-    // ── BACKEND HOOK ──────────────────────────────────────────────────────────
-    // const formData = new FormData(); formData.append('video', file);
-    // fetch('/api/upload-video', { method: 'POST', body: formData });
-  }
+    // ─── Topics ──────────────────────────────────────────────────────────────────
+    function renderTopics() {
+      const list = document.getElementById('topics-list');
 
-  // ─── Start Interview ─────────────────────────────────────────────────────────
-  function startInterview() {
-    if (!currentMode) {
-      showToast('Please select an interview mode first.', 'error');
-      return;
-    }
-    if (sessionState === 'active') {
-      showToast('Interview is already in progress.', 'warning');
-      return;
-    }
-
-    // Timer
-    plannedSeconds = 0;
-    document.getElementById('timer-total').textContent = '';
-    document.getElementById('timer-status-dot').classList.replace('bg-outline', 'bg-error');
-    document.getElementById('timer-status-dot').classList.add('animate-pulse');
-    document.getElementById('timer-status-txt').textContent = 'Recording in progress';
-    startTimer();
-
-    // Switch state
-    sessionState = 'active';
-    document.body.dataset.state = 'active';
-
-    showToast('Interview session started!', 'success');
-  }
-
-  // ─── Topics ──────────────────────────────────────────────────────────────────
-  function renderTopics() {
-    const list = document.getElementById('topics-list');
-    if (topics.length === 0) {
-      list.innerHTML = `<li class="flex items-center gap-3 opacity-40">
+      if (!topics || topics.length === 0) {
+        list.innerHTML = `
+      <li class="flex items-center gap-3 opacity-40">
         <div class="w-3.5 h-3.5 rounded-full border border-outline flex-shrink-0"></div>
-        <span class="text-xs text-on-surface-variant">No topics added</span>
+        <span class="text-xs text-on-surface-variant">No topics available</span>
       </li>`;
-      return;
-    }
-    list.innerHTML = topics.map((t, i) => {
-      if (i < currentTopicIndex) {
-        return `<li class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings:'FILL' 1;">check_circle</span>
-          <span class="text-xs text-on-surface-variant line-through opacity-60">${escHtml(t)}</span>
-        </li>`;
-      } else if (i === currentTopicIndex) {
-        return `<li class="flex items-center gap-3">
-          <div class="w-3.5 h-3.5 rounded-full border border-primary flex-shrink-0"></div>
-          <span class="text-xs text-on-surface font-semibold">${escHtml(t)}</span>
-        </li>`;
-      } else {
-        return `<li class="flex items-center gap-3 opacity-40">
-          <div class="w-3.5 h-3.5 rounded-full border border-outline flex-shrink-0"></div>
-          <span class="text-xs text-on-surface-variant">${escHtml(t)}</span>
-        </li>`;
+        return;
       }
-    }).join('');
-  }
 
-  function markTopicDone() {
-    if (currentTopicIndex < topics.length - 1) {
-      currentTopicIndex++;
-      renderTopics();
-      showToast('Topic marked as done.', 'success');
-    } else if (currentTopicIndex === topics.length - 1) {
-      currentTopicIndex++;
-      renderTopics();
-      showToast('All topics covered! You can end the interview.', 'success');
-      document.getElementById('topic-controls').classList.add('hidden');
+      list.innerHTML = topics.map(t => `
+    <li class="flex items-start gap-3 group cursor-pointer transition-all duration-200">
+      
+      <span class="material-symbols-outlined text-sm mt-[2px] 
+        text-on-surface-variant group-hover:text-primary transition-colors">
+        radio_button_unchecked
+      </span>
+
+      <span class="text-xs leading-relaxed 
+        text-on-surface-variant group-hover:text-on-surface transition-colors">
+        ${escHtml(t)}
+      </span>
+
+    </li>
+  `).join('');
     }
-  }
 
-  // ─── Timer ───────────────────────────────────────────────────────────────────
-  function startTimer() {
-    elapsedSeconds = 0;
-    updateTimerDisplay();
-    timerInterval = setInterval(() => {
-      elapsedSeconds++;
+    function markTopicDone() {
+      if (currentTopicIndex < topics.length - 1) {
+        currentTopicIndex++;
+        renderTopics();
+        showToast('Topic marked as done.', 'success');
+      } else if (currentTopicIndex === topics.length - 1) {
+        currentTopicIndex++;
+        renderTopics();
+        showToast('All topics covered! You can end the interview.', 'success');
+        document.getElementById('topic-controls').classList.add('hidden');
+      }
+    }
+
+    // ─── Timer ───────────────────────────────────────────────────────────────────
+    function startTimer() {
+      elapsedSeconds = 0;
       updateTimerDisplay();
-      if (plannedSeconds > 0) {
-        const pct = Math.min((elapsedSeconds / plannedSeconds) * 100, 100);
-        document.getElementById('timer-progress').style.width = pct + '%';
-        if (elapsedSeconds >= plannedSeconds) {
-          showToast('Planned session time reached!', 'warning');
-          clearInterval(timerInterval);
+      timerInterval = setInterval(() => {
+        elapsedSeconds++;
+        updateTimerDisplay();
+        if (plannedSeconds > 0) {
+          const pct = Math.min((elapsedSeconds / plannedSeconds) * 100, 100);
+          document.getElementById('timer-progress').style.width = pct + '%';
+          if (elapsedSeconds >= plannedSeconds) {
+            showToast('Planned session time reached!', 'warning');
+            clearInterval(timerInterval);
+          }
         }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      document.getElementById('timer-status-dot').classList.remove('animate-pulse');
+      document.getElementById('timer-status-dot').classList.replace('bg-error', 'bg-outline');
+      document.getElementById('timer-status-txt').textContent = 'Session ended — ' + formatTime(elapsedSeconds) + ' elapsed';
+    }
+
+    function updateTimerDisplay() {
+      const el = document.getElementById('timer-display');
+      const mins = Math.floor(elapsedSeconds / 60);
+      const secs = String(elapsedSeconds % 60).padStart(2, '0');
+      el.childNodes[0].textContent = mins + ':' + secs + ' ';
+    }
+
+    function formatTime(secs) {
+      const m = Math.floor(secs / 60);
+      const s = String(secs % 60).padStart(2, '0');
+      return m + ':' + s;
+    }
+
+    // ─── Mic Toggle (offline only) ───────────────────────────────────────────────
+    function toggleMic() {
+      micActive = !micActive;
+      const icon = document.getElementById('mic-icon');
+      const status = document.getElementById('listen-status');
+      const wave = document.getElementById('waveform');
+      if (micActive) {
+        icon.textContent = 'mic';
+        status.textContent = 'Listening...';
+        wave.classList.add('wave-animate');
+      } else {
+        icon.textContent = 'mic_off';
+        status.textContent = 'Microphone paused';
+        wave.classList.remove('wave-animate');
       }
-    }, 1000);
-  }
-
-  function stopTimer() {
-    clearInterval(timerInterval);
-    document.getElementById('timer-status-dot').classList.remove('animate-pulse');
-    document.getElementById('timer-status-dot').classList.replace('bg-error', 'bg-outline');
-    document.getElementById('timer-status-txt').textContent = 'Session ended — ' + formatTime(elapsedSeconds) + ' elapsed';
-  }
-
-  function updateTimerDisplay() {
-    const el = document.getElementById('timer-display');
-    const mins = Math.floor(elapsedSeconds / 60);
-    const secs = String(elapsedSeconds % 60).padStart(2, '0');
-    el.childNodes[0].textContent = mins + ':' + secs + ' ';
-  }
-
-  function formatTime(secs) {
-    const m = Math.floor(secs / 60);
-    const s = String(secs % 60).padStart(2, '0');
-    return m + ':' + s;
-  }
-
-  // ─── Mic Toggle (offline only) ───────────────────────────────────────────────
-  function toggleMic() {
-    micActive = !micActive;
-    const icon = document.getElementById('mic-icon');
-    const status = document.getElementById('listen-status');
-    const wave = document.getElementById('waveform');
-    if (micActive) {
-      icon.textContent = 'mic';
-      status.textContent = 'Listening...';
-      wave.classList.add('wave-animate');
-    } else {
-      icon.textContent = 'mic_off';
-      status.textContent = 'Microphone paused';
-      wave.classList.remove('wave-animate');
     }
-  }
 
-  // ─── Analyze Interview ───────────────────────────────────────────────────────
-  function analyzeInterview() {
-    if (sessionState !== 'active' && sessionState !== 'ended') {
-      showToast('Start the interview first before analyzing.', 'error');
-      return;
+    // ─── Analyze Interview ───────────────────────────────────────────────────────
+    function analyzeInterview() {
+      if (!recordedBlob && currentMode === 'offline') {
+        showToast("No recording found", "error");
+        return;
+      }
+
+      showToast("Analyzing interview...", "success");
+
+      const formData = new FormData();
+
+      if (currentMode === 'offline') {
+        formData.append("file", recordedBlob, "interview.webm");
+      }
+
+      if (currentMode === 'online') {
+        const fileInput = document.getElementById("video-upload-input");
+        if (!fileInput.files.length) {
+          showToast("Upload video first", "error");
+          return;
+        }
+        formData.append("file", fileInput.files[0]);
+      }
+
+      // Append local storage data
+      formData.append("user_email", localStorage.getItem('user_email') || 'test@gmail.com');
+      formData.append("name", localStorage.getItem('candidate_name') || '');
+      formData.append("email", localStorage.getItem('candidate_email') || '');
+      formData.append("phone", localStorage.getItem('candidate_phone') || '');
+      formData.append("github_url", localStorage.getItem('candidate_github') || '');
+      formData.append("linkedin_url", localStorage.getItem('candidate_linkedin') || '');
+      formData.append("job_description", localStorage.getItem('job_description') || '');
+      formData.append("resume_score", localStorage.getItem('resume_score') || 0);
+
+      fetch("http://127.0.0.1:8000/analyze-interview", {
+        method: "POST",
+        body: formData
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log(data);
+
+          if (data.error) {
+            showToast(data.error, "error");
+            return;
+          }
+
+          // Update scores
+          updateScores(
+            data.technical_score || 0,
+            "AI-evaluated technical performance",
+            data.communication_score || 0,
+            "AI-evaluated communication clarity"
+          );
+
+          // 🔥 Update discussion topics (use strengths)
+          if (data.strengths && data.strengths.length > 0) {
+            topics = data.strengths;
+            currentTopicIndex = 0;
+            renderTopics();
+          }
+
+          // Enable report button
+          const btn = document.getElementById('view-report-btn');
+          btn.classList.remove('report-disabled');
+          btn.classList.add('report-enabled');
+
+          if (data.report_id) {
+            currentReportId = data.report_id;
+          }
+
+          showToast("Analysis complete", "success");
+        })
+        .catch(err => {
+          console.error(err);
+          showToast("Analysis failed", "error");
+        });
     }
-    const modeLabel = currentMode === 'online' ? 'meeting' : 'session';
-    showToast(`Analyzing ${modeLabel}... (Connect your backend to fetch scores)`, 'success');
-    updateScores('—', 'Analysis pending. Connect backend to populate.', '—', 'Analysis pending. Connect backend to populate.');
 
-    // Enable View Full Report button
-    const btn = document.getElementById('view-report-btn');
-    btn.classList.remove('report-disabled');
-    btn.classList.add('report-enabled');
-    btn.removeAttribute('title');
-    document.getElementById('report-btn-hint').style.display = 'none';
-  }
-
-  function viewReport() {
-    const btn = document.getElementById('view-report-btn');
-    if (btn.classList.contains('report-disabled')) {
-      btn.classList.add('shake');
-      btn.addEventListener('animationend', () => btn.classList.remove('shake'), { once: true });
-      showToast('Complete the analysis first.', 'error');
-      return;
+    function viewReport() {
+      const btn = document.getElementById('view-report-btn');
+      if (btn.classList.contains('report-disabled')) {
+        btn.classList.add('shake');
+        btn.addEventListener('animationend', () => btn.classList.remove('shake'), { once: true });
+        showToast('Complete the analysis first.', 'error');
+        return;
+      }
+      if (currentReportId) {
+        window.location.href = './report.html?id=' + encodeURIComponent(currentReportId);
+      } else {
+        window.location.href = './report.html';
+      }
     }
-    window.location.href = './report.html';
-  }
 
-  function updateScores(techVal, techText, commVal, commText) {
-    document.getElementById('tech-score-val').textContent = techVal;
-    document.getElementById('tech-score-val').classList.remove('hidden');
-    document.getElementById('tech-score-text').textContent = techText;
-    document.getElementById('tech-score-text').classList.remove('italic', 'opacity-50');
+    function updateScores(techVal, techText, commVal, commText) {
+      document.getElementById('tech-score-val').textContent = techVal;
+      document.getElementById('tech-score-val').classList.remove('hidden');
+      document.getElementById('tech-score-text').textContent = techText;
+      document.getElementById('tech-score-text').classList.remove('italic', 'opacity-50');
 
-    document.getElementById('comm-score-val').textContent = commVal;
-    document.getElementById('comm-score-val').classList.remove('hidden');
-    document.getElementById('comm-score-text').textContent = commText;
-    document.getElementById('comm-score-text').classList.remove('italic', 'opacity-50');
-  }
-
-  // ─── End Interview ───────────────────────────────────────────────────────────
-  function endInterview() {
-    if (sessionState !== 'active') {
-      showToast('No active interview session to end.', 'error');
-      return;
+      document.getElementById('comm-score-val').textContent = commVal;
+      document.getElementById('comm-score-val').classList.remove('hidden');
+      document.getElementById('comm-score-text').textContent = commText;
+      document.getElementById('comm-score-text').classList.remove('italic', 'opacity-50');
     }
-    sessionState = 'ended';
-    document.body.dataset.state = 'ended';
-    stopTimer();
-    document.getElementById('topic-controls').classList.add('hidden');
-    // Show upload button in ended state for online mode
-    if (currentMode === 'online') {
-      const wrap = document.getElementById('ended-upload-wrap');
-      wrap.classList.remove('hidden');
-      wrap.classList.add('flex');
-    }
-    showToast('Interview session ended successfully.', 'success');
-  }
 
-  // ─── Utils ───────────────────────────────────────────────────────────────────
-  function escHtml(str) {
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  }
-</script>
+    // ─── End Interview ───────────────────────────────────────────────────────────
+    function endInterview() {
+      if (sessionState !== 'active') {
+        showToast('No active interview session to end.', 'error');
+        return;
+      }
+
+      // 🔥 STOP RECORDING HERE
+      if (currentMode === 'offline' && mediaRecorder) {
+        mediaRecorder.stop();
+      }
+
+      sessionState = 'ended';
+      document.body.dataset.state = 'ended';
+      stopTimer();
+      document.getElementById('topic-controls').classList.add('hidden');
+      // Show upload button in ended state for online mode
+      if (currentMode === 'online') {
+        const wrap = document.getElementById('ended-upload-wrap');
+        wrap.classList.remove('hidden');
+        wrap.classList.add('flex');
+      }
+      showToast('Interview session ended successfully.', 'success');
+    }
+
+    // ─── Utils ───────────────────────────────────────────────────────────────────
+    function escHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+  </script>
 </body>
+
 </html>
