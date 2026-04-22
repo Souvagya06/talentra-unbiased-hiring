@@ -367,12 +367,12 @@ Frontend UI (Report/Dashboard)
 
 ---
 
-## 👨‍💻 Author
+## 👨‍💻 Authors
 
-**Souvagya Karmakar** |
-**Sushmita Roy** |
-**Anriban Pal** |
-**Sugata Nayak** 
+- Souvagya Karmakar  
+- Sushmita Roy  
+- Anriban Pal  
+- Sugata Nayak  
 
 ---
 
