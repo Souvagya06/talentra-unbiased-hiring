@@ -106,6 +106,15 @@
       position: absolute;
       animation: pulse-ring 2s infinite;
     }
+
+    .new-interview-btn {
+      transition: opacity 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .new-interview-btn:hover {
+      opacity: 0.9;
+      box-shadow: 0 8px 32px rgba(192, 193, 255, 0.2);
+    }
   </style>
 </head>
 
@@ -118,12 +127,17 @@
       <div class="flex items-center justify-between">
         <h1 class="text-2xl font-black font-headline tracking-tight text-on-surface">Talentra</h1>
       </div>
-      <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
-        <a href="./result.html" class="text-primary border-b-2 border-primary pb-1">Dashboard</a>
-        <a href="./upload.html" class="text-on-surface-variant hover:text-on-surface transition">Upload</a>
-        <a href="./interview.html" class="text-on-surface-variant hover:text-on-surface transition">Interview</a>
-        <a href="./report.html" class="text-on-surface-variant hover:text-on-surface transition">Report</a>
-      </nav>
+      <div class="flex flex-wrap items-center gap-5">
+        <nav class="flex flex-wrap items-center gap-3 md:gap-5 text-sm font-semibold">
+          <a href="./result.html" class="text-primary border-b-2 border-primary pb-1">Dashboard</a>
+        </nav>
+        <div class="w-px h-5 bg-outline-variant/40 hidden md:block"></div>
+        <button onclick="handleLogout()"
+          class="flex items-center gap-1.5 text-sm font-semibold text-on-surface-variant hover:text-red-400 transition-colors group">
+          <span class="material-symbols-outlined text-[17px] group-hover:text-red-400 transition-colors">logout</span>
+          Logout
+        </button>
+      </div>
     </div>
   </header>
 
@@ -153,6 +167,17 @@
             <div class="text-[10px] text-on-surface-variant uppercase tracking-widest">Rejected</div>
           </div>
         </div>
+      </section>
+
+      <!-- New Interview Button -->
+      <section>
+        <a href="./upload.html"
+          class="new-interview-btn w-full flex items-center justify-center gap-3 bg-gradient-to-r from-primary/20 via-primary-container/15 to-secondary/10 hover:from-primary/25 hover:via-primary-container/20 hover:to-secondary/15 border border-primary/25 rounded-2xl py-4 px-6 group">
+          <div class="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+            <span class="material-symbols-outlined text-primary text-[18px]">add</span>
+          </div>
+          <span class="text-base font-bold font-headline text-primary tracking-wide">New Interview +</span>
+        </a>
       </section>
 
       <!-- Empty State -->
@@ -406,6 +431,11 @@
       renderStats(candidates);
       document.getElementById("cards-container").innerHTML = candidates.map((c, i) => buildCard(c, i)).join("");
       document.getElementById("cards-grid").classList.remove("hidden");
+    }
+
+    function handleLogout() {
+      localStorage.clear();
+      window.location.href = "./index.html";
     }
 
     document.addEventListener("DOMContentLoaded", init);
