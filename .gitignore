@@ -23,3 +23,11 @@ Thumbs.db
 
 # Node modules (if frontend uses it)
 node_modules/
+
+# temp files
+backend/app/temp_*
+backend/app/*.wav
+backend/app/*.webm
+
+# data folder
+backend/data/
