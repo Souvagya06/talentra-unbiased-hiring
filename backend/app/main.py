@@ -14,7 +14,7 @@ import io
 from google import genai
 from groq import Groq
 import asyncio
-import moviepy.editor as mp
+import uuid
 from pydantic import BaseModel
 
 class UsernameCheck(BaseModel):
@@ -32,14 +32,14 @@ if not SUPABASE_URL or not SUPABASE_KEY:
 # create app FIRST
 app = FastAPI()
 
-# THEN define routes
-# Replace the /analyze route with this:
+# Load Groq client once
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"), timeout=300.0)
+
 @app.post("/analyze")
 async def analyze_resume(
     file: UploadFile,
     job_description: str = Form(...)
 ):
-
     content = await file.read()
 
     pdf = PdfReader(io.BytesIO(content))
@@ -94,7 +94,7 @@ JOB DESCRIPTION:
     if not response:
         return {"technical_score": 0, "communication_score": 0, "feedback": "AI service unavailable, please try again."}
 
-    text = response.text    
+    text = response.text
 
     try:
         cleaned = text.replace("```json", "").replace("```", "").strip()
@@ -104,9 +104,6 @@ JOB DESCRIPTION:
         print("Gemini raw response:", text)
         return {"score": 0, "strengths": [], "gaps": []}
 
-# Load Groq model once (fast)
-groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"), timeout=300.0)
-import uuid
 
 @app.post("/analyze-interview")
 async def analyze_interview(
@@ -120,21 +117,21 @@ async def analyze_interview(
     job_description: str = Form(""),
     resume_score: str = Form("0")
 ):
-    content = await file.read()
+    # ✅ moviepy imported lazily here to avoid startup crash
+    import moviepy.editor as mp
 
+    content = await file.read()
     filename = file.filename.lower()
-    
+
     unique_id = uuid.uuid4().hex
-    # Ensure extension is valid for groq
     ext = ".wav" if filename.endswith(".wav") else ".webm"
     temp_input = f"temp_input_{unique_id}{ext}"
-    
+
     with open(temp_input, "wb") as f:
         f.write(content)
 
     temp_audio = temp_input
 
-    # TRY extract audio if it's considered a video format
     if filename.endswith((".mp4", ".webm", ".mov", ".mkv")):
         try:
             temp_extracted = f"temp_audio_{unique_id}.wav"
@@ -144,20 +141,16 @@ async def analyze_interview(
                 temp_audio = temp_extracted
             video.close()
         except Exception as e:
-            # It's an audio only file packaged in webm/mkv, process it directly
             pass
-            
-    # Safely parse resume_score
+
     try:
         r_score = int(float(resume_score))
     except:
         r_score = 0
 
-    # STEP 1: Groq Whisper transcription
     with open(temp_audio, "rb") as audio_file:
         audio_data = audio_file.read()
-        
-    # Check max file size (25MB) limit for Groq
+
     if len(audio_data) > 25 * 1024 * 1024:
         return {"error": "File too large. Please limit recording to under 25MB."}
 
@@ -171,7 +164,6 @@ async def analyze_interview(
     if not transcript:
         return {"analysis": "No speech detected"}
 
-    # STEP 2: Gemini analysis
     name_instruction = f"The candidate's name is '{name}'. Please use their name in the summary instead of making one up. Make sure the name spelling is exactly as provided." if name else "Do not assume a candidate name if not explicitly mentioned in the transcript."
 
     prompt = f"""
@@ -203,7 +195,7 @@ async def analyze_interview(
         try:
             response = await asyncio.to_thread(
                 client.models.generate_content,
-                model=model_name,   # <-- use model_name, not hardcoded string
+                model=model_name,
                 contents=prompt
             )
             break
@@ -220,7 +212,6 @@ async def analyze_interview(
         cleaned = text.replace("```json", "").replace("```", "").strip()
         parsed = json.loads(cleaned)
 
-        # ✅ SAVE REPORT HERE
         insert_response = supabase.table("reports").insert({
             "user_email": user_email,
             "name": name,
@@ -237,7 +228,7 @@ async def analyze_interview(
             "evaluation_summary": parsed.get("evaluation_summary", ""),
             "recommendation_percentage": parsed.get("recommendation_percentage", 0)
         }).execute()
-        
+
         if insert_response.data and len(insert_response.data) > 0:
             parsed["report_id"] = insert_response.data[0].get("id")
 
@@ -250,13 +241,12 @@ async def analyze_interview(
             "transcript": transcript[:500]
         }
 
-# THEN API Route
+
 @app.post("/check-username")
 async def check_username(data: UsernameCheck):
     try:
         username = data.username.strip().lower()
 
-        # Split safely
         parts = username.split()
         if len(parts) < 2:
             return {"exists": False}
@@ -264,13 +254,11 @@ async def check_username(data: UsernameCheck):
         first_name = parts[0]
         last_name = parts[-1]
 
-        # Fetch ALL users (safe for now)
         response = supabase.table("users").select("*").execute()
 
         if not response.data:
             return {"exists": False}
 
-        # Manual matching (BEST FIX)
         for user in response.data:
             db_first = (user.get("first_name") or "").strip().lower()
             db_last = (user.get("last_name") or "").strip().lower()
@@ -284,7 +272,7 @@ async def check_username(data: UsernameCheck):
         print("ERROR:", e)
         return {"exists": False}
 
-# fetch API
+
 @app.get("/my-reports")
 def get_reports(email: str):
     res = supabase.table("reports") \
@@ -292,8 +280,9 @@ def get_reports(email: str):
         .eq("user_email", email) \
         .order("created_at", desc=True) \
         .execute()
-
     return res.data
+
+
 @app.get("/report/{id}")
 def get_single_report(id: str):
     res = supabase.table("reports") \
@@ -301,7 +290,6 @@ def get_single_report(id: str):
         .eq("id", id) \
         .single() \
         .execute()
-
     return res.data
 
 
@@ -313,7 +301,7 @@ def get_users():
     except Exception as e:
         return {"error": str(e)}
 
-# ✅ Allow frontend requests (important later for API calls)
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -322,66 +310,47 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 📁 Path to your frontend pages
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_PATH = os.path.join(BASE_DIR, "../frontend/pages")
 app.mount("/assets", StaticFiles(directory=os.path.join(BASE_DIR, "../frontend/assets")), name="assets")
 
 
-# 🏠 Landing Page
 @app.get("/")
 def serve_index():
     return FileResponse(os.path.join(FRONTEND_PATH, "index.html"))
-
 
 @app.get("/index.html")
 def serve_index_html():
     return FileResponse(os.path.join(FRONTEND_PATH, "index.html"))
 
-
-# 📄 Upload Page
 @app.get("/upload.html")
 def serve_upload():
     return FileResponse(os.path.join(FRONTEND_PATH, "upload.html"))
 
-
-# 🎙️ Interview Page
 @app.get("/interview.html")
 def serve_interview():
     return FileResponse(os.path.join(FRONTEND_PATH, "interview.html"))
 
-
-# 📊 Result Page
 @app.get("/result.html")
 def serve_result():
     return FileResponse(os.path.join(FRONTEND_PATH, "result.html"))
 
-
-# 📄 Report Page
 @app.get("/report.html")
 def serve_report():
     return FileResponse(os.path.join(FRONTEND_PATH, "report.html"))
 
-
-# About Page
 @app.get("/about.html")
 def serve_about():
     return FileResponse(os.path.join(FRONTEND_PATH, "about.html"))
 
-
-# Contact Page
 @app.get("/contact.html")
 def serve_contact():
     return FileResponse(os.path.join(FRONTEND_PATH, "contact.html"))
 
-
-# Legal Page
 @app.get("/legal.html")
 def serve_legal():
     return FileResponse(os.path.join(FRONTEND_PATH, "legal.html"))
 
-
-# Login Page
 @app.get("/login.html")
 def serve_login():
     return FileResponse(os.path.join(FRONTEND_PATH, "login.html"))
@@ -390,21 +359,17 @@ def serve_login():
 @app.post("/signup")
 async def signup(request: Request):
     data = await request.json()
-
     email = data.get("email")
 
-    # check if user already exists
     existing = supabase.table("users").select("*").eq("email", email).execute()
-
     if existing.data:
         return {"message": "User already exists"}
 
-    # insert new user
     hashed_password = bcrypt.hashpw(
         data.get("password").encode('utf-8'),
         bcrypt.gensalt()
     ).decode('utf-8')
-    
+
     supabase.table("users").insert({
         "first_name": data.get("first_name"),
         "last_name": data.get("last_name"),
@@ -420,18 +385,14 @@ async def signup(request: Request):
 @app.post("/login")
 async def login(request: Request):
     data = await request.json()
-
     email = data.get("email")
     password = data.get("password")
 
     user = supabase.table("users").select("*").eq("email", email).execute()
-
     if not user.data:
         return {"message": "User doesn't exist"}
 
     stored_password = user.data[0]["password"]
-
-    # compare hashed password
     if not bcrypt.checkpw(password.encode('utf-8'), stored_password.encode('utf-8')):
         return {"message": "Invalid credentials"}
 
