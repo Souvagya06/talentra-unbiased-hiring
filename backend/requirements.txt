@@ -6,7 +6,7 @@ bcrypt
 pypdf2
 google-genai
 groq
-moviepy
+moviepy==1.0.3
 pydantic
 imageio
 imageio-ffmpeg

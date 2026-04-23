@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-**Talentra AI** is an AI-powered hiring assistant that automates resume screening and interview evaluation. It combines **speech-to-text (Whisper)**, **LLM analysis (Gemini)**, and **cloud storage (Supabase)** to provide structured, unbiased candidate insights.
+**Talentra** is an AI-powered hiring assistant that automates resume screening and interview evaluation. It combines **speech-to-text (Whisper)**, **LLM analysis (Gemini)**, and **cloud storage (Supabase)** to provide structured, unbiased candidate insights.
 
 The system supports:
 
