@@ -309,10 +309,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FRONTEND_PATH = os.path.join(BASE_DIR, "../frontend/pages")
-app.mount("/assets", StaticFiles(directory=os.path.join(BASE_DIR, "../frontend/assets")), name="assets")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+FRONTEND_PATH = os.path.join(BASE_DIR, "frontend/pages")
+app.mount("/assets", StaticFiles(directory=os.path.join(BASE_DIR, "frontend/pages/assets")), name="assets")
 
 
 @app.get("/")
