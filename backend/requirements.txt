@@ -4,7 +4,7 @@ python-dotenv
 supabase
 bcrypt
 pypdf2
-google-generativeai
+google-genai
 groq
 moviepy
 pydantic
