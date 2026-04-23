@@ -1,4 +1,4 @@
-# 🚀 Talentra AI — Intelligent Interview & Resume Evaluation System
+# 🚀 Talentra — Intelligent Interview & Resume Evaluation System
 
 ## 📌 Overview
 
