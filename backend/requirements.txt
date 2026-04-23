@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+supabase
+bcrypt
+pypdf2
+google-generativeai
+groq
+moviepy
+pydantic
+imageio
+imageio-ffmpeg
+numpy
