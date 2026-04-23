@@ -1291,7 +1291,7 @@
       formData.append("job_description", localStorage.getItem('job_description') || '');
       formData.append("resume_score", localStorage.getItem('resume_score') || 0);
 
-      fetch("http://127.0.0.1:8000/analyze-interview", {
+      fetch("https://talentra-hiring-backend.onrender.com/analyze-interview", {
         method: "POST",
         body: formData
       })

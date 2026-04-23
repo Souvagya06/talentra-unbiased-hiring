@@ -687,7 +687,7 @@ ${jd.slice(0, 2000)}`;
                 formData.append("file", uploadedFile);
                 formData.append("job_description", jd);
 
-                const response = await fetch("http://127.0.0.1:8000/analyze", {
+                const response = await fetch("https://talentra-hiring-backend.onrender.com/analyze", {
                     method: "POST",
                     body: formData
                 });

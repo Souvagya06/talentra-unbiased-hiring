@@ -244,8 +244,12 @@
       try {
         const email = localStorage.getItem("user_email") || "test@gmail.com";
 
-        const res = await fetch(`http://127.0.0.1:8000/my-reports?email=${email}`);
+        const res = await fetch(`https://talentra-hiring-backend.onrender.com/my-reports?email=${email}`);
         const data = await res.json();
+        if (!res.ok) {
+          alert("Server error. Try again.");
+          return;
+      }
 
         return data.map(r => ({
           id: r.id,
